@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.gizmo.unusedassets.entity.tileentity.CompoundTileEntity;
 import com.gizmo.unusedassets.entity.tileentity.ElementTileEntity;
 import com.gizmo.unusedassets.entity.tileentity.GearTileEntity;
+import com.gizmo.unusedassets.entity.tileentity.ReducerTileEntity;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
 
@@ -22,6 +23,7 @@ public class UnusedTileEntities {
 
 	public static final TileEntityType<ElementTileEntity> ELEMENT_CONSTRUCTOR = register("element_constructor", TileEntityType.Builder.create(ElementTileEntity::new, EducationBlocks.ELEMENT_CONSTRUCTOR));
 	public static final TileEntityType<CompoundTileEntity> COMPOUND_CREATOR = register("compound_creator", TileEntityType.Builder.create(CompoundTileEntity::new, EducationBlocks.COMPOUND_CREATOR));
+	public static final TileEntityType<ReducerTileEntity> MATERIAL_REDUCER = register("material_reducer", TileEntityType.Builder.create(ReducerTileEntity::new, EducationBlocks.MATERIAL_REDUCER));
 
 	
 	public static final TileEntityType<GearTileEntity> GEAR = register("gear", TileEntityType.Builder.create(GearTileEntity::new, UnusedBlocks.GEAR));

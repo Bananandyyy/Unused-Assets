@@ -2,10 +2,9 @@ package com.gizmo.unusedassets.init;
 
 import java.util.ArrayList;
 
-import com.gizmo.unusedassets.entity.tileentity.CompoundTileEntity;
-import com.gizmo.unusedassets.entity.tileentity.ElementTileEntity;
-import com.gizmo.unusedassets.inventory.container.CompoundContainer;
-import com.gizmo.unusedassets.inventory.container.ElementContainer;
+import com.gizmo.unusedassets.entity.tileentity.*;
+import com.gizmo.unusedassets.inventory.container.*;
+
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,6 +26,11 @@ public class UnusedContainers {
 	public static final ContainerType<CompoundContainer> COMPOUND_CREATOR = register("compound_creator", (IContainerFactory<CompoundContainer>) (windowId, playerInventory, data) -> {
         CompoundTileEntity TileEntity = (CompoundTileEntity) playerInventory.player.world.getTileEntity(data.readBlockPos());
         return new CompoundContainer(windowId, playerInventory, TileEntity);
+    });
+	
+	public static final ContainerType<ReducerContainer> MATERIAL_REDUCER = register("material_reducer", (IContainerFactory<ReducerContainer>) (windowId, playerInventory, data) -> {
+		ReducerTileEntity TileEntity = (ReducerTileEntity) playerInventory.player.world.getTileEntity(data.readBlockPos());
+        return new ReducerContainer(windowId, playerInventory, TileEntity);
     });
 	 
 	 

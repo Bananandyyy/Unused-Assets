@@ -1,8 +1,7 @@
 package com.gizmo.unusedassets.util;
 
 import com.gizmo.unusedassets.client.entity.render.*;
-import com.gizmo.unusedassets.client.gui.CompoundScreen;
-import com.gizmo.unusedassets.client.gui.ElementScreen;
+import com.gizmo.unusedassets.client.gui.*;
 import com.gizmo.unusedassets.init.UnusedContainers;
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedTileEntities;
@@ -30,6 +29,8 @@ public class ClientHandler {
 		
 		ScreenManager.registerFactory(UnusedContainers.ELEMENT_CONSTRUCTOR, ElementScreen::new);
 		ScreenManager.registerFactory(UnusedContainers.COMPOUND_CREATOR, CompoundScreen::new);
+		ScreenManager.registerFactory(UnusedContainers.MATERIAL_REDUCER, ReducerScreen::new);
+		
 		
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FISH, FishRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.PURPLE_ARROW, PurpleArrowRenderer::new);
