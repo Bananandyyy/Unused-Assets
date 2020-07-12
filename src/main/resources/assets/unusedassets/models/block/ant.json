@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube_directional",
+    "textures": {
+        "particle": "unusedassets:block/ant_back",
+        "down": "unusedassets:block/ant_side",
+        "up": "unusedassets:block/ant_side",
+        "north": "unusedassets:block/ant_front",
+        "east": "unusedassets:block/ant_side",
+        "south": "unusedassets:block/ant_back",
+        "west": "unusedassets:block/ant_side"
+    }
+}

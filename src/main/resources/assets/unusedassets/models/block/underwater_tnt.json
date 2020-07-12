@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/education/underwater_tnt_side",
+        "bottom": "unusedassets:block/education/underwater_tnt_bottom",
+        "top": "unusedassets:block/education/underwater_tnt_top",
+        "side": "unusedassets:block/education/underwater_tnt_side",
+        "front": "unusedassets:block/education/underwater_tnt_side"
+      
+    }
+}

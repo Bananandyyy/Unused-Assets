@@ -1,0 +1,6 @@
+{
+    "parent": "unusedassets:item/heart_bow",
+    "textures": {
+        "layer0": "unusedassets:item/bow_pulling_heart_0"
+    }
+}

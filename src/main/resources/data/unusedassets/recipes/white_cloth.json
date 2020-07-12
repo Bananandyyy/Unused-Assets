@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "cc",
+        "cc"
+        
+    ],
+    "key": {
+        "c": {
+            "item": "unusedassets:cloth"
+        }
+    },
+    "result": {
+        "item": "unusedassets:white_cloth",
+        "count": 1
+    }
+}

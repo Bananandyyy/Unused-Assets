@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fire_floor",
+  "textures": {
+    "fire": "unusedassets:block/fireold"
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "state=normal": { "model": "unusedassets:block/nrc1" },
+		"state=active": { "model": "unusedassets:block/nrc2" },
+		"state=decayed": { "model": "unusedassets:block/nrc3" }
+    }
+}

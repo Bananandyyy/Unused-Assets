@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "unusedassets:block/lab_table" },
+ 		"facing=south": { "model": "unusedassets:block/lab_table", "y": 180 },
+ 		"facing=east": { "model": "unusedassets:block/lab_table", "y": 90 },
+ 		"facing=west": { "model": "unusedassets:block/lab_table", "y": 270 }
+    }
+}

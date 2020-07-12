@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+        {
+            "item": "unusedassets:rose"
+        }
+    ],
+    "result": {
+        "item": "unusedassets:rose_dye",
+        "count": 1
+    }
+}

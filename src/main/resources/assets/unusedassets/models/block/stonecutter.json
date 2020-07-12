@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/bedrock/stonecutter_side",
+        "bottom": "unusedassets:block/bedrock/stonecutter_bottom",
+        "top": "unusedassets:block/bedrock/stonecutter_top",
+        "front": "unusedassets:block/bedrock/stonecutter_side",
+        "side": "unusedassets:block/bedrock/stonecutter_other_side"
+      
+    }
+}

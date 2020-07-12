@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/usb_charger_side",
+        "bottom": "unusedassets:block/usb_charger_bottom",
+        "top": "unusedassets:block/usb_charger_top",
+        "front": "unusedassets:block/usb_charger_side",
+        "side": "unusedassets:block/usb_charger_side"
+      
+    }
+}

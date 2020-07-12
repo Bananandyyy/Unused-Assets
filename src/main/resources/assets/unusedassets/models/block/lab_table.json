@@ -1,0 +1,13 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/education/lab_table_bottom",
+        "bottom": "unusedassets:block/education/lab_table_bottom",
+        "top": "unusedassets:block/education/lab_table_top",
+        "front": "unusedassets:block/education/lab_table_front",
+        "east": "unusedassets:block/education/lab_table_east",
+        "west": "unusedassets:block/education/lab_table_west",
+        "south": "unusedassets:block/education/lab_table_back"
+      
+    }
+}

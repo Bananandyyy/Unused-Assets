@@ -1,0 +1,57 @@
+package com.gizmo.unusedassets.util;
+
+import com.gizmo.unusedassets.client.entity.render.*;
+import com.gizmo.unusedassets.client.gui.CompoundScreen;
+import com.gizmo.unusedassets.client.gui.ElementScreen;
+import com.gizmo.unusedassets.init.UnusedContainers;
+import com.gizmo.unusedassets.init.UnusedEntities;
+import com.gizmo.unusedassets.init.UnusedTileEntities;
+import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
+import com.gizmo.unusedassets.init.blocks.EducationBlocks;
+import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
+import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+@EventBusSubscriber(modid = "unusedassets", bus = Mod.EventBusSubscriber.Bus.MOD)
+@OnlyIn(Dist.CLIENT)
+public class ClientHandler {
+
+	@SubscribeEvent
+	public static void clientSetup(FMLClientSetupEvent event) {
+		
+		ScreenManager.registerFactory(UnusedContainers.ELEMENT_CONSTRUCTOR, ElementScreen::new);
+		ScreenManager.registerFactory(UnusedContainers.COMPOUND_CREATOR, CompoundScreen::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FISH, FishRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.PURPLE_ARROW, PurpleArrowRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HEART_ARROW, HeartArrowRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.STEVE_VILLAGER_HYBRID, SteveVillagerRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.AGENT, AgentRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.LOVE_GOLEM, LoveGolemRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HAPPY_CREEPER, HappyCreeperRenderer::new);
+		
+		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.GEAR, GearRenderer::new);
+		
+		RenderTypeLookup.setRenderLayer(BedrockBlocks.CYAN_FLOWER, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(UnusedBlocks.GEAR, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(UnusedBlocks.ROSE, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(UnusedBlocks.PAEONIA, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(EducationBlocks.RED_TORCH, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(EducationBlocks.GREEN_TORCH, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(EducationBlocks.BLUE_TORCH, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(EducationBlocks.PURPLE_TORCH, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(EducationBlocks.UNDERWATER_TORCH, RenderType.getCutout());
+		
+		
+	}
+	
+}

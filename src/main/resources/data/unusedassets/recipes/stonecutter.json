@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "cc",
+        "cc"
+    ],
+    "key": {
+        "c": {
+            "item": "minecraft:cobblestone"
+        }
+    },
+    "result": {
+        "item": "unusedassets:stonecutter",
+        "count": 1
+    }
+}

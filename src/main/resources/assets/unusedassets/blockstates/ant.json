@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "unusedassets:block/ant" },
+ 		"facing=south": { "model": "unusedassets:block/ant", "y": 180 },
+ 		"facing=east": { "model": "unusedassets:block/ant", "y": 90 },
+ 		"facing=west": { "model": "unusedassets:block/ant", "y": 270 }
+    }
+}

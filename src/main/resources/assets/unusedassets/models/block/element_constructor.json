@@ -1,0 +1,13 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/education/element_constructor_bottom",
+        "bottom": "unusedassets:block/education/element_constructor_bottom",
+        "top": "unusedassets:block/education/element_constructor_top",
+        "front": "unusedassets:block/education/element_constructor_front",
+        "east": "unusedassets:block/education/element_constructor_east",
+        "west": "unusedassets:block/education/element_constructor_west",
+        "south": "unusedassets:block/education/element_constructor_back"
+      
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "unusedassets:block/material_reducer" },
+ 		"facing=south": { "model": "unusedassets:block/material_reducer", "y": 180 },
+ 		"facing=east": { "model": "unusedassets:block/material_reducer", "y": 90 },
+ 		"facing=west": { "model": "unusedassets:block/material_reducer", "y": 270 }
+    }
+}

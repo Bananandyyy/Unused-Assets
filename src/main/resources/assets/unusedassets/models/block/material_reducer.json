@@ -1,0 +1,10 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "unusedassets:block/education/material_reducer_bottom",
+        "bottom": "unusedassets:block/education/material_reducer_bottom",
+        "top": "unusedassets:block/education/material_reducer_top",
+        "front": "unusedassets:block/education/material_reducer_front",
+        "side": "unusedassets:block/education/material_reducer_side"
+    }
+}

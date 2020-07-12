@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+        {
+            "item": "unusedassets:white_cloth"
+        },
+        {
+            "item": "minecraft:green_dye"
+        }
+    ],
+    "result": {
+        "item": "unusedassets:green_cloth",
+        "count": 1
+    }
+}

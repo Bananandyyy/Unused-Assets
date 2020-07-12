@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.gizmo.unusedassets.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "MixinClientWorld"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"parent": "block/cauldron",
+    "textures": {
+        "particle": "unusedassets:block/education/compound_creator_side",
+        "top": "unusedassets:block/education/compound_creator_top",
+        "bottom": "unusedassets:block/education/compound_creator_inside_bottom",
+        "side": "unusedassets:block/education/compound_creator_side",
+        "inside": "unusedassets:block/education/compound_creator_inside",
+        "front": "unusedassets:block/education/compound_creator_front",
+		"back": "unusedassets:block/education/compound_creator_side_2"
+    }
+}

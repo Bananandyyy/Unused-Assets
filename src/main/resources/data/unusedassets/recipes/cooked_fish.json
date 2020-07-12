@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "unusedassets:raw_fish"
+	},
+	"result": "unusedassets:cooked_fish",
+	"experience": 0.35,
+	"cookingtime": 200
+}

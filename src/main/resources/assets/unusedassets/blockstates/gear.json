@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "gearpower=0":   { "model": "unusedassets:block/gear" },
+		"gearpower=1":   { "model": "unusedassets:block/gear_active" }    
+    }
+}
