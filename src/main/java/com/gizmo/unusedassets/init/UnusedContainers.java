@@ -32,6 +32,11 @@ public class UnusedContainers {
 		ReducerTileEntity TileEntity = (ReducerTileEntity) playerInventory.player.world.getTileEntity(data.readBlockPos());
         return new ReducerContainer(windowId, playerInventory, TileEntity);
     });
+	
+	public static final ContainerType<TableContainer> LAB_TABLE = register("lab_table", (IContainerFactory<TableContainer>) (windowId, playerInventory, data) -> {
+		TableTileEntity TileEntity = (TableTileEntity) playerInventory.player.world.getTileEntity(data.readBlockPos());
+        return new TableContainer(windowId, playerInventory, TileEntity);
+    });
 	 
 	 
 	 private static <T extends Container> ContainerType<T> register(String key, ContainerType.IFactory<T> factory)

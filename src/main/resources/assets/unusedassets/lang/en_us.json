@@ -364,6 +364,8 @@
 	
 	"container.element_constructor":            "Element Constructor", 
 	"container.compound_creator":               "Compound Creator",
+	"container.material_reducer":               "Material Reducer",
+	"container.lab_table":                      "Lab Table",
 	
 	"itemGroup.java":                           "Java Unused Assets",
 	"itemGroup.bedrock":                        "Bedrock Unused Assets",

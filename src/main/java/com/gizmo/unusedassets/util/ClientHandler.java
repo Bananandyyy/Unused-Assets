@@ -30,6 +30,7 @@ public class ClientHandler {
 		ScreenManager.registerFactory(UnusedContainers.ELEMENT_CONSTRUCTOR, ElementScreen::new);
 		ScreenManager.registerFactory(UnusedContainers.COMPOUND_CREATOR, CompoundScreen::new);
 		ScreenManager.registerFactory(UnusedContainers.MATERIAL_REDUCER, ReducerScreen::new);
+		ScreenManager.registerFactory(UnusedContainers.LAB_TABLE, TableScreen::new);
 		
 		
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FISH, FishRenderer::new);

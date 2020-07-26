@@ -26,28 +26,35 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 
-public abstract class ModScreen<T extends Container> extends Screen implements IHasContainer<T>{
+//Vanilla Copy of ContainerScreen, but the word "inventory" was taken out of the GUI
+public abstract class ModScreen<T extends Container> extends Screen implements IHasContainer<T> {
 
-	public static final ResourceLocation INVENTORY_BACKGROUND = new ResourceLocation(
-			"textures/gui/container/inventory.png");
+	public static final ResourceLocation INVENTORY_BACKGROUND = new ResourceLocation("textures/gui/container/inventory.png");
+	
 	protected int xSize = 176;
 	protected int ySize = 166;
 	protected int field_238742_p_;
 	protected int field_238743_q_;
 	protected int field_238744_r_;
 	protected int field_238745_s_;
-	   protected final PlayerInventory playerInventory;
+	protected final PlayerInventory playerInventory;
 	protected final T container;
+	
 	@Nullable
 	protected Slot hoveredSlot;
+	
 	@Nullable
 	private Slot clickedSlot;
+	
 	@Nullable
 	private Slot returningStackDestSlot;
+	
 	@Nullable
 	private Slot currentDragTargetSlot;
+	
 	@Nullable
 	private Slot lastClickSlot;
+	
 	protected int guiLeft;
 	protected int guiTop;
 	private boolean isRightMouseClick;
@@ -71,7 +78,7 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 	protected ModScreen(T screenContainer, PlayerInventory inv, ITextComponent titleIn) {
 		super(titleIn);
 		this.container = screenContainer;
-		 this.playerInventory = inv;
+		this.playerInventory = inv;
 		this.ignoreMouseUp = true;
 		this.field_238742_p_ = 8;
 		this.field_238743_q_ = 6;
@@ -89,9 +96,7 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 		int i = this.guiLeft;
 		int j = this.guiTop;
 		this.func_230450_a_(p_230430_1_, p_230430_4_, p_230430_2_, p_230430_3_);
-		net.minecraftforge.common.MinecraftForge.EVENT_BUS
-				.post(new ModGuiContainerEvent.DrawBackground(this, p_230430_1_,
-						p_230430_2_, p_230430_3_));
+		net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new ModGuiContainerEvent.DrawBackground(this, p_230430_1_, p_230430_2_, p_230430_3_));
 		RenderSystem.disableRescaleNormal();
 		RenderSystem.disableDepthTest();
 		super.func_230430_a_(p_230430_1_, p_230430_2_, p_230430_3_, p_230430_4_);
@@ -125,9 +130,7 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 		}
 
 		this.func_230451_b_(p_230430_1_, p_230430_2_, p_230430_3_);
-		net.minecraftforge.common.MinecraftForge.EVENT_BUS
-				.post(new ModGuiContainerEvent.DrawForeground(this, p_230430_1_,
-						p_230430_2_, p_230430_3_));
+		net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new ModGuiContainerEvent.DrawForeground(this, p_230430_1_, p_230430_2_, p_230430_3_));
 		PlayerInventory playerinventory = this.field_230706_i_.player.inventory;
 		ItemStack itemstack = this.draggedStack.isEmpty() ? playerinventory.getItemStack() : this.draggedStack;
 		if (!itemstack.isEmpty()) {
@@ -174,12 +177,6 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 
 	}
 
-	/**
-	 * Draws an ItemStack.
-	 * 
-	 * The z index is increased by 32 (and not decreased afterwards), and the item
-	 * is then rendered at z=200.
-	 */
 	private void drawItemStack(ItemStack stack, int x, int y, String altText) {
 		RenderSystem.translatef(0.0F, 0.0F, 32.0F);
 		this.func_230926_e_(200);
@@ -241,10 +238,8 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 		if (itemstack.isEmpty() && p_238746_2_.isEnabled()) {
 			Pair<ResourceLocation, ResourceLocation> pair = p_238746_2_.func_225517_c_();
 			if (pair != null) {
-				TextureAtlasSprite textureatlassprite = this.field_230706_i_.getAtlasSpriteGetter(pair.getFirst())
-						.apply(pair.getSecond());
-				this.field_230706_i_.getTextureManager()
-						.bindTexture(textureatlassprite.getAtlasTexture().getTextureLocation());
+				TextureAtlasSprite textureatlassprite = this.field_230706_i_.getAtlasSpriteGetter(pair.getFirst()).apply(pair.getSecond());
+				this.field_230706_i_.getTextureManager().bindTexture(textureatlassprite.getAtlasTexture().getTextureLocation());
 				func_238470_a_(p_238746_1_, i, j, this.func_230927_p_(), 16, 16, textureatlassprite);
 				flag1 = true;
 			}
@@ -319,7 +314,7 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 				int k = this.guiTop;
 				boolean flag1 = this.hasClickedOutside(p_231044_1_, p_231044_3_, j, k, p_231044_5_);
 				if (slot != null)
-					flag1 = false; 
+					flag1 = false;
 				int l = -1;
 				if (slot != null) {
 					l = slot.slotNumber;
@@ -450,13 +445,13 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 	}
 
 	public boolean func_231048_c_(double p_231048_1_, double p_231048_3_, int p_231048_5_) {
-		super.func_231048_c_(p_231048_1_, p_231048_3_, p_231048_5_); 
+		super.func_231048_c_(p_231048_1_, p_231048_3_, p_231048_5_);
 		Slot slot = this.getSelectedSlot(p_231048_1_, p_231048_3_);
 		int i = this.guiLeft;
 		int j = this.guiTop;
 		boolean flag = this.hasClickedOutside(p_231048_1_, p_231048_3_, i, j, p_231048_5_);
 		if (slot != null)
-			flag = false; 
+			flag = false;
 		InputMappings.Input mouseKey = InputMappings.Type.MOUSE.getOrMakeInput(p_231048_5_);
 		int k = -1;
 		if (slot != null) {
@@ -612,7 +607,7 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 					handled = true;
 				}
 			} else if (this.field_230706_i_.gameSettings.keyBindDrop.isActiveAndMatches(mouseKey)) {
-				handled = true; 
+				handled = true;
 			}
 
 			return handled;
