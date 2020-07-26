@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.inventory.container;
+package com.gizmo.unusedassets.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;

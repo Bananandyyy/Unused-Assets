@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.gizmo.unusedassets.entity.tileentity.CompoundTileEntity;
 import com.gizmo.unusedassets.init.UnusedContainers;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
+import com.gizmo.unusedassets.inventory.ResultSlot;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

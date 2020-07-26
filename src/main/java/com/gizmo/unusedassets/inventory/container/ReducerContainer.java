@@ -7,6 +7,7 @@ import com.gizmo.unusedassets.init.UnusedContainers;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 import com.gizmo.unusedassets.inventory.IngredientInventory;
 import com.gizmo.unusedassets.inventory.ResultInventory;
+import com.gizmo.unusedassets.inventory.ResultSlot;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
