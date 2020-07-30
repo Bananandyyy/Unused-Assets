@@ -2,10 +2,10 @@
   "required": true,
   "package": "com.gizmo.unusedassets.mixin",
   "compatibilityLevel": "JAVA_8",
+"refmap": "unusedassets.refmap.json",
   "mixins": [
   ],
   "client": [
-    "MixinClientWorld"
   ],
   "injectors": {
     "defaultRequire": 1

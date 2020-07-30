@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.mixins;
+package com.gizmo.unusedassets.mixin;
 
 import java.util.List;
 import java.util.Random;
