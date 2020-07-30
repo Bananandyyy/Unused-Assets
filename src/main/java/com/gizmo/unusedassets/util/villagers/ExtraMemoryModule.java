@@ -2,7 +2,6 @@ package com.gizmo.unusedassets.util.villagers;
 
 import java.util.Optional;
 
-import com.gizmo.unusedassets.entity.SteveVillagerEntity;
 import com.mojang.serialization.Codec;
 
 import net.minecraft.entity.LivingEntity;

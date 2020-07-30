@@ -210,7 +210,7 @@ public class UnusedItems {
 	public static final Item PURPLE_SPARKLER = register("purple_sparkler", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.education)));
 
 	//Minecraft Earth stuff
-	public static final Item HORN = register("horn", new Item((new Item.Properties()).group(UnusedAssets.earth)));
+	//public static final Item HORN = register("horn", new Item((new Item.Properties()).group(UnusedAssets.earth)));
 	
 	
 	//Template
