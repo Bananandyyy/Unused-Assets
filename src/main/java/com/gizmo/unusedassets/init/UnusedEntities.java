@@ -7,6 +7,8 @@ import com.gizmo.unusedassets.entity.HeartArrowEntity;
 import com.gizmo.unusedassets.entity.LoveGolemEntity;
 import com.gizmo.unusedassets.entity.PurpleArrowEntity;
 import com.gizmo.unusedassets.entity.SteveVillagerEntity;
+import com.gizmo.unusedassets.entity.dungeons.NamelessEntity;
+
 import java.util.ArrayList;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -31,6 +33,7 @@ public class UnusedEntities {
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
 	
+//	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
 		return (EntityType<T>) Registry.register(Registry.ENTITY_TYPE, id, builder.build(id.toString()));
