@@ -1,6 +1,7 @@
 package com.gizmo.unusedassets.util;
 
 import com.gizmo.unusedassets.client.entity.render.*;
+import com.gizmo.unusedassets.client.entity.render.earth.*;
 import com.gizmo.unusedassets.client.gui.*;
 import com.gizmo.unusedassets.init.UnusedContainers;
 import com.gizmo.unusedassets.init.UnusedEntities;
@@ -41,6 +42,8 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.LOVE_GOLEM, LoveGolemRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HAPPY_CREEPER, HappyCreeperRenderer::new);
 //		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.NAMELESS_ONE, NamelessRenderer::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ALBINO_COW, AlbinoCowRenderer::new);
 		
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.GEAR, GearRenderer::new);
 		

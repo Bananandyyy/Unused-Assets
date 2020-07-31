@@ -1,13 +1,14 @@
 package com.gizmo.unusedassets.client.entity.model.earth;
 
+import com.gizmo.unusedassets.entity.earth.AlbinoCowEntity;
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.entity.model.CowModel;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
-public class AlbinoCowModel extends CowModel<Entity> {
+public class AlbinoCowModel extends AgeableModel<AlbinoCowEntity> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer body;
@@ -65,10 +66,6 @@ public class AlbinoCowModel extends CowModel<Entity> {
 	}
 
 	@Override
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-	}
-
-	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
@@ -77,5 +74,20 @@ public class AlbinoCowModel extends CowModel<Entity> {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+	
+	@Override
+	protected Iterable<ModelRenderer> getHeadParts() {
+		return ImmutableList.of(this.head);
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getBodyParts() {
+		return ImmutableList.of(this.body, this.legs);
+	}
+	
+	@Override
+	public void setRotationAngles(AlbinoCowEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+
 	}
 }

@@ -29,6 +29,8 @@ public class UnusedEntities {
 	
 //	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
+	public static final EntityType<AlbinoCowEntity> ALBINO_COW = register(new ResourceLocation("unusedassets", "albino_cow"), EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+
 	public static final EntityType<FleckedSheepEntity> FLECKED_SHEEP = register(new ResourceLocation("unusedassets", "flecked_sheep"), EntityType.Builder.create(FleckedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<HornedSheepEntity> HORNED_SHEEP = register(new ResourceLocation("unusedassets", "horned_sheep"), EntityType.Builder.create(HornedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<InkySheepEntity> INKY_SHEEP = register(new ResourceLocation("unusedassets", "inky_sheep"), EntityType.Builder.create(InkySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
