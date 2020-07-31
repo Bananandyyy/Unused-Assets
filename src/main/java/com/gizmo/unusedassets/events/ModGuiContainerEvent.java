@@ -5,6 +5,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import net.minecraftforge.eventbus.api.Event;
 
+//Forge copy but modified slightly
 public class ModGuiContainerEvent extends Event {
 
 	private final ModScreen<?> guiContainer;
@@ -49,24 +50,12 @@ public class ModGuiContainerEvent extends Event {
         }
     }
     
-    /**
-     * This event is fired directly after the GuiContainer has draw any background elements,
-     * This is useful for drawing new background elements.
-     */
     public static class DrawBackground extends ModGuiContainerEvent
     {
         private final MatrixStack mStack;
         private final int mouseX;
         private final int mouseY;
 
-        /**
-         * Called directly after the GuiContainer has drawn any background elements.
-         *
-         * @param guiContainer The container.
-         * @param mStack       The MatrixStack.
-         * @param mouseX       The current X position of the players mouse.
-         * @param mouseY       The current Y position of the players mouse.
-         */
         public DrawBackground(ModScreen<?> guiContainer, MatrixStack mStack, int mouseX, int mouseY)
         {
             super(guiContainer);
