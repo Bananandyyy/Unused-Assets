@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.client.entity.model;
+package com.gizmo.unusedassets.client.entity.model.earth;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.model.CowModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class AlbinoCowModel extends CowModel<Entity> {
+public class AshenCowModel extends CowModel<Entity> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer body;
@@ -17,7 +17,7 @@ public class AlbinoCowModel extends CowModel<Entity> {
 	private final ModelRenderer leftfront;
 	private final ModelRenderer leftback;
 
-	public AlbinoCowModel() {
+	public AshenCowModel() {
 		textureWidth = 64;
 		textureHeight = 32;
 
@@ -66,6 +66,7 @@ public class AlbinoCowModel extends CowModel<Entity> {
 
 	@Override
 	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		//previously the render function, render code was moved to a method below
 	}
 
 	@Override

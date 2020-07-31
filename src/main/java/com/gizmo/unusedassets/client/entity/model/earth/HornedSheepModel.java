@@ -1,13 +1,14 @@
-package com.gizmo.unusedassets.client.entity.model;
+package com.gizmo.unusedassets.client.entity.model.earth;
 
+import com.gizmo.unusedassets.entity.earth.HornedSheepEntity;
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.entity.model.SheepModel;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
-public class HornedSheepModel extends SheepModel<HornedSheepEntity> {
+public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<T> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer righthorn;
@@ -76,10 +77,6 @@ public class HornedSheepModel extends SheepModel<HornedSheepEntity> {
 		rightback.setTextureOffset(0, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
 	}
 
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
-	}
-
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -89,5 +86,20 @@ public class HornedSheepModel extends SheepModel<HornedSheepEntity> {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getHeadParts() {
+		return ImmutableList.of(this.head);
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getBodyParts() {
+		return ImmutableList.of(this.body, this.legs);
+	}
+	
+	@Override
+	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+
 	}
 }

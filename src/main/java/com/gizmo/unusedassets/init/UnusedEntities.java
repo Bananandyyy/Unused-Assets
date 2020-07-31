@@ -1,13 +1,7 @@
 package com.gizmo.unusedassets.init;
 
-import com.gizmo.unusedassets.entity.AgentEntity;
-import com.gizmo.unusedassets.entity.FishEntity;
-import com.gizmo.unusedassets.entity.HappyCreeperEntity;
-import com.gizmo.unusedassets.entity.HeartArrowEntity;
-import com.gizmo.unusedassets.entity.LoveGolemEntity;
-import com.gizmo.unusedassets.entity.PurpleArrowEntity;
-import com.gizmo.unusedassets.entity.SteveVillagerEntity;
-import com.gizmo.unusedassets.entity.dungeons.NamelessEntity;
+import com.gizmo.unusedassets.entity.*;
+import com.gizmo.unusedassets.entity.earth.*;
 
 import java.util.ArrayList;
 import net.minecraft.entity.EntityClassification;
@@ -34,6 +28,12 @@ public class UnusedEntities {
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
 	
 //	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
+	
+	public static final EntityType<FleckedSheepEntity> FLECKED_SHEEP = register(new ResourceLocation("unusedassets", "flecked_sheep"), EntityType.Builder.create(FleckedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<HornedSheepEntity> HORNED_SHEEP = register(new ResourceLocation("unusedassets", "horned_sheep"), EntityType.Builder.create(HornedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<InkySheepEntity> INKY_SHEEP = register(new ResourceLocation("unusedassets", "inky_sheep"), EntityType.Builder.create(InkySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<RockySheepEntity> ROCKY_SHEEP = register(new ResourceLocation("unusedassets", "rocky_sheep"), EntityType.Builder.create(RockySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
 		return (EntityType<T>) Registry.register(Registry.ENTITY_TYPE, id, builder.build(id.toString()));

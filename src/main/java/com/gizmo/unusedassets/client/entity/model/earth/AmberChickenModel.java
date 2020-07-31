@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.client.entity.model;
+package com.gizmo.unusedassets.client.entity.model.earth;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.model.ChickenModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class CluckShroomModel extends ChickenModel<Entity> {
+public class AmberChickenModel extends ChickenModel<Entity> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer body;
@@ -18,7 +18,7 @@ public class CluckShroomModel extends ChickenModel<Entity> {
 	private final ModelRenderer leftleg;
 	private final ModelRenderer rightleg;
 
-	public CluckShroomModel() {
+	public AmberChickenModel() {
 		textureWidth = 64;
 		textureHeight = 32;
 

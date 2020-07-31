@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.client.entity.model;
+package com.gizmo.unusedassets.client.entity.model.earth;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
