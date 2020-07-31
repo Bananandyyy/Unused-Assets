@@ -3,8 +3,6 @@ package com.gizmo.unusedassets.client.entity.model;
 import com.gizmo.unusedassets.entity.dungeons.NamelessEntity;
 
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib.animation.model.AnimatedEntityModel;
-import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
 
 public class NamelessModel { //extends AnimatedEntityModel<NamelessEntity> {
 
