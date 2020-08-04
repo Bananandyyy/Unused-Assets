@@ -2,6 +2,7 @@ package com.gizmo.unusedassets.init;
 
 import java.util.ArrayList;
 
+import com.gizmo.unusedassets.entity.tileentity.CauldronTileEntity;
 import com.gizmo.unusedassets.entity.tileentity.CompoundTileEntity;
 import com.gizmo.unusedassets.entity.tileentity.ElementTileEntity;
 import com.gizmo.unusedassets.entity.tileentity.GearTileEntity;
@@ -10,6 +11,7 @@ import com.gizmo.unusedassets.entity.tileentity.TableTileEntity;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,6 +28,7 @@ public class UnusedTileEntities {
 	public static final TileEntityType<CompoundTileEntity> COMPOUND_CREATOR = register("compound_creator", TileEntityType.Builder.create(CompoundTileEntity::new, EducationBlocks.COMPOUND_CREATOR));
 	public static final TileEntityType<ReducerTileEntity> MATERIAL_REDUCER = register("material_reducer", TileEntityType.Builder.create(ReducerTileEntity::new, EducationBlocks.MATERIAL_REDUCER));
 	public static final TileEntityType<TableTileEntity> LAB_TABLE = register("lab_table", TileEntityType.Builder.create(TableTileEntity::new, EducationBlocks.LAB_TABLE));
+	public static final TileEntityType<CauldronTileEntity> CAULDRON = register("cauldron", TileEntityType.Builder.create(CauldronTileEntity::new, Blocks.CAULDRON));
 
 	
 	public static final TileEntityType<GearTileEntity> GEAR = register("gear", TileEntityType.Builder.create(GearTileEntity::new, UnusedBlocks.GEAR));

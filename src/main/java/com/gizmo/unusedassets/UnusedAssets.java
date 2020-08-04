@@ -5,18 +5,25 @@ import org.apache.logging.log4j.Logger;
 
 import com.gizmo.unusedassets.init.UnusedItems;
 import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
+import com.gizmo.unusedassets.util.actions.CauldronActionBottle;
+import com.gizmo.unusedassets.util.actions.CauldronActionBucket;
+import com.gizmo.unusedassets.util.actions.CauldronActionClean;
+import com.gizmo.unusedassets.util.actions.CauldronActionDye;
+import com.gizmo.unusedassets.util.actions.CauldronActions;
+
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod("unusedassets")
 public final class UnusedAssets {
-	
+
 	public static final Logger LOGGER = LogManager.getLogger();
-	
+
 	public static final String MOD_ID = "unusedassets";
 	public static final String NAME = "Unused Assets Mod";
 	public static final ItemGroup java = new UnusedItemGroup("java");
@@ -24,8 +31,9 @@ public final class UnusedAssets {
 	public static final ItemGroup education = new EducationItemGroup("education");
 	public static final ItemGroup earth = new EarthItemGroup("earth");
 	public static final ItemGroup dungeons = new DungeonsItemGroup("dungeons");
-	
+
 	public UnusedAssets() {
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 	}
 
 	public static class UnusedItemGroup extends ItemGroup {
@@ -57,7 +65,7 @@ public final class UnusedAssets {
 			return new ItemStack((IItemProvider) UnusedItems.PORTFOLIO);
 		}
 	}
-	
+
 	public static class EarthItemGroup extends ItemGroup {
 		public EarthItemGroup(String label) {
 			super(label);
@@ -67,7 +75,7 @@ public final class UnusedAssets {
 			return new ItemStack((IItemProvider) UnusedItems.GARBAGE);
 		}
 	}
-	
+
 	public static class DungeonsItemGroup extends ItemGroup {
 		public DungeonsItemGroup(String label) {
 			super(label);
@@ -77,13 +85,15 @@ public final class UnusedAssets {
 			return new ItemStack((IItemProvider) UnusedItems.GARBAGE);
 		}
 	}
-	
-	
 
 	public void commonSetup(FMLCommonSetupEvent e) {
 	}
 
 	public void clientSetup(FMLClientSetupEvent e) {
+		CauldronActions.addAction(new CauldronActionBucket());
+		CauldronActions.addAction(new CauldronActionBottle());
+		CauldronActions.addAction(new CauldronActionClean());
+		CauldronActions.addAction(new CauldronActionDye());
 	}
 
 }
