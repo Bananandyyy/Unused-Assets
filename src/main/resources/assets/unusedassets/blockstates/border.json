@@ -5,7 +5,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "unusedassets:block/border_side_tall"
+        "model": "unusedassets:block/border_post"
       }
     },
     {
