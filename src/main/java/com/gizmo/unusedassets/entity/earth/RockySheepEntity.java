@@ -6,7 +6,7 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.World;
 
-public class RockySheepEntity extends SingleColoredSheepEntity{
+public class RockySheepEntity extends SingleColoredSheepEntity {
 
 	public RockySheepEntity(EntityType<? extends RockySheepEntity> type, World worldIn) {
 		super(type, worldIn);

@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 
 public class InkySheepModel<T extends InkySheepEntity> extends AgeableModel<T> {
 	private final ModelRenderer main;
@@ -18,6 +19,8 @@ public class InkySheepModel<T extends InkySheepEntity> extends AgeableModel<T> {
 	private final ModelRenderer rightfront;
 	private final ModelRenderer rightback;
 
+	private float headRotationAngleX;
+	
 	public InkySheepModel() {
 		textureWidth = 64;
 		textureHeight = 32;
@@ -86,6 +89,14 @@ public class InkySheepModel<T extends InkySheepEntity> extends AgeableModel<T> {
 	
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		 this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
+	      this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
+	      this.body.rotateAngleX = ((float)Math.PI / 2F);
+	      this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+	      this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+	      this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+	      this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+	      this.head.rotateAngleX = this.headRotationAngleX;
 
 	}
 }

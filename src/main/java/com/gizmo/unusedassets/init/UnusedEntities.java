@@ -6,6 +6,7 @@ import com.gizmo.unusedassets.entity.earth.*;
 import java.util.ArrayList;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
@@ -30,12 +31,23 @@ public class UnusedEntities {
 //	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
 	public static final EntityType<AlbinoCowEntity> ALBINO_COW = register(new ResourceLocation("unusedassets", "albino_cow"), EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
-
+	public static final EntityType<AmberChickenEntity> AMBER_CHICKEN = register(new ResourceLocation("unusedassets", "amber_chicken"), EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<AshenCowEntity> ASHEN_COW = register(new ResourceLocation("unusedassets", "ashen_cow"), EntityType.Builder.create(AshenCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<CluckShroomEntity> CLUCK_SHROOM = register(new ResourceLocation("unusedassets", "cluck_shroom"), EntityType.Builder.create(CluckShroomEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<FleckedSheepEntity> FLECKED_SHEEP = register(new ResourceLocation("unusedassets", "flecked_sheep"), EntityType.Builder.create(FleckedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<HornedSheepEntity> HORNED_SHEEP = register(new ResourceLocation("unusedassets", "horned_sheep"), EntityType.Builder.create(HornedSheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<InkySheepEntity> INKY_SHEEP = register(new ResourceLocation("unusedassets", "inky_sheep"), EntityType.Builder.create(InkySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<MidnightChickenEntity> MIDNIGHT_CHICKEN = register(new ResourceLocation("unusedassets", "midnight_chicken"), EntityType.Builder.create(MidnightChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<RockySheepEntity> ROCKY_SHEEP = register(new ResourceLocation("unusedassets", "rocky_sheep"), EntityType.Builder.create(RockySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<StormyChickenEntity> STORMY_CHICKEN = register(new ResourceLocation("unusedassets", "stormy_chicken"), EntityType.Builder.create(StormyChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<SunsetCowEntity> SUNSET_COW = register(new ResourceLocation("unusedassets", "sunset_cow"), EntityType.Builder.create(SunsetCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 
+	
+	public static void entityAttributes() {
+		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.attributes().func_233813_a_());
+
+
+	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
 		return (EntityType<T>) Registry.register(Registry.ENTITY_TYPE, id, builder.build(id.toString()));

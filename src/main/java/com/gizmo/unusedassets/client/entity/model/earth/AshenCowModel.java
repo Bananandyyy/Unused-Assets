@@ -1,13 +1,15 @@
 package com.gizmo.unusedassets.client.entity.model.earth;
 
+import com.gizmo.unusedassets.entity.earth.AshenCowEntity;
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.entity.model.CowModel;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
-public class AshenCowModel extends CowModel<Entity> {
+public class AshenCowModel extends AgeableModel<AshenCowEntity> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer body;
@@ -65,11 +67,6 @@ public class AshenCowModel extends CowModel<Entity> {
 	}
 
 	@Override
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
-	}
-
-	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
@@ -79,4 +76,24 @@ public class AshenCowModel extends CowModel<Entity> {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
+	
+	@Override
+	protected Iterable<ModelRenderer> getHeadParts() {
+		return ImmutableList.of(this.head);
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getBodyParts() {
+		return ImmutableList.of(this.body, this.legs);
+	}
+	
+	public void setRotationAngles(AshenCowEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	      this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
+	      this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
+	      this.body.rotateAngleX = ((float)Math.PI / 2F);
+	      this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+	      this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+	      this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+	      this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+	   }
 }

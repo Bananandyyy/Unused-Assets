@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 
 public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableModel<T> {
 	private final ModelRenderer main;
@@ -18,13 +19,14 @@ public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableMode
 	private final ModelRenderer rightfront;
 	private final ModelRenderer rightback;
 
+	private float headRotationAngleX;
+
 	public FleckedSheepModel() {
 		textureWidth = 64;
 		textureHeight = 32;
 
 		main = new ModelRenderer(this);
 		main.setRotationPoint(4.0F, 16.0F, -4.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -40,7 +42,6 @@ public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableMode
 		legs = new ModelRenderer(this);
 		legs.setRotationPoint(0.0F, 0.0F, 0.0F);
 		main.addChild(legs);
-		
 
 		leftfront = new ModelRenderer(this);
 		leftfront.setRotationPoint(0.0F, -3.0F, -2.0F);
@@ -64,7 +65,8 @@ public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableMode
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red,
+			float green, float blue, float alpha) {
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
@@ -83,10 +85,18 @@ public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableMode
 	protected Iterable<ModelRenderer> getBodyParts() {
 		return ImmutableList.of(this.body, this.legs);
 	}
-	
+
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+			float headPitch) {
+		this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+		this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+		this.body.rotateAngleX = ((float) Math.PI / 2F);
+		this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.head.rotateAngleX = this.headRotationAngleX;
 
 	}
-
 }

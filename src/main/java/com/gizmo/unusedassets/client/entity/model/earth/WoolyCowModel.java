@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 
 public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 	private final ModelRenderer main;
@@ -24,7 +25,6 @@ public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 
 		main = new ModelRenderer(this);
 		main.setRotationPoint(0.0F, 24.0F, 0.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -14.0F, -8.0F);
@@ -42,7 +42,6 @@ public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 		legs = new ModelRenderer(this);
 		legs.setRotationPoint(0.0F, 0.0F, 0.0F);
 		main.addChild(legs);
-		
 
 		rightfront = new ModelRenderer(this);
 		rightfront.setRotationPoint(-4.0F, -11.0F, -6.0F);
@@ -66,7 +65,8 @@ public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red,
+			float green, float blue, float alpha) {
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
@@ -75,7 +75,7 @@ public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-	
+
 	@Override
 	protected Iterable<ModelRenderer> getHeadParts() {
 		return ImmutableList.of(this.head);
@@ -85,9 +85,16 @@ public class WoolyCowModel<T extends WoolyCowEntity> extends AgeableModel<T> {
 	protected Iterable<ModelRenderer> getBodyParts() {
 		return ImmutableList.of(this.body, this.legs);
 	}
-	
-	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 
+	@Override
+	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+			float headPitch) {
+		this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+		this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+		this.body.rotateAngleX = ((float) Math.PI / 2F);
+		this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 	}
 }

@@ -1,13 +1,15 @@
 package com.gizmo.unusedassets.client.entity.model.earth;
 
+import com.gizmo.unusedassets.entity.earth.CluckShroomEntity;
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.entity.model.ChickenModel;
+import net.minecraft.client.renderer.entity.model.AgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
-public class CluckShroomModel extends ChickenModel<Entity> {
+public class CluckShroomModel extends AgeableModel<CluckShroomEntity> {
 	private final ModelRenderer main;
 	private final ModelRenderer head;
 	private final ModelRenderer body;
@@ -24,7 +26,6 @@ public class CluckShroomModel extends ChickenModel<Entity> {
 
 		main = new ModelRenderer(this);
 		main.setRotationPoint(2.0F, 22.0F, -6.0F);
-		
 
 		head = new ModelRenderer(this);
 		head.setRotationPoint(-2.0F, -9.0F, 3.0F);
@@ -42,7 +43,6 @@ public class CluckShroomModel extends ChickenModel<Entity> {
 		wings = new ModelRenderer(this);
 		wings.setRotationPoint(0.0F, 0.0F, 0.0F);
 		main.addChild(wings);
-		
 
 		leftwing = new ModelRenderer(this);
 		leftwing.setRotationPoint(1.0F, -9.0F, 6.0F);
@@ -57,7 +57,6 @@ public class CluckShroomModel extends ChickenModel<Entity> {
 		legs = new ModelRenderer(this);
 		legs.setRotationPoint(0.0F, 0.0F, 0.0F);
 		main.addChild(legs);
-		
 
 		leftleg = new ModelRenderer(this);
 		leftleg.setRotationPoint(-0.5F, -3.0F, 6.0F);
@@ -72,19 +71,36 @@ public class CluckShroomModel extends ChickenModel<Entity> {
 		rightleg.setTextureOffset(29, 0).addBox(-1.5F, 5.0F, -3.0F, 3.0F, 0.0F, 3.0F, 0.0F, true);
 	}
 
-	@Override
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
-	}
-
-	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		main.render(matrixStack, buffer, packedLight, packedOverlay);
-	}
-
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+	private void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+
+	@Override
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red,
+			float green, float blue, float alpha) {
+		main.render(matrixStack, buffer, packedLight, packedOverlay);
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getHeadParts() {
+		return ImmutableList.of(this.head);
+	}
+
+	@Override
+	protected Iterable<ModelRenderer> getBodyParts() {
+		return ImmutableList.of(this.body, this.leftleg, this.rightleg, this.leftwing, this.rightwing);
+	}
+
+	public void setRotationAngles(CluckShroomEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks,
+			float netHeadYaw, float headPitch) {
+		this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+		this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+		this.body.rotateAngleX = ((float) Math.PI / 2F);
+		this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.rightwing.rotateAngleZ = ageInTicks;
+		this.leftwing.rotateAngleZ = -ageInTicks;
 	}
 }

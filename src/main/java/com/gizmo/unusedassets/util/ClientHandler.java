@@ -45,6 +45,16 @@ public class ClientHandler {
 //		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.NAMELESS_ONE, NamelessRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ALBINO_COW, AlbinoCowRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.AMBER_CHICKEN, AmberChickenRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ASHEN_COW, AshenCowRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.CLUCK_SHROOM, CluckShroomRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FLECKED_SHEEP, FleckedSheepRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.INKY_SHEEP, InkySheepRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.MIDNIGHT_CHICKEN, MidnightChickenRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ROCKY_SHEEP, RockySheepRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.STORMY_CHICKEN, StormyChickenRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.SUNSET_COW, SunsetCowRenderer::new);
+		
 		
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.GEAR, GearRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.CAULDRON, CauldronTER::new);
