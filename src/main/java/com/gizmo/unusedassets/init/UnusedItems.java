@@ -110,6 +110,7 @@ public class UnusedItems {
 	public static final Item PUFFERFISH_EGGS = register("pufferfish_eggs", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
 	public static final Item SALMON_EGGS = register("salmon_eggs", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
 	public static final Item TROPICAL_FISH_EGGS = register("tropical_fish_eggs", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
+	public static final Item LIGHT_BLOCK_TWEAKER = register("light_block_tweaker", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
 	
 	//anddddd now education time!
 	public static final Item AGENT_EGG = register("agent_egg", new SpawnEggItem(UnusedEntities.AGENT, 0000000, 0000000, (new Item.Properties().group(UnusedAssets.education))));
