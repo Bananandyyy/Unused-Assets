@@ -18,10 +18,12 @@ import net.minecraft.entity.ai.goal.TemptGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -30,13 +32,17 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IForgeShearable;
 
-public abstract class SingleColoredSheepEntity extends AnimalEntity implements IForgeShearable{
+public abstract class SingleColoredSheepEntity extends AnimalEntity implements IForgeShearable {
 
-	private static final DataParameter<Byte> DYE_COLOR = EntityDataManager.createKey(FleckedSheepEntity.class,
+	private static final DataParameter<Byte> DYE_COLOR = EntityDataManager.createKey(SheepEntity.class,
 			DataSerializers.BYTE);
+
 	private EatGrassGoal eatGrassGoal;
 	private int sheepTimer;
 
@@ -49,6 +55,11 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 		super.updateAITasks();
 	}
 
+	protected void registerData() {
+		super.registerData();
+		this.dataManager.register(DYE_COLOR, (byte) 0);
+	}
+
 	public void livingTick() {
 		if (this.world.isRemote) {
 			this.sheepTimer = Math.max(0, this.sheepTimer - 1);
@@ -56,6 +67,27 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 
 		super.livingTick();
 	}
+	
+	@OnlyIn(Dist.CLIENT)
+	   public float getHeadRotationPointY(float p_70894_1_) {
+	      if (this.sheepTimer <= 0) {
+	         return 0.0F;
+	      } else if (this.sheepTimer >= 4 && this.sheepTimer <= 36) {
+	         return 1.0F;
+	      } else {
+	         return this.sheepTimer < 4 ? ((float)this.sheepTimer - p_70894_1_) / 4.0F : -((float)(this.sheepTimer - 40) - p_70894_1_) / 4.0F;
+	      }
+	   }
+
+	   @OnlyIn(Dist.CLIENT)
+	   public float getHeadRotationAngleX(float p_70890_1_) {
+	      if (this.sheepTimer > 4 && this.sheepTimer <= 36) {
+	         float f = ((float)(this.sheepTimer - 4) - p_70890_1_) / 32.0F;
+	         return ((float)Math.PI / 5F) + 0.21991149F * MathHelper.sin(f * 28.7F);
+	      } else {
+	         return this.sheepTimer > 0 ? ((float)Math.PI / 5F) : this.rotationPitch * ((float)Math.PI / 180F);
+	      }
+	   }
 
 	protected void registerGoals() {
 		this.eatGrassGoal = new EatGrassGoal(this);
@@ -114,6 +146,11 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 		return this.isAlive() && !this.getSheared() && !this.isChild();
 	}
 
+	public void writeAdditional(CompoundNBT compound) {
+		super.writeAdditional(compound);
+		compound.putBoolean("Sheared", this.getSheared());
+	}
+
 	public void eatGrassBonus() {
 		this.setSheared(false);
 		if (this.isChild()) {
@@ -144,12 +181,18 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 		return java.util.Collections.emptyList();
 	}
 
-	public void setSheared(boolean sheared) {
-
+	public boolean getSheared() {
+		return (this.dataManager.get(DYE_COLOR) & 16) != 0;
 	}
 
-	public boolean getSheared() {
-		return false;
+	public void setSheared(boolean sheared) {
+		byte b0 = this.dataManager.get(DYE_COLOR);
+		if (sheared) {
+			this.dataManager.set(DYE_COLOR, (byte) (b0 | 16));
+		} else {
+			this.dataManager.set(DYE_COLOR, (byte) (b0 & -17));
+		}
+
 	}
 
 }

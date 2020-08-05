@@ -31,7 +31,7 @@ public class InkySheepWoolModel <T extends InkySheepEntity> extends QuadrupedMod
 		this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
 		this.legFrontLeft.setRotationPoint(3.0F, 12.0F, -5.0F);
 	}
-
+	
 	public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
 			float netHeadYaw, float headPitch) {
 		super.setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);

@@ -12,27 +12,27 @@ public class FleckedSheepWoolModel<T extends FleckedSheepEntity> extends Quadrup
 	public FleckedSheepWoolModel() {
 		super(12, 0.0F, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
 		this.headModel = new ModelRenderer(this, 0, 0);
-		this.headModel.addBox(-2.0F, -3.0F, -5.0F, 6.0F, 6.0F, 6.0F, 0.6F);
+		this.headModel.addBox(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, 0.6F);
 		this.headModel.setRotationPoint(0.0F, 6.0F, -8.0F);
 		this.body = new ModelRenderer(this, 28, 8);
-		this.body.addBox(-3.0F, -10.0F, -8.0F, 8.0F, 16.0F, 6.0F, 1.75F);
+		this.body.addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, 1.75F);
 		this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
 		float f = 0.5F;
 		this.legBackRight = new ModelRenderer(this, 0, 16);
-		this.legBackRight.addBox(-1.0F, 1.0F, -3.0F, 4.0F, 6.0F, 4.0F, 0.5F);
+		this.legBackRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
 		this.legBackRight.setRotationPoint(-3.0F, 12.0F, 7.0F);
 		this.legBackLeft = new ModelRenderer(this, 0, 16);
-		this.legBackLeft.addBox(-1.0F, 1.0F, -3.0F, 4.0F, 6.0F, 4.0F, 0.5F);
+		this.legBackLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
 		this.legBackLeft.setRotationPoint(3.0F, 12.0F, 7.0F);
 		this.legFrontRight = new ModelRenderer(this, 0, 16);
-		this.legFrontRight.addBox(-1.0F, 1.0F, -3.0F, 4.0F, 6.0F, 4.0F, 0.5F);
+		this.legFrontRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
 		this.legFrontRight.setRotationPoint(-3.0F, 12.0F, -5.0F);
 		this.legFrontLeft = new ModelRenderer(this, 0, 16);
-		this.legFrontLeft.addBox(-1.0F, 1.0F, -3.0F, 4.0F, 6.0F, 4.0F, 0.5F);
+		this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
 		this.legFrontLeft.setRotationPoint(3.0F, 12.0F, -5.0F);
 	}
-
-	public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
+	
+	 public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
 			float netHeadYaw, float headPitch) {
 		super.setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 		this.headModel.rotateAngleX = this.headRotationAngleX;

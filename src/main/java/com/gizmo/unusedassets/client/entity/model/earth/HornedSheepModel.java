@@ -21,32 +21,31 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<
 	private final ModelRenderer rightfront;
 	private final ModelRenderer rightback;
 
-	 private float headRotationAngleX;
-	
+	private float headRotationAngleX;
+
 	public HornedSheepModel() {
 		textureWidth = 64;
 		textureHeight = 64;
 
 		main = new ModelRenderer(this);
-		main.setRotationPoint(4.0F, 16.0F, -4.0F);
-		
+		main.setRotationPoint(3.0F, 16.0F, -3.0F);
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(-3.0F, -8.0F, -4.0F);
+		head.setRotationPoint(-3.0F, -8.0F, -5.0F);
 		main.addChild(head);
-		head.setTextureOffset(0, 0).addBox(-3.0F, -5.0F, -7.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
-
-		righthorn = new ModelRenderer(this);
-		righthorn.setRotationPoint(-6.0F, -10.0F, -12.0F);
-		head.addChild(righthorn);
-		righthorn.setTextureOffset(0, 32).addBox(-4.0F, -4.0F, 2.0F, 4.0F, 7.0F, 6.0F, 0.0F, false);
-		righthorn.setTextureOffset(20, 32).addBox(-4.0F, 0.0F, -1.0F, 4.0F, 3.0F, 3.0F, 0.0F, false);
+		head.setTextureOffset(0, 0).addBox(-3.0F, -6.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
 
 		lefthorn = new ModelRenderer(this);
-		lefthorn.setRotationPoint(0.0F, -10.0F, -12.0F);
+		lefthorn.setRotationPoint(0.0F, 0.0F, 0.0F);
 		head.addChild(lefthorn);
-		lefthorn.setTextureOffset(0, 32).addBox(0.0F, -4.0F, 2.0F, 4.0F, 7.0F, 6.0F, 0.0F, true);
-		lefthorn.setTextureOffset(20, 32).addBox(0.0F, 0.0F, -1.0F, 4.0F, 3.0F, 3.0F, 0.0F, true);
+		lefthorn.setTextureOffset(0, 32).addBox(-7.0F, -7.0F, -5.0F, 4.0F, 7.0F, 6.0F, 0.0F, false);
+		lefthorn.setTextureOffset(20, 32).addBox(-7.0F, -3.0F, -8.0F, 4.0F, 3.0F, 3.0F, 0.0F, false);
+
+		righthorn = new ModelRenderer(this);
+		righthorn.setRotationPoint(0.0F, 0.0F, 0.0F);
+		head.addChild(righthorn);
+		righthorn.setTextureOffset(0, 32).addBox(3.0F, -7.0F, -5.0F, 4.0F, 7.0F, 6.0F, 0.0F, true);
+		righthorn.setTextureOffset(20, 32).addBox(3.0F, -3.0F, -8.0F, 4.0F, 3.0F, 3.0F, 0.0F, true);
 
 		body = new ModelRenderer(this);
 		body.setRotationPoint(1.0F, -4.0F, 11.0F);
@@ -57,7 +56,6 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<
 		legs = new ModelRenderer(this);
 		legs.setRotationPoint(0.0F, 0.0F, 0.0F);
 		main.addChild(legs);
-		
 
 		leftfront = new ModelRenderer(this);
 		leftfront.setRotationPoint(0.0F, -3.0F, -2.0F);
@@ -81,10 +79,11 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red,
+			float green, float blue, float alpha) {
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-
+	
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
@@ -100,17 +99,18 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<
 	protected Iterable<ModelRenderer> getBodyParts() {
 		return ImmutableList.of(this.body, this.legs);
 	}
-	
+
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		 this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
-	      this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-	      this.body.rotateAngleX = ((float)Math.PI / 2F);
-	      this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-	      this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-	      this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-	      this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-	      this.head.rotateAngleX = this.headRotationAngleX;
+	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+			float headPitch) {
+		this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+		this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+		this.body.rotateAngleX = ((float) Math.PI / 2F);
+		this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.head.rotateAngleX = this.headRotationAngleX;
 
 	}
 }

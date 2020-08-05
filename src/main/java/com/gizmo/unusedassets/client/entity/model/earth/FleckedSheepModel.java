@@ -26,12 +26,12 @@ public class FleckedSheepModel<T extends FleckedSheepEntity> extends AgeableMode
 		textureHeight = 32;
 
 		main = new ModelRenderer(this);
-		main.setRotationPoint(4.0F, 16.0F, -4.0F);
+		main.setRotationPoint(3.0F, 16.0F, -3.0F);
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(-3.0F, -8.0F, -4.0F);
+		head.setRotationPoint(-3.0F, -8.0F, -5.0F);
 		main.addChild(head);
-		head.setTextureOffset(0, 0).addBox(-3.0F, -5.0F, -7.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
+		head.setTextureOffset(0, 0).addBox(-3.0F, -6.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
 
 		body = new ModelRenderer(this);
 		body.setRotationPoint(1.0F, -4.0F, 11.0F);
