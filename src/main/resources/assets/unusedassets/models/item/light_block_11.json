@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "unusedassets:item/light_block_11"
+    "layer0": "unusedassets:item/bedrock/light_block_11"
   }
 }
