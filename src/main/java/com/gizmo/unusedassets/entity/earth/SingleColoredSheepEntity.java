@@ -149,7 +149,7 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 	}
 
 	public boolean getSheared() {
-		return (this.dataManager.get(DYE_COLOR) & 16) != 0;
+		return false;
 	}
 
 }

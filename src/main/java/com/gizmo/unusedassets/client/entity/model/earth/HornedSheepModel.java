@@ -32,9 +32,9 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<
 		
 
 		head = new ModelRenderer(this);
-		head.setRotationPoint(0.0F, 0.0F, 0.0F);
+		head.setRotationPoint(-3.0F, -8.0F, -4.0F);
 		main.addChild(head);
-		head.setTextureOffset(0, 0).addBox(-6.0F, -13.0F, -11.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
+		head.setTextureOffset(0, 0).addBox(-3.0F, -5.0F, -7.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
 
 		righthorn = new ModelRenderer(this);
 		righthorn.setRotationPoint(-6.0F, -10.0F, -12.0F);

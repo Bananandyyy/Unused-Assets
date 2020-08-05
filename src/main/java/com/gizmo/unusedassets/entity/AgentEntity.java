@@ -15,7 +15,7 @@ public class AgentEntity extends CreatureEntity{
 	    return new ResourceLocation("unusedassets", "textures/entity/agent.png");
 	  }
 	
-	/*protected void registerAttributes() {
+	/*public void registerAttributes() {
 	      super.registerAttributes();
 	      this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(-1.0D);
 	      this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);

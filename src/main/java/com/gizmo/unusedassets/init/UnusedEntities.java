@@ -45,6 +45,16 @@ public class UnusedEntities {
 	
 	public static void entityAttributes() {
 		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(AMBER_CHICKEN, AmberChickenEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(ASHEN_COW, AshenCowEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(CLUCK_SHROOM, CluckShroomEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(FLECKED_SHEEP, FleckedSheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(HORNED_SHEEP, HornedSheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(INKY_SHEEP, InkySheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(MIDNIGHT_CHICKEN, MidnightChickenEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(ROCKY_SHEEP, RockySheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().func_233813_a_());
 
 
 	}

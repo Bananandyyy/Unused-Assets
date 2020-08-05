@@ -49,6 +49,7 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ASHEN_COW, AshenCowRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.CLUCK_SHROOM, CluckShroomRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FLECKED_SHEEP, FleckedSheepRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HORNED_SHEEP, HornedSheepRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.INKY_SHEEP, InkySheepRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.MIDNIGHT_CHICKEN, MidnightChickenRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ROCKY_SHEEP, RockySheepRenderer::new);
