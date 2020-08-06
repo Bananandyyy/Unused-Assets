@@ -55,7 +55,8 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ROCKY_SHEEP, RockySheepRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.STORMY_CHICKEN, StormyChickenRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.SUNSET_COW, SunsetCowRenderer::new);
-		
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.WOOLY_COW, WoolyCowRenderer::new);
+
 		
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.GEAR, GearRenderer::new);
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.CAULDRON, CauldronTER::new);

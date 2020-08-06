@@ -41,6 +41,7 @@ public class UnusedEntities {
 	public static final EntityType<RockySheepEntity> ROCKY_SHEEP = register(new ResourceLocation("unusedassets", "rocky_sheep"), EntityType.Builder.create(RockySheepEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<StormyChickenEntity> STORMY_CHICKEN = register(new ResourceLocation("unusedassets", "stormy_chicken"), EntityType.Builder.create(StormyChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<SunsetCowEntity> SUNSET_COW = register(new ResourceLocation("unusedassets", "sunset_cow"), EntityType.Builder.create(SunsetCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
+	public static final EntityType<WoolyCowEntity> WOOLY_COW = register(new ResourceLocation("unusedassets", "wooly_cow"), EntityType.Builder.create(WoolyCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 
 	
 	public static void entityAttributes() {
@@ -55,8 +56,7 @@ public class UnusedEntities {
 		GlobalEntityTypeAttributes.put(ROCKY_SHEEP, RockySheepEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().func_233813_a_());
-
-
+		GlobalEntityTypeAttributes.put(WOOLY_COW, WoolyCowEntity.attributes().func_233813_a_());
 	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
