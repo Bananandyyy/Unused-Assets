@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = "unusedassets", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ParticleHandler {
 	
-	/*@SubscribeEvent
+	@SubscribeEvent
 	public static void registerParticles(ParticleFactoryRegisterEvent event) {
 		Minecraft.getInstance().particles.registerFactory(UnusedParticles.LIGHT_PARTICLE_0, new LightBlockParticle.Factory(BedrockBlocks.LIGHT_0.asItem()));
 		Minecraft.getInstance().particles.registerFactory(UnusedParticles.LIGHT_PARTICLE_1, new LightBlockParticle.Factory(BedrockBlocks.LIGHT_1.asItem()));
@@ -33,5 +33,5 @@ public class ParticleHandler {
 		Minecraft.getInstance().particles.registerFactory(UnusedParticles.LIGHT_PARTICLE_13, new LightBlockParticle.Factory(BedrockBlocks.LIGHT_13.asItem()));
 		Minecraft.getInstance().particles.registerFactory(UnusedParticles.LIGHT_PARTICLE_14, new LightBlockParticle.Factory(BedrockBlocks.LIGHT_14.asItem()));
 		Minecraft.getInstance().particles.registerFactory(UnusedParticles.LIGHT_PARTICLE_15, new LightBlockParticle.Factory(BedrockBlocks.LIGHT_15.asItem()));
-	}*/
+	}
 }
