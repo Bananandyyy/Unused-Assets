@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 
 import com.gizmo.unusedassets.util.SMHeight;
 
-import net.minecraft.client.renderer.texture.SpriteMap;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
