@@ -57,6 +57,11 @@ public class UnusedEntities {
 		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(WOOLY_COW, WoolyCowEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(FISH, FishEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().func_233813_a_());
 	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
