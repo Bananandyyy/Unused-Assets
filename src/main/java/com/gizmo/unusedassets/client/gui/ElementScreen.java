@@ -21,8 +21,8 @@ public class ElementScreen extends ModScreen<ElementContainer>{
 		super(screenContainer, inv, titleIn);
 		this.guiLeft = 0;
 		this.guiTop = 0;
-		this.xSize = 219;
-		this.ySize = 249;
+		this.xSize = 250;
+		this.ySize = 220;
 	}
 	
 	public void render(MatrixStack ms, int x, int y, float ticks) {
