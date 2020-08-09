@@ -122,7 +122,7 @@ public class UnusedItems {
 	public static final Item GARBAGE = register("garbage", new Item((new Item.Properties()).group(UnusedAssets.education)));
 	public static final Item GLUE = register("glue", new Item((new Item.Properties()).group(UnusedAssets.education)));
 	public static final Item ICE_BOMB = register("ice_bomb", new Item((new Item.Properties()).group(UnusedAssets.education)));
-	public static final Item PORTFOLIO = register("portfolio", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.education)));
+//	public static final Item PORTFOLIO = register("portfolio", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.education)));
 	public static final Item POSTER = register("poster", new Item((new Item.Properties()).maxStackSize(16).group(UnusedAssets.education)));
 	public static final Item SALT = register("salt", new Item((new Item.Properties()).group(UnusedAssets.education)));
 	public static final Item SLATE = register("slate", new Item((new Item.Properties()).maxStackSize(16).group(UnusedAssets.education)));

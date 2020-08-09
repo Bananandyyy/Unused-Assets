@@ -8,12 +8,7 @@ import com.gizmo.unusedassets.init.UnusedDimensions;
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedItems;
 import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
-import com.gizmo.unusedassets.util.actions.CauldronActionBottle;
-import com.gizmo.unusedassets.util.actions.CauldronActionBucket;
-import com.gizmo.unusedassets.util.actions.CauldronActionClean;
-import com.gizmo.unusedassets.util.actions.CauldronActionDye;
-import com.gizmo.unusedassets.util.actions.CauldronActions;
-
+import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -67,7 +62,7 @@ public final class UnusedAssets {
 		}
 
 		public ItemStack createIcon() {
-			return new ItemStack((IItemProvider) UnusedItems.PORTFOLIO);
+			return new ItemStack((IItemProvider) EducationBlocks.MYSTERY_ELEMENT);
 		}
 	}
 
@@ -96,14 +91,9 @@ public final class UnusedAssets {
 	}
 
 	public void clientSetup(FMLClientSetupEvent e) {
-		CauldronActions.addAction(new CauldronActionBucket());
-		CauldronActions.addAction(new CauldronActionBottle());
-		CauldronActions.addAction(new CauldronActionClean());
-		CauldronActions.addAction(new CauldronActionDye());
 		
 		UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
 		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.dungeons, dimensionRenderInfo);
 //		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
 	}
-
 }

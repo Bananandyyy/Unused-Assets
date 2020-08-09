@@ -3,7 +3,6 @@ package com.gizmo.unusedassets.util;
 import com.gizmo.unusedassets.client.entity.render.*;
 import com.gizmo.unusedassets.client.entity.render.earth.*;
 import com.gizmo.unusedassets.client.gui.*;
-import com.gizmo.unusedassets.entity.tileentity.CauldronTER;
 import com.gizmo.unusedassets.init.UnusedContainers;
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedTileEntities;
@@ -59,7 +58,6 @@ public class ClientHandler {
 
 		
 		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.GEAR, GearRenderer::new);
-		ClientRegistry.bindTileEntityRenderer(UnusedTileEntities.CAULDRON, CauldronTER::new);
 
 		
 		RenderTypeLookup.setRenderLayer(BedrockBlocks.CYAN_FLOWER, RenderType.getCutout());

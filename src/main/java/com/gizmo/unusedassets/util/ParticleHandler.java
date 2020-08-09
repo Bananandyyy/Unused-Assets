@@ -10,8 +10,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-
-//TODO: Make this match every other registry in this mod. I'm too stupid rn to do that
 @EventBusSubscriber(modid = "unusedassets", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ParticleHandler {
 	
