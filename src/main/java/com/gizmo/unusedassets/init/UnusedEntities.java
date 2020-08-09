@@ -1,6 +1,7 @@
 package com.gizmo.unusedassets.init;
 
 import com.gizmo.unusedassets.entity.*;
+import com.gizmo.unusedassets.entity.dungeons.*;
 import com.gizmo.unusedassets.entity.earth.*;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class UnusedEntities {
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
 	
-//	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
+	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
 	public static final EntityType<AlbinoCowEntity> ALBINO_COW = register(new ResourceLocation("unusedassets", "albino_cow"), EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<AmberChickenEntity> AMBER_CHICKEN = register(new ResourceLocation("unusedassets", "amber_chicken"), EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
@@ -62,6 +63,7 @@ public class UnusedEntities {
 		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().func_233813_a_());
 	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
