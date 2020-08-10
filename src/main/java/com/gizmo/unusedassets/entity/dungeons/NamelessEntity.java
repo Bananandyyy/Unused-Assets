@@ -17,16 +17,16 @@ import software.bernie.geckolib.manager.EntityAnimationManager;
 
 public class NamelessEntity extends MonsterEntity implements IAnimatedEntity {
 
-	public EntityAnimationManager manager = new EntityAnimationManager();
-	public AnimationController idle = new EntityAnimationController(this, "idlecontroller", 20F, this::animationPredicate);
+	private EntityAnimationManager manager = new EntityAnimationManager();
+	private AnimationController idle = new EntityAnimationController(this, "moveController", 10F, this::moveController);
 	
-	private <E extends NamelessEntity> boolean animationPredicate(AnimationTestEvent<E> event) {
+	private <E extends NamelessEntity> boolean moveController(AnimationTestEvent<E> event) {
 		if(event.isWalking() == false) {
 			idle.setAnimation(new AnimationBuilder().addAnimation("animation.nameless.idlestart").addAnimation("animation.nameless.idleloop", true));
 		} else {
 			idle.setAnimation(new AnimationBuilder().addAnimation("animation.nameless.summon"));
-		}
-		return dead;	
+		}	
+		return false;
 	}
 	
 	
@@ -34,7 +34,7 @@ public class NamelessEntity extends MonsterEntity implements IAnimatedEntity {
 	    return new ResourceLocation("unusedassets", "textures/entity/dungeons/nameless_king.png");
 	  }
 	
-	public NamelessEntity(EntityType<? extends NamelessEntity> entityTypeIn, World worldIn) {
+	public NamelessEntity(EntityType<? extends MonsterEntity> entityTypeIn, World worldIn) {
 		super(entityTypeIn, worldIn);
 		registerControllers();
 	}

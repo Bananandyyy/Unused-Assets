@@ -23,7 +23,7 @@ public class UnusedEntities {
 	public static final EntityType<FishEntity> FISH = register(new ResourceLocation("unusedassets", "fish"), EntityType.Builder.create(FishEntity::new, EntityClassification.WATER_CREATURE).size(0.5F, 0.3F));
 	public static final EntityType<PurpleArrowEntity> PURPLE_ARROW = register(new ResourceLocation("unusedassets", "purple_arrow"), EntityType.Builder.<PurpleArrowEntity>create(PurpleArrowEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
 	public static final EntityType<HeartArrowEntity> HEART_ARROW = register(new ResourceLocation("unusedassets", "heart_arrow"), EntityType.Builder.<HeartArrowEntity>create(HeartArrowEntity::new, EntityClassification.MISC).size(0.5F, 0.5F));
-//	public static final EntityType<HoodVillagerEntity> HOODED_VILLAGER = register(new ResourceLocation("unusedassets", "hooded_villager"), EntityType.Builder.create(HoodVillagerEntity::new, EntityClassification.CREATURE).size(0.6F, 1.95F));
+	public static final EntityType<HoodVillagerEntity> HOODED_VILLAGER = register(new ResourceLocation("unusedassets", "hooded_villager"), EntityType.Builder.create(HoodVillagerEntity::new, EntityClassification.CREATURE).size(0.6F, 1.95F));
 	public static final EntityType<SteveVillagerEntity> STEVE_VILLAGER_HYBRID = register(new ResourceLocation("unusedassets", "villager_hybrid"), EntityType.Builder.create(SteveVillagerEntity::new, EntityClassification.CREATURE).size(0.6F, 1.95F));
 	public static final EntityType<AgentEntity> AGENT = register(new ResourceLocation("unusedassets", "agent"), EntityType.Builder.create(AgentEntity::new, EntityClassification.CREATURE).size(0.6F, 1.0F));
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
@@ -46,24 +46,25 @@ public class UnusedEntities {
 
 	
 	public static void entityAttributes() {
+		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(AMBER_CHICKEN, AmberChickenEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(ASHEN_COW, AshenCowEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(CLUCK_SHROOM, CluckShroomEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(FISH, FishEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(FLECKED_SHEEP, FleckedSheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(HOODED_VILLAGER, HoodVillagerEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(HORNED_SHEEP, HornedSheepEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(INKY_SHEEP, InkySheepEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(MIDNIGHT_CHICKEN, MidnightChickenEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(ROCKY_SHEEP, RockySheepEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(WOOLY_COW, WoolyCowEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(FISH, FishEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.attributes().func_233813_a_());
 		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().func_233813_a_());
 	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
