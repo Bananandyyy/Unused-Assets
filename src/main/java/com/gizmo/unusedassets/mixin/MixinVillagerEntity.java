@@ -28,7 +28,7 @@ public abstract class MixinVillagerEntity extends Entity {
 		super(entityTypeIn, worldIn);
 	}
 
-	@Inject(method = "initBrain(Lnet/minecraft/entity/ai/brain/Brain", at = @At("HEAD"))
+	@Inject(method = "initBrain(Lnet/minecraft/entity/ai/brain/Brain)", at = @At("HEAD"))
 	private void initBrain(Brain<VillagerEntity> villagerBrain) {
 		VillagerProfession villagerprofession = this.getVillagerData().getProfession();
 		villagerBrain.registerActivity(OtherActivity.STRANGE_PANIC, ExtraVillagerTasks.strangepanic(villagerprofession, 0.5F));
