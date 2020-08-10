@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#C#",
+        "___"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:piston"
+        },
+        "C": {
+            "item": "minecraft:crafting_table"
+        },
+        "_": {
+            "item": "minecraft:quartz_slab"
+        }
+    },
+    "result": {
+        "item": "unusedassets:material_reducer",
+        "count": 1
+    }
+}

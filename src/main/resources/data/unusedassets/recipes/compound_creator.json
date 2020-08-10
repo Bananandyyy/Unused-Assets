@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "WCL"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:glass_bottle"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "C": {
+            "item": "minecraft:cauldron"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+        "item": "unusedassets:compound_creator",
+        "count": 1
+    }
+}

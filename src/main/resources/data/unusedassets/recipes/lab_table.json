@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "SCS",
+        "SSS"
+    ],
+    "key": {
+        "#": {
+            "tag": "unusedassets:items/element"
+        },
+        "S": {
+            "item": "minecraft:spruce_planks"
+        },
+        "C": {
+            "item": "minecraft:crafting_table"
+        }
+    },
+    "result": {
+        "item": "unusedassets:lab_table",
+        "count": 1
+    }
+}
