@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": { "model": "unusedassets:block/compound_creator" },
- 		"facing=south": { "model": "unusedassets:block/compound_creator", "y": 180 },
- 		"facing=east": { "model": "unusedassets:block/compound_creator", "y": 90 },
- 		"facing=west": { "model": "unusedassets:block/compound_creator", "y": 270 }
+        "facing=north": { "model": "unusedassets:block/compound_creator", "y": 180  },
+ 		"facing=south": { "model": "unusedassets:block/compound_creator"},
+ 		"facing=east": { "model": "unusedassets:block/compound_creator", "y": 270 },
+ 		"facing=west": { "model": "unusedassets:block/compound_creator", "y": 90 }
     }
 }
