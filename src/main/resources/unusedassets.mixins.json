@@ -2,12 +2,18 @@
   "required": true,
   "package": "com.gizmo.unusedassets.mixin",
   "compatibilityLevel": "JAVA_8",
-"refmap": "unusedassets.refmap.json",
   "mixins": [
-	"MixinCauldronBlock"
+	"AbstractBlockStateMixin",
+    "PistonBlockMixin",
+    "IForgeBlockStateMixin",
+    "PistonTileEntityMixin",
+    "EntityMixin",
+    "TileEntityMixin"
   ],
   "client": [
+	"PistonTileEntityRendererMixin"
   ],
+  "refmap": "unusedassets.refmap.json",
   "injectors": {
     "defaultRequire": 1
   }
