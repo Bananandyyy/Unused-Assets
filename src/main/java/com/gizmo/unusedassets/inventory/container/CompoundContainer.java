@@ -60,13 +60,13 @@ public class CompoundContainer extends Container {
 	}
 
 	private static CompoundTileEntity getTile(final PlayerInventory inventory, final PacketBuffer data) {
-		Objects.requireNonNull(inventory, "Hey, hey, hey, quit it. You can't have a null inventory! Check yourself fool!");
-		Objects.requireNonNull(data, "Hey, hey, hey, quit it. You can't have null data! Check yourself fool!");
+		Objects.requireNonNull(inventory, "null inventory");
+		Objects.requireNonNull(data, "null data");
 		final TileEntity tileAtPos = inventory.player.world.getTileEntity(data.readBlockPos());
 		if (tileAtPos instanceof CompoundTileEntity) {
 			return (CompoundTileEntity) tileAtPos;
 		}
-		throw new IllegalStateException("Well, you really fucked up this time. This error is coming from the CompoundContainer class if you want to troubleshoot it, but I doubt you will, dumbass.");
+		throw new IllegalStateException("something went wrong... go check the CompoundContainer class and troubleshoot");
 	}
 
 	public CompoundContainer(final int window, final PlayerInventory inventory, final PacketBuffer data) {

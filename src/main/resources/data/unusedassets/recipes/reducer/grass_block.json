@@ -1,0 +1,43 @@
+{
+	"type": "unusedassets:reducer",
+	"output1": {
+		"item": "unusedassets:carbon",
+		"count": "15"
+	},
+	"output2": {
+		"item": "unusedassets:oxygen",
+		"count": "64"
+	},
+	"output3": {
+		"item": "unusedassets:oxygen",
+		"count": "6"
+	},
+	"output4": {
+		"item": "unusedassets:nitrogen",
+		"count": "8"
+	},
+	"output5": {
+		"item": "unusedassets:phosphorus",
+		"count": "7"
+	},
+	"output6": {
+		"item": "minecraft:air",
+		"count": "0"
+	},
+	"output7": {
+		"item": "minecraft:air",
+		"count": "0"
+	},
+	"output8": {
+		"item": "minecraft:air",
+		"count": "0"
+	},
+	"output9": {
+		"item": "minecraft:air",
+		"count": "0"
+	},
+	"input": {
+		"item": "minecraft:grass_block"
+	}
+	
+}

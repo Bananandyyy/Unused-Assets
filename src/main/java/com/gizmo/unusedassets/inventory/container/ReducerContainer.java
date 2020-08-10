@@ -65,13 +65,13 @@ public class ReducerContainer extends Container {
 	}
 	
 	private static ReducerTileEntity getTile(final PlayerInventory inventory, final PacketBuffer data) {
-		Objects.requireNonNull(inventory, "Hey, hey, hey, quit it. You can't have a null inventory! Check yourself fool!");
-		Objects.requireNonNull(data, "Hey, hey, hey, quit it. You can't have null data! Check yourself fool!");
+		Objects.requireNonNull(inventory, "null inventory");
+		Objects.requireNonNull(data, "null data");
 		final TileEntity tileAtPos = inventory.player.world.getTileEntity(data.readBlockPos());
 		if (tileAtPos instanceof ReducerTileEntity) {
 			return (ReducerTileEntity) tileAtPos;
 		}
-		throw new IllegalStateException("Well, you really fucked up this time. This error is coming from the ReducerContainer class if you want to troubleshoot it, but I doubt you will, dumbass.");
+		throw new IllegalStateException("something went wrong... go check the ReducerContainer class and troubleshoot");
 	}
 
 	public ReducerContainer(final int window, final PlayerInventory inventory, final PacketBuffer data) {
