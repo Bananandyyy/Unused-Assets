@@ -9,16 +9,17 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
-public class HornedSheepEntity extends SheepEntity{
+public class HornedSheepEntity extends SheepEntity {
 
 	public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World worldIn) {
 		super(type, worldIn);
 	}
 
 	@Override
-	public SheepEntity createChild(AgeableEntity ageable) {
-		return UnusedEntities.HORNED_SHEEP.create(this.world);
+	public SheepEntity func_241840_a(ServerWorld worldIn, AgeableEntity entity) {
+		return UnusedEntities.HORNED_SHEEP.create(worldIn);
 	}
 	
 	public static AttributeModifierMap.MutableAttribute attributes() {

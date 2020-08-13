@@ -10,7 +10,7 @@ public interface PistonHooks {
 
     Map<PistonTileEntity, CompoundNBT> tileEntityTags = new HashMap<>();
 
-    default Map<PistonTileEntity, CompoundNBT> getBlockEntityTags() {
+    default Map<PistonTileEntity, CompoundNBT> getTileEntityTags() {
         return tileEntityTags;
     }
 }

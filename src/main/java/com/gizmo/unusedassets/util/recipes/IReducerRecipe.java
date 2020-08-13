@@ -16,7 +16,7 @@ public interface IReducerRecipe extends IRecipe<RecipeWrapper> {
 	@Nonnull
 	@Override
 	default IRecipeType<?> getType() {
-		return Registry.RECIPE_TYPE.getValue(ID).get();
+		return Registry.RECIPE_TYPE.func_241873_b(ID).get();
 	}
 
 	@Override

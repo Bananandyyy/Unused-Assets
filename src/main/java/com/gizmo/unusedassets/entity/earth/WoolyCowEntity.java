@@ -1,6 +1,9 @@
 package com.gizmo.unusedassets.entity.earth;
 
+import com.gizmo.unusedassets.init.UnusedEntities;
+
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -17,6 +20,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IForgeShearable;
 
 public class WoolyCowEntity extends CowEntity implements IForgeShearable {
@@ -91,5 +95,10 @@ public class WoolyCowEntity extends CowEntity implements IForgeShearable {
 	         return NORMAL;
 	      }
 	 }
+	 
+	 @Override
+		public CowEntity func_241840_a(ServerWorld worldIn, AgeableEntity entityIn) {
+			return UnusedEntities.WOOLY_COW.create(worldIn);
+		}
 
 }

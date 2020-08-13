@@ -32,9 +32,9 @@ public abstract class MixinClientWorld extends World {
 	@Final
 	private final Minecraft mc = Minecraft.getInstance();
 
-	protected MixinClientWorld(ClientPlayNetHandler p_i232337_1_, ClientWorld.ClientWorldInfo p_i232337_2_, RegistryKey<World> p_i232337_3_, RegistryKey<DimensionType> p_i232337_4_, DimensionType p_i232337_5_, int p_i232337_6_, Supplier<IProfiler> p_i232337_7_, WorldRenderer p_i232337_8_, boolean p_i232337_9_, long p_i232337_10_) {
-		super(p_i232337_2_, p_i232337_3_, p_i232337_4_, p_i232337_5_, p_i232337_7_, true, p_i232337_9_, p_i232337_10_);
-	}
+	 public MixinClientWorld(ClientPlayNetHandler p_i242067_1_, ClientWorld.ClientWorldInfo p_i242067_2_, RegistryKey<World> p_i242067_3_, DimensionType p_i242067_4_, int p_i242067_5_, Supplier<IProfiler> p_i242067_6_, WorldRenderer p_i242067_7_, boolean p_i242067_8_, long p_i242067_9_) {
+	      super(p_i242067_2_, p_i242067_3_, p_i242067_4_, p_i242067_6_, true, p_i242067_8_, p_i242067_9_);
+	 }
 	
 	@SuppressWarnings("unlikely-arg-type")
 	@Inject(method = "animateTick(Ljava/util/random;Lnet/minecraft/util/math/BlockPos/Mutable)", at = @At("RETURN"))

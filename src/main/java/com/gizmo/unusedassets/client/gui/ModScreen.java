@@ -192,9 +192,9 @@ public abstract class ModScreen<T extends Container> extends Screen implements I
 	}
 
 	protected void func_230451_b_(MatrixStack p_230451_1_, int p_230451_2_, int p_230451_3_) {
-		this.field_230712_o_.func_238422_b_(p_230451_1_, this.field_230704_d_, (float) this.field_238742_p_,
-				(float) this.field_238743_q_, 4210752);
-	}
+	      this.field_230712_o_.func_243248_b(p_230451_1_, this.field_230704_d_, (float)this.field_238742_p_, (float)this.field_238743_q_, 4210752);
+	      this.field_230712_o_.func_243248_b(p_230451_1_, this.playerInventory.getDisplayName(), (float)this.field_238744_r_, (float)this.field_238745_s_, 4210752);
+	   }
 
 	protected abstract void func_230450_a_(MatrixStack p_230450_1_, float p_230450_2_, int p_230450_3_,
 			int p_230450_4_);

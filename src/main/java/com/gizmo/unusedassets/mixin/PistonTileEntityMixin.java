@@ -23,7 +23,7 @@ public class PistonTileEntityMixin {
             method = "clearPistonTileEntity"
     )
     private void onFinish(CallbackInfo info) {
-        moveBE((PistonTileEntity) (Object) this);
+        moveTE((PistonTileEntity) (Object) this);
     }
 
     @Inject(
@@ -31,12 +31,12 @@ public class PistonTileEntityMixin {
             method = "tick"
     )
     private void onTick(CallbackInfo info) {
-        moveBE((PistonTileEntity) (Object) this);
+        moveTE((PistonTileEntity) (Object) this);
     }
 
-    private void moveBE(PistonTileEntity thisAsPBE) {
-        BlockPos pos = thisAsPBE.getPos();
-        World world = thisAsPBE.getWorld();
+    private void moveTE(PistonTileEntity thisAsPTE) {
+        BlockPos pos = thisAsPTE.getPos();
+        World world = thisAsPTE.getWorld();
         if (world == null)
             return;
         BlockState bs = world.getBlockState(pos);
@@ -44,7 +44,7 @@ public class PistonTileEntityMixin {
             world.notifyBlockUpdate(pos, bs, bs, 2);
             return;
         }
-        CompoundNBT tag = ((PistonHooks) Blocks.PISTON).getBlockEntityTags().get(thisAsPBE);
+        CompoundNBT tag = ((PistonHooks) Blocks.PISTON).getTileEntityTags().get(thisAsPTE);
         if (tag == null)
             return;
         tag.putInt("x", pos.getX());

@@ -10,6 +10,7 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class FleckedSheepEntity extends SingleColoredSheepEntity {
 
@@ -20,8 +21,8 @@ public class FleckedSheepEntity extends SingleColoredSheepEntity {
 	}
 
 	@Override
-	public FleckedSheepEntity createChild(AgeableEntity ageable) {
-		return UnusedEntities.FLECKED_SHEEP.create(this.world);
+	public AgeableEntity func_241840_a(ServerWorld worldIn, AgeableEntity entity) {
+		return UnusedEntities.FLECKED_SHEEP.create(worldIn);
 	}
 	
 	public static AttributeModifierMap.MutableAttribute attributes() {

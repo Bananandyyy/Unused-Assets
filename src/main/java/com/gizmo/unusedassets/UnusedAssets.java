@@ -99,7 +99,7 @@ public final class UnusedAssets {
 	public void clientSetup(FMLClientSetupEvent e) {
 		
 		UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
-		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.dungeons, dimensionRenderInfo);
+//		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.dungeons, dimensionRenderInfo);
 //		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
 	}
 	

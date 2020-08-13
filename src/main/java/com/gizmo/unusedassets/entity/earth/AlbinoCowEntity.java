@@ -31,6 +31,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class AlbinoCowEntity extends AnimalEntity {
 
@@ -77,7 +78,7 @@ public class AlbinoCowEntity extends AnimalEntity {
 		ItemStack itemstack = player.getHeldItem(hand);
 		if (itemstack.getItem() == Items.BUCKET && !this.isChild()) {
 			player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
-			ItemStack itemstack1 = DrinkHelper.func_241445_a_(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
+			ItemStack itemstack1 = DrinkHelper.func_242398_a(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
 			player.setHeldItem(hand, itemstack1);
 			return ActionResultType.func_233537_a_(this.world.isRemote);
 		} else {
@@ -85,12 +86,13 @@ public class AlbinoCowEntity extends AnimalEntity {
 		}
 	}
 
-	public AlbinoCowEntity createChild(AgeableEntity ageable) {
-		return UnusedEntities.ALBINO_COW.create(this.world);
-	}
-
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
 		return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
+	}
+
+	@Override
+	public AgeableEntity func_241840_a(ServerWorld worldIn, AgeableEntity entityIn) {
+		return UnusedEntities.ALBINO_COW.create(worldIn);
 	}
 
 }
