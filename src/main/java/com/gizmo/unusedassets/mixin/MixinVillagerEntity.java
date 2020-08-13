@@ -3,6 +3,7 @@ package com.gizmo.unusedassets.mixin;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gizmo.unusedassets.util.villagers.ExtraVillagerTasks;
 import com.gizmo.unusedassets.util.villagers.OtherActivity;
@@ -28,8 +29,8 @@ public abstract class MixinVillagerEntity extends Entity {
 		super(entityTypeIn, worldIn);
 	}
 
-	@Inject(method = "initBrain(Lnet/minecraft/entity/ai/brain/Brain)", at = @At("HEAD"))
-	private void initBrain(Brain<VillagerEntity> villagerBrain) {
+	@Inject(method = "Lnet/minecraft/entity/merchant/villager/VillagerEntity;initBrain(Lnet/minecraft/entity/ai/brain/Brain;)", at = @At("HEAD"))
+	private void initBrain(Brain<VillagerEntity> villagerBrain, CallbackInfo ci) {
 		VillagerProfession villagerprofession = this.getVillagerData().getProfession();
 		villagerBrain.registerActivity(OtherActivity.STRANGE_PANIC, ExtraVillagerTasks.strangepanic(villagerprofession, 0.5F));
 	}
