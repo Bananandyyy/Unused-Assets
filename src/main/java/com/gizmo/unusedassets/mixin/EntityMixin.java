@@ -20,10 +20,10 @@ public class EntityMixin {
     private void getPushReaction(CallbackInfoReturnable<PushReaction> info) {
         Entity entity = (Entity) (Object) this;
 
-        if (UnusedAssets.ENTITY_PISTON_BEHAVIOR_NORMAL.func_230235_a_(entity.getType())) {
+        if (UnusedAssets.ENTITY_PISTON_BEHAVIOR_NORMAL.contains(entity.getType())) {
             info.setReturnValue(PushReaction.NORMAL);
         }
-        if (UnusedAssets.PISTON_BEHAVIOR_IGNORE.func_230235_a_(entity.getType())) {
+        if (UnusedAssets.PISTON_BEHAVIOR_IGNORE.contains(entity.getType())) {
             info.setReturnValue(PushReaction.IGNORE);
         }
     }

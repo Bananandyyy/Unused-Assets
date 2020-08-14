@@ -120,4 +120,9 @@ public enum ModDyeColor implements IStringSerializable {
 
 	      return null;
 	   }
+
+	@Override
+	public String getString() {
+		return this.translationKey;
+	}
 	}

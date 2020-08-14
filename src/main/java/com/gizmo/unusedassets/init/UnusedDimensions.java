@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class UnusedDimensions {
 
 	public static DimensionType dungeons_dimType;
-    public static final RegistryKey<DimensionType> dungeons = RegistryKey.func_240903_a_(Registry.field_239698_ad_, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
-    public static final RegistryKey<World> dungeons_w = RegistryKey.func_240903_a_(Registry.field_239699_ae_, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
+    public static final RegistryKey<DimensionType> dungeons = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
+    public static final RegistryKey<World> dungeons_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
 
 }

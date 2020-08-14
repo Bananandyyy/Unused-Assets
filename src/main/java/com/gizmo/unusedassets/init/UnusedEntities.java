@@ -29,7 +29,7 @@ public class UnusedEntities {
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
 	
-	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
+//	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
 	public static final EntityType<AlbinoCowEntity> ALBINO_COW = register(new ResourceLocation("unusedassets", "albino_cow"), EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	public static final EntityType<AmberChickenEntity> AMBER_CHICKEN = register(new ResourceLocation("unusedassets", "amber_chicken"), EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
@@ -49,29 +49,29 @@ public class UnusedEntities {
 	public static final EntityType<SpottedPigEntity> SPOTTED_PIG = register(new ResourceLocation("unusedassets", "spotted_pig"), EntityType.Builder.create(SpottedPigEntity::new, EntityClassification.CREATURE).size(0.9F, 1.3F));
 	
 	public static void entityAttributes() {
-		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(AMBER_CHICKEN, AmberChickenEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(ASHEN_COW, AshenCowEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(CLUCK_SHROOM, CluckShroomEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(FISH, FishEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(FLECKED_SHEEP, FleckedSheepEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(HOODED_VILLAGER, HoodVillagerEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(HORNED_SHEEP, HornedSheepEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(INKY_SHEEP, InkySheepEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(MIDNIGHT_CHICKEN, MidnightChickenEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(MUDDY_PIG, MuddyPigEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(PALE_PIG, PalePigEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(PIEBALD_PIG, PiebaldPigEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(ROCKY_SHEEP, RockySheepEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(SPOTTED_PIG, SpottedPigEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(WOOLY_COW, WoolyCowEntity.attributes().func_233813_a_());
-		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.attributes().func_233813_a_());
+		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(AMBER_CHICKEN, AmberChickenEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(ASHEN_COW, AshenCowEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(CLUCK_SHROOM, CluckShroomEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(FISH, FishEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(FLECKED_SHEEP, FleckedSheepEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(HAPPY_CREEPER, HappyCreeperEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(HOODED_VILLAGER, HoodVillagerEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(HORNED_SHEEP, HornedSheepEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(INKY_SHEEP, InkySheepEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(LOVE_GOLEM, LoveGolemEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(MIDNIGHT_CHICKEN, MidnightChickenEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(MUDDY_PIG, MuddyPigEntity.attributes().create());
+//		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(PALE_PIG, PalePigEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(PIEBALD_PIG, PiebaldPigEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(ROCKY_SHEEP, RockySheepEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(SPOTTED_PIG, SpottedPigEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(STORMY_CHICKEN, StormyChickenEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(SUNSET_COW, SunsetCowEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(WOOLY_COW, WoolyCowEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.attributes().create());
 	}
 	
 	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {

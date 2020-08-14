@@ -18,16 +18,16 @@ public class AbstractBlockStateMixin {
 	private void getPushReaction(CallbackInfoReturnable<PushReaction> info) {
 		BlockState state = (BlockState) (Object) this;
 
-		if (UnusedAssets.PISTON_BEHAVIOR_NORMAL.func_230235_a_(state.getBlock())) {
+		if (UnusedAssets.PISTON_BEHAVIOR_NORMAL.contains(state.getBlock())) {
 			info.setReturnValue(PushReaction.NORMAL);
 		}
-		if (UnusedAssets.PISTON_BEHAVIOR_DESTROY.func_230235_a_(state.getBlock())) {
+		if (UnusedAssets.PISTON_BEHAVIOR_DESTROY.contains(state.getBlock())) {
 			info.setReturnValue(PushReaction.DESTROY);
 		}
-		if (UnusedAssets.PISTON_BEHAVIOR_BLOCK.func_230235_a_(state.getBlock())) {
+		if (UnusedAssets.PISTON_BEHAVIOR_BLOCK.contains(state.getBlock())) {
 			info.setReturnValue(PushReaction.BLOCK);
 		}
-		if (UnusedAssets.PISTON_BEHAVIOR_PUSH_ONLY.func_230235_a_(state.getBlock())) {
+		if (UnusedAssets.PISTON_BEHAVIOR_PUSH_ONLY.contains(state.getBlock())) {
 			info.setReturnValue(PushReaction.PUSH_ONLY);
 		}
 	}

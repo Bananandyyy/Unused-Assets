@@ -17,9 +17,9 @@ public class SunsetCowEntity extends CowEntity {
 		super(type, worldIn);
 	}
 	
-	 public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233821_d_, (double)0.2F);
-	   }
+	public static AttributeModifierMap.MutableAttribute attributes() {
+		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 10.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.2F);
+	}
 	 
 	 @Override
 		public CowEntity func_241840_a(ServerWorld worldIn, AgeableEntity entityIn) {

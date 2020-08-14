@@ -19,7 +19,7 @@ public class AgentEntity extends CreatureEntity{
 	  }
 	
 	public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, -1.0D).func_233815_a_(Attributes.field_233820_c_, 1.0D).func_233815_a_(Attributes.field_233826_i_, 30.0D).func_233815_a_(Attributes.field_233827_j_, 20.0D);
+	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, -1.0D).createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D).createMutableAttribute(Attributes.ARMOR, 30.0D).createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 20.0D);
 	   }
 
 }

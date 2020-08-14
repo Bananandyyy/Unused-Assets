@@ -46,6 +46,6 @@ public class FishEntity extends AbstractModFishEntity {
 	}
 	
 	 public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 3.0D);
+	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 3.0D);
 	   }
 }

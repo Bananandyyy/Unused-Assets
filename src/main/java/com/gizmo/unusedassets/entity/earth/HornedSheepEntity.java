@@ -23,7 +23,7 @@ public class HornedSheepEntity extends SheepEntity {
 	}
 	
 	public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 8.0D).func_233815_a_(Attributes.field_233821_d_, (double)0.23F);
+	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double)0.23F);
 	   }
 
 }

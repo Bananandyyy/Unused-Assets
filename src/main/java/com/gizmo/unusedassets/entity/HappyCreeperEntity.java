@@ -33,7 +33,7 @@ public class HappyCreeperEntity extends CreatureEntity {
 	}
 
 	public static AttributeModifierMap.MutableAttribute attributes() {
-		return MonsterEntity.func_234295_eP_().func_233815_a_(Attributes.field_233821_d_, 0.25D);
+		return MonsterEntity.func_234295_eP_().createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
 	}
 
 	public ResourceLocation getTexture() {

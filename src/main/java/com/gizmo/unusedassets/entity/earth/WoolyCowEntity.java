@@ -71,9 +71,9 @@ public class WoolyCowEntity extends CowEntity implements IForgeShearable {
 	      this.setCowSheared(WoolyCowEntity.Type.getTypeByName(compound.getString("Type")));
 	}
 	
-	 public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233821_d_, (double)0.2F);
-	   }
+	public static AttributeModifierMap.MutableAttribute attributes() {
+		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 10.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.2F);
+	}
 	 
 	 public static enum Type {
 		 SHEARED("sheared"),

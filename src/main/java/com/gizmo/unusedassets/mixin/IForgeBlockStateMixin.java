@@ -14,6 +14,6 @@ public interface IForgeBlockStateMixin {
             remap = false
     )
     default boolean isStickyBlock() {
-        return UnusedAssets.STICKY_BLOCKS.func_230235_a_(((BlockState) this).getBlock());
+        return UnusedAssets.STICKY_BLOCKS.contains(((BlockState) this).getBlock());
     }
 }

@@ -102,10 +102,9 @@ public abstract class SingleColoredSheepEntity extends AnimalEntity implements I
 		this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
 	}
 
-	public static AttributeModifierMap.MutableAttribute func_234225_eI_() {
-		return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 8.0D)
-				.func_233815_a_(Attributes.field_233821_d_, (double) 0.23F);
-	}
+	public static AttributeModifierMap.MutableAttribute attributes() {
+	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double)0.23F);
+	   }
 
 	@SuppressWarnings("unused")
 	public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
