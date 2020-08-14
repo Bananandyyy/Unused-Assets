@@ -25,7 +25,7 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
 
-    mappings channel: 'snapshot', version: '20200514-1.16'
+    mappings channel: 'snapshot', version: '20200813-1.16.1'
 
     runs {
         client {
@@ -74,14 +74,15 @@ minecraft {
 
 repositories{
     maven { url = 'https://dist.creeper.host/Sponge/maven' }
-    maven { url = 'https://maven.blamejared.com/' }
+//    maven { url = 'https://maven.blamejared.com/' }
 	maven { url = 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+	maven {url 'https://www.dogforce-games.com/maven/' }
     jcenter()
     mavenCentral()
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.2-33.0.0'
+    minecraft 'net.minecraftforge:forge:1.16.2-33.0.3'
     compile 'org.spongepowered:mixin:0.8'
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-39:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-39")
