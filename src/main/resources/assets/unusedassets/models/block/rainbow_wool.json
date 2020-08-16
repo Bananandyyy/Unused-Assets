@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "particle": "unusedassets:block/rainbow_wool_b",
+        "up": "unusedassets:block/rainbow_wool_b",
+        "down": "eunusedassets:block/rainbow_wool_b",
+        "south": "unusedassets:block/rainbow_wool_d",
+        "north": "unusedassets:block/rainbow_wool_c",
+        "west": "unusedassets:block/rainbow_wool_e",
+        "east": "unusedassets:block/rainbow_wool_f"
+    }
+}

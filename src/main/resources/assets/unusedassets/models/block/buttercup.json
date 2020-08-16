@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "unusedassets:block/buttercup",
+        "particle": "unusedassets:block/buttercup"
+    }
+}

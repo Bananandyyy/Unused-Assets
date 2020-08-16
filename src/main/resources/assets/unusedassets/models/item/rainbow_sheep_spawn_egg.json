@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusedassets:item/rainbow_sheep_spawn_egg",
+    "layer1": "unusedassets:item/rainbow_sheep_spawn_egg_overlay"
+  }
+}
