@@ -1,29 +1,239 @@
 package com.gizmo.unusedassets.entity.earth;
 
-import com.gizmo.unusedassets.init.UnusedEntities;
+import java.util.UUID;
 
-import net.minecraft.entity.AgeableEntity;
+import javax.annotation.Nullable;
+
+import com.gizmo.unusedassets.entity.ai.goal.HornedSheepAttackHornedSheepGoal;
+import com.gizmo.unusedassets.entity.ai.goal.HornedSheepAttackPlayerGoal;
+import com.gizmo.unusedassets.entity.ai.goal.HornedSheepHurtByTargetGoal;
+import com.gizmo.unusedassets.entity.ai.goal.HornedSheepMeleeAttackGoal;
+import com.gizmo.unusedassets.entity.earth.base.SheepBase;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IAngerable;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.entity.ai.goal.BreedGoal;
+import net.minecraft.entity.ai.goal.EatGrassGoal;
+import net.minecraft.entity.ai.goal.FollowParentGoal;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.TemptGoal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.RangedInteger;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.TickRangeConverter;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.network.NetworkHooks;
 
-public class HornedSheepEntity extends SheepEntity {
+public class HornedSheepEntity extends SheepBase<HornedSheepEntity> implements IAngerable {
 
-	public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World worldIn) {
-		super(type, worldIn);
-	}
+    private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.BYTE);
+    private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.VARINT);
+    private static final RangedInteger field_234180_bw_ = TickRangeConverter.convertRange(20, 39);
+    private EatGrassGoal eatGrassGoal;
+    private UUID lastHurtBy;
 
-	@Override
-	public SheepEntity func_241840_a(ServerWorld worldIn, AgeableEntity entity) {
-		return UnusedEntities.HORNED_SHEEP.create(worldIn);
-	}
-	
-	public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double)0.23F);
-	   }
+    public HornedSheepEntity(EntityType<HornedSheepEntity> type, World world) {
+        super(type, world);
+    }
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
+                .createMutableAttribute(Attributes.FOLLOW_RANGE, 48.0D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 2.0D);
+    }
+
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(DATA_FLAGS_ID, (byte) 0);
+        this.dataManager.register(ANGER_TIME, 0);
+    }
+
+    protected void registerGoals() {
+        this.eatGrassGoal = new EatGrassGoal(this);
+        this.goalSelector.addGoal(0, new HornedSheepMeleeAttackGoal(this, this, 1.4D, true));
+        this.goalSelector.addGoal(1, new SwimGoal(this));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.WHEAT), false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
+        this.goalSelector.addGoal(4, this.eatGrassGoal);
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.targetSelector.addGoal(1, (new HornedSheepHurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(2, new HornedSheepAttackPlayerGoal(this));
+        this.targetSelector.addGoal(3, new HornedSheepAttackHornedSheepGoal(this));
+    }
+
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        this.writeAngerNBT(compound);
+    }
+
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        this.readAngerNBT((ServerWorld) this.world, compound);
+    }
+
+    public boolean attackEntityAsMob(Entity entityIn) {
+        double damage = this.getBaseAttributeValue(Attributes.ATTACK_DAMAGE);
+        if (entityIn instanceof HornedSheepEntity) {
+            damage = 0;
+        }
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) damage));
+        if (flag) {
+            this.applyEnchantments(this, entityIn);
+        }
+        return flag;
+    }
+
+    @Override
+    public int getAngerTime() {
+        return this.dataManager.get(ANGER_TIME);
+    }
+
+    @Override
+    public void setAngerTime(int value) {
+        this.dataManager.set(ANGER_TIME, value);
+    }
+
+    @Nullable
+    @Override
+    public UUID getAngerTarget() {
+        return this.lastHurtBy;
+    }
+
+    @Override
+    public void setAngerTarget(@Nullable UUID uuid) {
+        this.lastHurtBy = uuid;
+    }
+
+    @Override
+    public void func_230258_H__() {
+        this.setAngerTime(field_234180_bw_.func_233018_a_(this.rand));
+    }
+
+    public void setRevengeTarget(@Nullable LivingEntity livingBase) {
+        super.setRevengeTarget(livingBase);
+        if (livingBase != null) {
+            this.lastHurtBy = livingBase.getUniqueID();
+        }
+    }
+
+    protected void updateAITasks() {
+        if (!this.world.isRemote) {
+            this.func_241359_a_((ServerWorld) this.world, false);
+        }
+    }
+
+    public void livingTick() {
+        super.livingTick();
+        if (!this.world.isRemote) {
+            boolean flag = this.func_233678_J__() && this.getAttackTarget() != null && this.getAttackTarget().getDistanceSq(this) < 4.0D;
+            this.setNearTarget(flag);
+        }
+    }
+
+    private void setNearTarget(boolean p_226452_1_) {
+        this.setSheepFlag(p_226452_1_);
+    }
+
+    private void setSheepFlag(boolean p_226404_2_) {
+        if (p_226404_2_) {
+            this.dataManager.set(DATA_FLAGS_ID, (byte) (this.dataManager.get(DATA_FLAGS_ID) | 2));
+        } else {
+            this.dataManager.set(DATA_FLAGS_ID, (byte) (this.dataManager.get(DATA_FLAGS_ID) & ~2));
+        }
+    }
+
+    public ResourceLocation getLootTable() {
+        if (this.getSheared()) {
+            return this.getType().getLootTable();
+        } else {
+            switch (this.getFleeceColor()) {
+                case WHITE:
+                default:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/white");
+                case ORANGE:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/orange");
+                case MAGENTA:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/magenta");
+                case LIGHT_BLUE:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/light_blue");
+                case YELLOW:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/yellow");
+                case LIME:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/lime");
+                case PINK:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/pink");
+                case GRAY:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/gray");
+                case LIGHT_GRAY:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/light_gray");
+                case CYAN:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/cyan");
+                case PURPLE:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/purple");
+                case BLUE:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/blue");
+                case BROWN:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/brown");
+                case GREEN:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/green");
+                case RED:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/red");
+                case BLACK:
+                    return new ResourceLocation("unusedassets", "entities/horned_sheep/black");
+            }
+        }
+    }
+
+    public boolean setSheepAttacker(Entity attacker) {
+        this.setAngerTime(400 + this.rand.nextInt(400));
+        if (attacker instanceof LivingEntity) {
+            this.setRevengeTarget((LivingEntity) attacker);
+        }
+        return true;
+    }
+
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (this.isInvulnerableTo(source)) {
+            return false;
+        } else {
+            Entity entity = source.getTrueSource();
+            if (!this.world.isRemote && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canEntityBeSeen(entity) && !this.isAIDisabled()) {
+                this.setSheepAttacker(entity);
+            }
+            return super.attackEntityFrom(source, amount);
+        }
+    }
+
+    private boolean isWithinDistance(BlockPos pos) {
+        return pos.withinDistance(new BlockPos(this.getPosX(), this.getPosY(), this.getPosZ()), (double) 48);
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
 
 }

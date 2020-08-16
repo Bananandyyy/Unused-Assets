@@ -18,7 +18,7 @@ public class AgentEntity extends CreatureEntity{
 	    return new ResourceLocation("unusedassets", "textures/entity/agent.png");
 	  }
 	
-	public static AttributeModifierMap.MutableAttribute attributes() {
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, -1.0D).createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D).createMutableAttribute(Attributes.ARMOR, 30.0D).createMutableAttribute(Attributes.ARMOR_TOUGHNESS, 20.0D);
 	   }
 

@@ -32,7 +32,7 @@ public class HappyCreeperEntity extends CreatureEntity {
 
 	}
 
-	public static AttributeModifierMap.MutableAttribute attributes() {
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 		return MonsterEntity.func_234295_eP_().createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
 	}
 

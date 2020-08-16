@@ -1,5 +1,6 @@
 package com.gizmo.unusedassets.entity.earth;
 
+import com.gizmo.unusedassets.entity.earth.base.CowBase;
 import com.gizmo.unusedassets.init.UnusedEntities;
 
 import net.minecraft.entity.AgeableEntity;
@@ -11,9 +12,9 @@ import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class SunsetCowEntity extends CowEntity {
+public class SunsetCowEntity extends CowBase<SunsetCowEntity> {
 
-	public SunsetCowEntity(EntityType<? extends CowEntity> type, World worldIn) {
+	public SunsetCowEntity(EntityType<SunsetCowEntity> type, World worldIn) {
 		super(type, worldIn);
 	}
 	
@@ -22,7 +23,7 @@ public class SunsetCowEntity extends CowEntity {
 	}
 	 
 	 @Override
-		public CowEntity func_241840_a(ServerWorld worldIn, AgeableEntity entityIn) {
+		public CowEntity createChild(ServerWorld worldIn, AgeableEntity entityIn) {
 			return UnusedEntities.SUNSET_COW.create(worldIn);
 		}
 

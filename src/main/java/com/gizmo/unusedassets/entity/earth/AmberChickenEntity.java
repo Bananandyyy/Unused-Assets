@@ -1,5 +1,6 @@
 package com.gizmo.unusedassets.entity.earth;
 
+import com.gizmo.unusedassets.entity.earth.base.ChickenBase;
 import com.gizmo.unusedassets.init.UnusedEntities;
 
 import net.minecraft.entity.AgeableEntity;
@@ -11,18 +12,18 @@ import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class AmberChickenEntity extends ChickenEntity {
+public class AmberChickenEntity extends ChickenBase<AmberChickenEntity> {
 
-	public AmberChickenEntity(EntityType<? extends ChickenEntity> type, World worldIn) {
+	public AmberChickenEntity(EntityType<AmberChickenEntity> type, World worldIn) {
 		super(type, worldIn);
 	}
 	
-	public static AttributeModifierMap.MutableAttribute attributes() {
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 4.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
 	   }
 	
 	@Override
-	public ChickenEntity func_241840_a(ServerWorld worldIn, AgeableEntity entity) {
+	public ChickenEntity createChild(ServerWorld worldIn, AgeableEntity entity) {
 		return UnusedEntities.AMBER_CHICKEN.create(worldIn);
 	}
 

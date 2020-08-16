@@ -1,5 +1,6 @@
 package com.gizmo.unusedassets.entity.earth;
 
+import com.gizmo.unusedassets.entity.earth.base.PigBase;
 import com.gizmo.unusedassets.init.UnusedEntities;
 
 import net.minecraft.entity.AgeableEntity;
@@ -11,9 +12,9 @@ import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class PiebaldPigEntity extends PigEntity {
+public class PiebaldPigEntity extends PigBase<PiebaldPigEntity> {
 
-	public PiebaldPigEntity(EntityType<? extends PigEntity> p_i50250_1_, World p_i50250_2_) {
+	public PiebaldPigEntity(EntityType<PiebaldPigEntity> p_i50250_1_, World p_i50250_2_) {
 		super(p_i50250_1_, p_i50250_2_);
 	}
 	
@@ -22,7 +23,7 @@ public class PiebaldPigEntity extends PigEntity {
 	   }
 	
 	@Override
-	public PigEntity func_241840_a(ServerWorld worldIn, AgeableEntity entity) {
+	public PigEntity createChild(ServerWorld worldIn, AgeableEntity entity) {
 		return UnusedEntities.PIEBALD_PIG.create(worldIn);
 	}
 

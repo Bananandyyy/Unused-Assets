@@ -21,7 +21,7 @@ public class SteveVillagerEntity extends AbstractModVillagerEntity {
 		return new ResourceLocation("unusedassets", "textures/entity/stevevillager.png");
 	}
 	
-	 public static AttributeModifierMap.MutableAttribute attributes() {
+	 public static AttributeModifierMap.MutableAttribute registerAttributes() {
 	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.5D).createMutableAttribute(Attributes.FOLLOW_RANGE, 48.0D);
 	   }
 

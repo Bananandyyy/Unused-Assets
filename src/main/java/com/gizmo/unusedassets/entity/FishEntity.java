@@ -45,7 +45,7 @@ public class FishEntity extends AbstractModFishEntity {
 		return new ResourceLocation("unusedassets", "textures/entity/fish.png");
 	}
 	
-	 public static AttributeModifierMap.MutableAttribute attributes() {
+	 public static AttributeModifierMap.MutableAttribute registerAttributes() {
 	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 3.0D);
 	   }
 }

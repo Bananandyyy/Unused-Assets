@@ -1,116 +1,70 @@
 package com.gizmo.unusedassets.client.entity.model.earth;
 
 import com.gizmo.unusedassets.entity.earth.HornedSheepEntity;
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.entity.model.AgeableModel;
+import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class HornedSheepModel<T extends HornedSheepEntity> extends AgeableModel<T> {
-	private final ModelRenderer main;
-	private final ModelRenderer head;
-	private final ModelRenderer righthorn;
-	private final ModelRenderer lefthorn;
-	private final ModelRenderer body;
-	private final ModelRenderer legs;
-	private final ModelRenderer leftfront;
-	private final ModelRenderer leftback;
-	private final ModelRenderer rightfront;
-	private final ModelRenderer rightback;
+@OnlyIn(Dist.CLIENT)
+public class HornedSheepModel<T extends HornedSheepEntity> extends QuadrupedModel<T> {
+    private float headRotationAngleX;
 
-	private float headRotationAngleX;
 
-	public HornedSheepModel() {
-		textureWidth = 64;
-		textureHeight = 64;
+    public HornedSheepModel() {
+        super(12, 0.0F, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
 
-		main = new ModelRenderer(this);
-		main.setRotationPoint(3.0F, 16.0F, -3.0F);
+        this.headModel = new ModelRenderer(this, 0, 0).setTextureSize(64, 64);
+        this.headModel.addBox(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F);
+        this.headModel.setRotationPoint(0.0F, 6.0F, -8.0F);
 
-		head = new ModelRenderer(this);
-		head.setRotationPoint(-3.0F, -8.0F, -5.0F);
-		main.addChild(head);
-		head.setTextureOffset(0, 0).addBox(-3.0F, -6.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F, false);
+        float hornX = -7.0F;
+        float hornY = -5.0F;
+        float hornZ = -4.0F;
+        this.headModel
+                .setTextureOffset(0, 32)
+                .addBox(hornX, hornY, hornZ, 4.0F, 7.0F, 6.0F)
+                .setTextureOffset(20, 32)
+                .addBox(hornX, hornY + 4.0F, hornZ - 3.0F, 4.0F, 3.0F, 3.0F);
 
-		lefthorn = new ModelRenderer(this);
-		lefthorn.setRotationPoint(0.0F, 0.0F, 0.0F);
-		head.addChild(lefthorn);
-		lefthorn.setTextureOffset(0, 32).addBox(-7.0F, -7.0F, -5.0F, 4.0F, 7.0F, 6.0F, 0.0F, false);
-		lefthorn.setTextureOffset(20, 32).addBox(-7.0F, -3.0F, -8.0F, 4.0F, 3.0F, 3.0F, 0.0F, false);
+        this.headModel
+                .setTextureOffset(0, 32)
+                .addBox(hornX + 10.0F, hornY, hornZ, 4.0F, 7.0F, 6.0F, true)
+                .setTextureOffset(20, 32)
+                .addBox(hornX + 10.0F, hornY + 4.0F, hornZ - 3.0F, 4.0F, 3.0F, 3.0F, true);
 
-		righthorn = new ModelRenderer(this);
-		righthorn.setRotationPoint(0.0F, 0.0F, 0.0F);
-		head.addChild(righthorn);
-		righthorn.setTextureOffset(0, 32).addBox(3.0F, -7.0F, -5.0F, 4.0F, 7.0F, 6.0F, 0.0F, true);
-		righthorn.setTextureOffset(20, 32).addBox(3.0F, -3.0F, -8.0F, 4.0F, 3.0F, 3.0F, 0.0F, true);
+        this.body = new ModelRenderer(this, 28, 8).setTextureSize(64, 64);
+        this.body.addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, 0.0F);
+        this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
 
-		body = new ModelRenderer(this);
-		body.setRotationPoint(1.0F, -4.0F, 11.0F);
-		main.addChild(body);
-		setRotationAngle(body, 1.5708F, 0.0F, 0.0F);
-		body.setTextureOffset(28, 8).addBox(-8.0F, -16.0F, 0.0F, 8.0F, 16.0F, 6.0F, 0.0F, false);
 
-		legs = new ModelRenderer(this);
-		legs.setRotationPoint(0.0F, 0.0F, 0.0F);
-		main.addChild(legs);
+        this.legBackRight = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legBackRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legBackRight.setRotationPoint(-3.0F, 24 - 12.0F, 7.0F);
+        this.legBackLeft = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legBackLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legBackLeft.setRotationPoint(3.0F, (24 - 12.0F), 7.0F);
+        this.legFrontRight = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legFrontRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legFrontRight.setRotationPoint(-3.0F, (24 - 12.0F), -5.0F);
+        this.legFrontLeft = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legFrontLeft.setRotationPoint(3.0F, (24 - 12.0F), -5.0F);
 
-		leftfront = new ModelRenderer(this);
-		leftfront.setRotationPoint(0.0F, -3.0F, -2.0F);
-		legs.addChild(leftfront);
-		leftfront.setTextureOffset(0, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
 
-		leftback = new ModelRenderer(this);
-		leftback.setRotationPoint(0.0F, -3.0F, 10.0F);
-		legs.addChild(leftback);
-		leftback.setTextureOffset(0, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+    }
 
-		rightfront = new ModelRenderer(this);
-		rightfront.setRotationPoint(-6.0F, -3.0F, -2.0F);
-		legs.addChild(rightfront);
-		rightfront.setTextureOffset(0, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+    public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
+        super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
+        this.headModel.rotationPointY = 6.0F + entityIn.getHeadRotationPointY(partialTick) * 9.0F;
+        this.headRotationAngleX = entityIn.getHeadRotationAngleX(partialTick);
+    }
 
-		rightback = new ModelRenderer(this);
-		rightback.setRotationPoint(-6.0F, -3.0F, 10.0F);
-		legs.addChild(rightback);
-		rightback.setTextureOffset(0, 16).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
-	}
+    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        super.setRotationAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+        this.headModel.rotateAngleX = this.headRotationAngleX;
+    }
 
-	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red,
-			float green, float blue, float alpha) {
-		main.render(matrixStack, buffer, packedLight, packedOverlay);
-	}
-	
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
 
-	@Override
-	protected Iterable<ModelRenderer> getHeadParts() {
-		return ImmutableList.of(this.head);
-	}
-
-	@Override
-	protected Iterable<ModelRenderer> getBodyParts() {
-		return ImmutableList.of(this.body, this.legs);
-	}
-
-	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
-			float headPitch) {
-		this.head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
-		this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-		this.body.rotateAngleX = ((float) Math.PI / 2F);
-		this.rightback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.leftback.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-		this.rightfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-		this.leftfront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.head.rotateAngleX = this.headRotationAngleX;
-
-	}
 }

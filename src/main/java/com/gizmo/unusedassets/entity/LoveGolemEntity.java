@@ -34,7 +34,7 @@ public class LoveGolemEntity extends CreatureEntity {
 	    return new ResourceLocation("unusedassets", "textures/entity/love_golem.png");
 	  }
 	
-	public static AttributeModifierMap.MutableAttribute attributes() {
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 100.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D).createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
 	}
 	

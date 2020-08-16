@@ -1,23 +1,25 @@
 package com.gizmo.unusedassets.client.entity.render.earth;
 
-import com.gizmo.unusedassets.client.entity.model.earth.InkySheepModel;
-import com.gizmo.unusedassets.client.entity.render.earth.layers.InkySheepWoolLayer;
-import com.gizmo.unusedassets.entity.earth.InkySheepEntity;
+import com.gizmo.unusedassets.client.entity.model.earth.SingleColorSheepModel;
+import com.gizmo.unusedassets.client.entity.render.earth.layers.SingleColorSheepWoolLayer;
+import com.gizmo.unusedassets.entity.earth.SingleColoredSheepEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 
-public class InkySheepRenderer  extends MobRenderer<InkySheepEntity, InkySheepModel<InkySheepEntity>>{
+public class InkySheepRenderer<T extends SingleColoredSheepEntity<T>> extends MobRenderer<T, SingleColorSheepModel<T>> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation("unusedassets", "textures/entity/earth/inky_sheep.png");
-	
 	public InkySheepRenderer(EntityRendererManager renderManagerIn) {
-		super(renderManagerIn, new InkySheepModel<>(), 0.7F);
-		this.addLayer(new InkySheepWoolLayer(this));
+		super(renderManagerIn, new SingleColorSheepModel<T>(), 0.5F);
+		this.addLayer(new SingleColorSheepWoolLayer<T>(this, "unusedassets:textures/entity/earth/sheep/inky_sheep/inky_sheep_fur.png"));
 	}
 
 	@Override
-	public ResourceLocation getEntityTexture(InkySheepEntity entity) {
-		return TEXTURE;
-	}}
+	public ResourceLocation getEntityTexture(T entity) {
+		ResourceLocation texture = new ResourceLocation("unusedassets:textures/entity/earth/sheep/inky_sheep/inky_sheep.png");
+		ResourceLocation textureBlink = new ResourceLocation("unusedassets:textures/entity/earth/sheep/inky_sheep/inky_sheep_blink.png");
+		 return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+	}
+
+}

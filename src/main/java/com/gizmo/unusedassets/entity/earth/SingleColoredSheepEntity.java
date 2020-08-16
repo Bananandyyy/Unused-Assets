@@ -1,9 +1,15 @@
 package com.gizmo.unusedassets.entity.earth;
 
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.minecraft.block.Blocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IShearable;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -18,18 +24,18 @@ import net.minecraft.entity.ai.goal.TemptGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -37,161 +43,192 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.fml.network.NetworkHooks;
 
-public abstract class SingleColoredSheepEntity extends AnimalEntity implements IForgeShearable {
+public abstract class SingleColoredSheepEntity<T extends AnimalEntity> extends AnimalEntity implements IShearable, IForgeShearable {
 
-	private static final DataParameter<Byte> DYE_COLOR = EntityDataManager.createKey(SheepEntity.class,
-			DataSerializers.BYTE);
+    private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(SingleColoredSheepEntity.class, DataSerializers.BYTE);
 
-	private EatGrassGoal eatGrassGoal;
-	private int sheepTimer;
+    private int sheepTimer;
+    private EatGrassGoal eatGrassGoal;
+    private ItemStack wool;
+    private int lastBlink = 0;
+    private int nextBlinkInterval = new Random().nextInt(760) + 60;
+    private int remainingTick = 0;
+    private int internalBlinkTick = 0;
 
-	protected SingleColoredSheepEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
-		super(type, worldIn);
-	}
+    public SingleColoredSheepEntity(EntityType<T> type, World world, ItemStack wool) {
+        super(type, world);
+        this.wool = wool;
+        experienceValue = 3;
+        setNoAI(false);
+    }
 
-	protected void updateAITasks() {
-		this.sheepTimer = this.eatGrassGoal.getEatingGrassTimer();
-		super.updateAITasks();
-	}
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.23F);
+    }
 
-	protected void registerData() {
-		super.registerData();
-		this.dataManager.register(DYE_COLOR, (byte) 0);
-	}
+    protected void registerGoals() {
+        this.eatGrassGoal = new EatGrassGoal(this);
+        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.WHEAT), false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
+        this.goalSelector.addGoal(5, this.eatGrassGoal);
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+    }
 
-	public void livingTick() {
-		if (this.world.isRemote) {
-			this.sheepTimer = Math.max(0, this.sheepTimer - 1);
-		}
+    protected void updateAITasks() {
+        this.sheepTimer = this.eatGrassGoal.getEatingGrassTimer();
+        super.updateAITasks();
+    }
 
-		super.livingTick();
-	}
-	
-	@OnlyIn(Dist.CLIENT)
-	   public float getHeadRotationPointY(float p_70894_1_) {
-	      if (this.sheepTimer <= 0) {
-	         return 0.0F;
-	      } else if (this.sheepTimer >= 4 && this.sheepTimer <= 36) {
-	         return 1.0F;
-	      } else {
-	         return this.sheepTimer < 4 ? ((float)this.sheepTimer - p_70894_1_) / 4.0F : -((float)(this.sheepTimer - 40) - p_70894_1_) / 4.0F;
-	      }
-	   }
+    public void livingTick() {
+        if (this.world.isRemote) {
+            this.sheepTimer = Math.max(0, this.sheepTimer - 1);
+        }
+        super.livingTick();
+        if (this.remainingTick > 0) {
+            --this.remainingTick;
+        }
+        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
+            this.lastBlink = this.internalBlinkTick;
+            this.nextBlinkInterval = new Random().nextInt(740) + 60;
+            this.remainingTick = 4;
+        }
+        ++this.internalBlinkTick;
+    }
 
-	   @OnlyIn(Dist.CLIENT)
-	   public float getHeadRotationAngleX(float p_70890_1_) {
-	      if (this.sheepTimer > 4 && this.sheepTimer <= 36) {
-	         float f = ((float)(this.sheepTimer - 4) - p_70890_1_) / 32.0F;
-	         return ((float)Math.PI / 5F) + 0.21991149F * MathHelper.sin(f * 28.7F);
-	      } else {
-	         return this.sheepTimer > 0 ? ((float)Math.PI / 5F) : this.rotationPitch * ((float)Math.PI / 180F);
-	      }
-	   }
+    public int getBlinkRemainingTicks() {
+        return this.remainingTick;
+    }
 
-	protected void registerGoals() {
-		this.eatGrassGoal = new EatGrassGoal(this);
-		this.goalSelector.addGoal(0, new SwimGoal(this));
-		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
-		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.WHEAT), false));
-		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
-		this.goalSelector.addGoal(5, this.eatGrassGoal);
-		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-		this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-	}
+    @OnlyIn(Dist.CLIENT)
+    public void handleStatusUpdate(byte id) {
+        if (id == 10) {
+            this.sheepTimer = 40;
+        } else {
+            super.handleStatusUpdate(id);
+        }
+    }
 
-	public static AttributeModifierMap.MutableAttribute attributes() {
-	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double)0.23F);
-	   }
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(isSheared, (byte) 0);
+    }
 
-	@SuppressWarnings("unused")
-	public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
-		ItemStack itemstack = p_230254_1_.getHeldItem(p_230254_2_);
-		if (false && itemstack.getItem() == Items.SHEARS) {
-			if (!this.world.isRemote && this.func_230262_K__()) {
-				this.func_230263_a_(SoundCategory.PLAYERS);
-				itemstack.damageItem(1, p_230254_1_, (p_213613_1_) -> {
-					p_213613_1_.sendBreakAnimation(p_230254_2_);
-				});
-				return ActionResultType.SUCCESS;
-			} else {
-				return ActionResultType.CONSUME;
-			}
-		} else {
-			return super.func_230254_b_(p_230254_1_, p_230254_2_);
-		}
-	}
+    @SuppressWarnings("unchecked")
+	public T createChild(AgeableEntity ageable) {
+        return (T) getType().create(this.world);
+    }
 
-	public void func_230263_a_(SoundCategory p_230263_1_) {
-		this.world.playMovingSound((PlayerEntity) null, this, SoundEvents.ENTITY_SHEEP_SHEAR, p_230263_1_, 1.0F, 1.0F);
-		this.setSheared(true);
-		int i = 1 + this.rand.nextInt(3);
+    public boolean getSheared() {
+        return (this.dataManager.get(isSheared) & 16) != 0;
+    }
 
-		for (int j = 0; j < i; ++j) {
-			ItemEntity itementity = this.entityDropItem(Blocks.WHITE_WOOL, 1);
-			if (itementity != null) {
-				itementity.setMotion(
-						itementity.getMotion().add((double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F),
-								(double) (this.rand.nextFloat() * 0.05F),
-								(double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F)));
-			}
-		}
+    public void setSheared(boolean sheared) {
+        byte b0 = this.dataManager.get(isSheared);
+        if (sheared) {
+            this.dataManager.set(isSheared, (byte) (b0 | 16));
+        } else {
+            this.dataManager.set(isSheared, (byte) (b0 & -17));
+        }
+    }
 
-	}
+    public void eatGrassBonus() {
+        this.setSheared(false);
+        if (this.isChild()) {
+            this.addGrowth(30);
+        }
+    }
 
-	public boolean func_230262_K__() {
-		return this.isAlive() && !this.getSheared() && !this.isChild();
-	}
+    public boolean isShearable(@javax.annotation.Nonnull ItemStack item, World world, BlockPos pos) {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
+    }
 
-	public void writeAdditional(CompoundNBT compound) {
-		super.writeAdditional(compound);
-		compound.putBoolean("Sheared", this.getSheared());
-	}
+    public List<ItemStack> onSheared(@Nullable PlayerEntity player, @Nonnull ItemStack item, World world, BlockPos pos, int fortune) {
+        world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
+        if (!this.world.isRemote) {
+            List<ItemStack> items = new java.util.ArrayList<>();
+            this.setSheared(true);
+            int i = 1 + this.rand.nextInt(3);
+            for (int j = 0; j < i; ++j) {
+                items.add(this.wool);
+            }
+            return items;
+        }
+        return java.util.Collections.emptyList();
+    }
 
-	public void eatGrassBonus() {
-		this.setSheared(false);
-		if (this.isChild()) {
-			this.addGrowth(60);
-		}
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        compound.putBoolean("Sheared", this.getSheared());
+    }
 
-	}
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        this.setSheared(compound.getBoolean("Sheared"));
+    }
 
-	public boolean isShearable(@javax.annotation.Nonnull ItemStack item, World world, BlockPos pos) {
-		return func_230262_K__();
-	}
+    @OnlyIn(Dist.CLIENT)
+    public float getHeadRotationPointY(float p_70894_1_) {
+        if (this.sheepTimer <= 0) {
+            return 0.0F;
+        } else if (this.sheepTimer >= 4 && this.sheepTimer <= 36) {
+            return 1.0F;
+        } else {
+            return this.sheepTimer < 4 ? ((float) this.sheepTimer - p_70894_1_) / 4.0F : -((float) (this.sheepTimer - 40) - p_70894_1_) / 4.0F;
+        }
+    }
 
-	@javax.annotation.Nonnull
-	public java.util.List<ItemStack> onSheared(@Nullable PlayerEntity player, @javax.annotation.Nonnull ItemStack item,
-			World world, BlockPos pos, int fortune) {
-		world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR,
-				player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
-		if (!world.isRemote) {
-			this.setSheared(true);
-			int i = 1 + this.rand.nextInt(3);
+    @OnlyIn(Dist.CLIENT)
+    public float getHeadRotationAngleX(float p_70890_1_) {
+        if (this.sheepTimer > 4 && this.sheepTimer <= 36) {
+            float f = ((float) (this.sheepTimer - 4) - p_70890_1_) / 32.0F;
+            return ((float) Math.PI / 5F) + 0.21991149F * MathHelper.sin(f * 28.7F);
+        } else {
+            return this.sheepTimer > 0 ? ((float) Math.PI / 5F) : this.rotationPitch * ((float) Math.PI / 180F);
+        }
+    }
 
-			java.util.List<ItemStack> items = new java.util.ArrayList<>();
-			for (int j = 0; j < i; ++j) {
-				items.add(new ItemStack(Blocks.WHITE_WOOL));
-			}
-			return items;
-		}
-		return java.util.Collections.emptyList();
-	}
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_SHEEP_AMBIENT;
+    }
 
-	public boolean getSheared() {
-		return (this.dataManager.get(DYE_COLOR) & 16) != 0;
-	}
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundEvents.ENTITY_SHEEP_HURT;
+    }
 
-	public void setSheared(boolean sheared) {
-		byte b0 = this.dataManager.get(DYE_COLOR);
-		if (sheared) {
-			this.dataManager.set(DYE_COLOR, (byte) (b0 | 16));
-		} else {
-			this.dataManager.set(DYE_COLOR, (byte) (b0 & -17));
-		}
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_SHEEP_DEATH;
+    }
 
-	}
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_SHEEP_STEP, 0.35F, 1.0F);
+    }
 
+
+    public void shear(SoundCategory soundCategory) {
+        this.world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, soundCategory, 1.0F, 1.0F);
+        this.setSheared(true);
+        int i = 1 + this.rand.nextInt(3);
+        for (int j = 0; j < i; ++j) {
+            ItemEntity itementity = this.entityDropItem(this.wool, 1);
+            if (itementity != null) {
+                itementity.setMotion(itementity.getMotion().add((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F, this.rand.nextFloat() * 0.05F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F));
+            }
+        }
+    }
+
+    public boolean isShearable() {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
 }
