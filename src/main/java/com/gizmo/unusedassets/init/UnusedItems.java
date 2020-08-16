@@ -18,6 +18,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.FishBucketItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.IArmorMaterial;
@@ -212,6 +213,39 @@ public class UnusedItems {
 
 	//Minecraft Earth stuff
 	//public static final Item HORN = register("horn", new Item((new Item.Properties()).group(UnusedAssets.earth)));
+	public static final Item MUD_BUCKET = register("mud_bucket", new BucketItem(UnusedFluids.MUD_FLUID_STILL, (new Item.Properties()).group(UnusedAssets.earth)));
+	
+	public static final Item ALBINO_COW_SPAWN_EGG = register("albino_cow_spawn_egg", new SpawnEggItem(UnusedEntities.ALBINO_COW, 0xdecac3, 0xf0a590, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item AMBER_CHICKEN_SPAWN_EGG = register("amber_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.AMBER_CHICKEN, 0xd13719, 0xe38a2b, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item ASHEN_COW_SPAWN_EGG = register("ashen_cow_spawn_egg", new SpawnEggItem(UnusedEntities.ASHEN_COW, 0x3c3c49, 0x898491, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item BONE_SPIDER_SPAWN_EGG = register("bone_spider_spawn_egg", new SpawnEggItem(UnusedEntities.BONE_SPIDER, 0x200d16, 0xd6e7e5, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item CLUCKSHROOM_SPAWN_EGG = register("cluckshroom_spawn_egg", new SpawnEggItem(UnusedEntities.CLUCK_SHROOM, 0xef0000, 0xffffee, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item FLECKED_SHEEP_SPAWN_EGG = register("flecked_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.FLECKED_SHEEP, 0x2c1e17, 0x907666, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item FURNACE_GOLEM_SPAWN_EGG = register("furnace_golem_spawn_egg", new SpawnEggItem(UnusedEntities.FURNACE_GOLEM, 0x56585a, 0xff5501, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item GLOW_SQUID_SPAWN_EGG = register("glow_squid_spawn_egg", new SpawnEggItem(UnusedEntities.GLOW_SQUID, 0x095656, 0x80ffc0, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item HARELEQUIN_RABBIT_SPAWN_EGG = register("harelequin_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.HARELEQUIN_RABBIT, 0x1d1b1a, 0xb09984, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item HORNED_SHEEP_SPAWN_EGG = register("horned_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.HORNED_SHEEP, 0xececec, 0x291811, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item INKY_SHEEP_SPAWN_EGG = register("inky_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.INKY_SHEEP, 0x181716, 0x8a7564, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item JOLLY_LLAMA_SPAWN_EGG = register("jolly_llama_spawn_egg", new SpawnEggItem(UnusedEntities.JOLLY_LLAMA, 0x5f3425, 0x3b7e3e, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item JUMBO_RABBIT_SPAWN_EGG = register("jumbo_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.JUMBO_RABBIT, 0xb57766, 0xf7d1c0, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MELON_GOLEM_SPAWN_EGG = register("melon_golem_spawn_egg", new SpawnEggItem(UnusedEntities.MELON_GOLEM, 0xeeffff, 0x52811c, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MIDNIGHT_CHICKEN_SPAWN_EGG = register("midnight_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.MIDNIGHT_CHICKEN, 0x06050B, 0x17225a, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MOOBLOOM_SPAWN_EGG = register("moobloom_spawn_egg", new SpawnEggItem(UnusedEntities.MOOBLOOM, 0xfaca00, 0xf7edc1, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MUDDY_FOOT_RABBIT_SPAWN_EGG = register("muddy_foot_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.MUDDY_FOOT_RABBIT, 0xe5e0dd, 0x463832, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MUDDY_PIG_SPAWN_EGG = register("muddy_pig_spawn_egg", new SpawnEggItem(UnusedEntities.MUDDY_PIG, 0xe6918b, 0x573621, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item PALE_PIG_SPAWN_EGG = register("pale_pig_spawn_egg", new SpawnEggItem(UnusedEntities.PALE_PIG, 0xd3a0a0, 0xead3d3, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item PIEBALD_PIG_SPAWN_EGG = register("piebald_pig_spawn_egg", new SpawnEggItem(UnusedEntities.PIEBALD_PIG, 0xd7c0a9, 0x9b4628, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item PINK_FOOTED_PIG_SPAWN_EGG = register("pink_pig_spawn_egg", new SpawnEggItem(UnusedEntities.PINK_PIG, 0x514246, 0xb39da2, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item ROCKY_SHEEP_SPAWN_EGG = register("rocky_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.ROCKY_SHEEP, 0xa69f9b, 0xe9d0bd, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item RAINBOW_SHEEP_SPAWN_EGG = register("rainbow_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.RAINBOW_SHEEP, 0x00ffffff, 0x00ffffff, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item SKELETON_WOLF_SPAWN_EGG = register("skeleton_wolf_spawn_egg", new SpawnEggItem(UnusedEntities.SKELE_WOLF, 0xededed, 0xbababa, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item SPOTTED_PIG_SPAWN_EGG = register("spotted_pig_spawn_egg", new SpawnEggItem(UnusedEntities.SPOTTED_PIG, 0xedd4d1, 0x413938, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item STORMY_CHICKEN_SPAWN_EGG = register("stormy_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.STORMY_CHICKEN, 0x3e2525, 0xc0c0c0, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item SUNSET_COW_SPAWN_EGG = register("sunset_cow_spawn_egg", new SpawnEggItem(UnusedEntities.SUNSET_COW, 0x993d0d, 0x171514, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item TROPICAL_SLIME_SPAWN_EGG = register("tropical_slime_spawn_egg", new SpawnEggItem(UnusedEntities.TROPICAL_SLIME, 0x0e496e, 0x8ed3ff, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item VESTED_RABBIT_SPAWN_EGG = register("vested_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.VESTED_RABBIT, 0xdedede, 0x747474, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item WOOLY_COW_SPAWN_EGG = register("wooly_cow_spawn_egg", new SpawnEggItem(UnusedEntities.WOOLY_COW, 0xcc3300, 0xff9933, (new Item.Properties()).group(UnusedAssets.earth)));
+    
 	
 	
 	//Template
