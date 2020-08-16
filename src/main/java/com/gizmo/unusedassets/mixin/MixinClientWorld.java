@@ -46,7 +46,7 @@ public abstract class MixinClientWorld extends World {
         BlockState blockState = this.getBlockState(pos);
         assert this.mc.player != null;
         //TODO: what is this function?
-        this.mc.player.func_230297_ef_().forEach(itemStack -> {
+/*        this.mc.player.func_230297_ef_().forEach(itemStack -> {
             if (itemStack.equals(BedrockBlocks.LIGHT_0.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_1.asItem()) ||
                 itemStack.equals(BedrockBlocks.LIGHT_2.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_3.asItem()) ||
                 itemStack.equals(BedrockBlocks.LIGHT_4.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_5.asItem()) ||
@@ -115,7 +115,7 @@ public abstract class MixinClientWorld extends World {
                     }
                 }
             }
-        });
+        });*/
     }
 	
 }
