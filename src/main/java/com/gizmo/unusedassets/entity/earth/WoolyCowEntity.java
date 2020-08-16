@@ -1,104 +1,139 @@
 package com.gizmo.unusedassets.entity.earth;
 
-import com.gizmo.unusedassets.init.UnusedEntities;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.gizmo.unusedassets.entity.earth.base.CowBase;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.passive.CowEntity;
+import net.minecraft.entity.IShearable;
+import net.minecraft.entity.ai.goal.EatGrassGoal;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.fml.network.NetworkHooks;
 
-public class WoolyCowEntity extends CowEntity implements IForgeShearable {
+public class WoolyCowEntity extends CowBase<WoolyCowEntity> implements IShearable, IForgeShearable {
 
-	private static final DataParameter<String> COW = EntityDataManager.createKey(WoolyCowEntity.class, DataSerializers.STRING);
-	
-	public WoolyCowEntity(EntityType<? extends WoolyCowEntity> type, World worldIn) {
-		super(type, worldIn);
-	}
-	
-	 protected void registerData() {
-	      super.registerData();
-	      this.dataManager.register(COW, WoolyCowEntity.Type.NORMAL.name);
-	   }
-	 
-	 public ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
-			ItemStack itemstack = player.getHeldItem(hand);
-			if (itemstack.getItem() == Items.SHEARS && !this.isChild() && this.getCowSheared() == WoolyCowEntity.Type.NORMAL) {
-				this.setCowSheared(this.getCowSheared() == WoolyCowEntity.Type.NORMAL ? WoolyCowEntity.Type.SHEARED : WoolyCowEntity.Type.NORMAL);
-				this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 2, 1);
-				this.entityDropItem(Blocks.BROWN_WOOL, 2);
-				this.entityDropItem(Blocks.BROWN_WOOL, 2);
-				itemstack.damageItem(1, player, (p_213442_1_) -> {
-		               player.sendBreakAnimation(hand);
-		            });
-				return ActionResultType.SUCCESS;
-			}
-			
-			return super.func_230254_b_(player, hand);
-			
-		}
-	 
-	private void setCowSheared(WoolyCowEntity.Type typeIn) {
-	      this.dataManager.set(COW, typeIn.name);
-	   }
-	
-	public WoolyCowEntity.Type getCowSheared() {
-	      return WoolyCowEntity.Type.getTypeByName(this.dataManager.get(COW));
-	   }
-	
-	public void writeAdditional(CompoundNBT compound) {
-	      super.writeAdditional(compound);
-	      compound.putString("Type", this.getCowSheared().name);
-	}
-	
-	public void readAdditional(CompoundNBT compound) {
-	      super.readAdditional(compound);
-	      this.setCowSheared(WoolyCowEntity.Type.getTypeByName(compound.getString("Type")));
-	}
-	
-	public static AttributeModifierMap.MutableAttribute attributes() {
-		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 10.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.2F);
-	}
-	 
-	 public static enum Type {
-		 SHEARED("sheared"),
-		 NORMAL("normal");
+	private static final DataParameter<Boolean> isSheared = EntityDataManager.createKey(WoolyCowEntity.class, DataSerializers.BOOLEAN);
 
-		 private final String name;
-		 
-		 private Type(String nameIn) {
-	         this.name = nameIn;
-	      }
-		 
-		 private static WoolyCowEntity.Type getTypeByName(String nameIn) {
-	         for(WoolyCowEntity.Type woolycowentity$type : values()) {
-	            if (woolycowentity$type.name.equals(nameIn)) {
-	               return woolycowentity$type;
-	            }
-	         }
+    private int shearTimer;
+    private EatGrassGoal eatGrassGoal;
 
-	         return NORMAL;
-	      }
-	 }
-	 
-	 @Override
-		public CowEntity func_241840_a(ServerWorld worldIn, AgeableEntity entityIn) {
-			return UnusedEntities.WOOLY_COW.create(worldIn);
-		}
+    public WoolyCowEntity(EntityType<WoolyCowEntity> type, World world) {
+        super(type, world);
+    }
 
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.eatGrassGoal = new EatGrassGoal(this);
+        this.goalSelector.addGoal(5, this.eatGrassGoal);
+    }
+
+    protected void updateAITasks() {
+        this.shearTimer = this.eatGrassGoal.getEatingGrassTimer();
+        super.updateAITasks();
+    }
+
+    public void livingTick() {
+        if (this.world.isRemote) {
+            this.shearTimer = Math.max(0, this.shearTimer - 1);
+        }
+        super.livingTick();
+    }
+
+    public void handleStatusUpdate(byte id) {
+        if (id == 10) {
+            this.shearTimer = 40;
+        } else {
+            super.handleStatusUpdate(id);
+        }
+    }
+
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(isSheared, false);
+    }
+
+    public boolean getSheared() {
+        return this.dataManager.get(isSheared);
+    }
+
+    public void setSheared(boolean sheared) {
+        this.dataManager.set(isSheared, sheared);
+    }
+
+    public void eatGrassBonus() {
+        this.setSheared(false);
+        if (this.isChild()) {
+            this.addGrowth(30);
+        }
+    }
+
+    public boolean isShearable(@Nonnull ItemStack item, World world, BlockPos pos) {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
+    }
+
+    public List<ItemStack> onSheared(@Nullable PlayerEntity player, @Nonnull ItemStack item, World world, BlockPos pos, int fortune) {
+        world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
+        if (!this.world.isRemote) {
+            this.setSheared(true);
+            List<ItemStack> items = new ArrayList<>();
+            int i = 1 + this.rand.nextInt(3);
+            for (int j = 0; j < i; ++j) {
+                items.add(new ItemStack(Blocks.BROWN_WOOL));
+            }
+            return items;
+        }
+        return Collections.emptyList();
+    }
+
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        compound.putBoolean("Sheared", this.getSheared());
+    }
+
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        this.setSheared(compound.getBoolean("Sheared"));
+    }
+
+    @Override
+    public IPacket<?> createSpawnPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Override
+    public void shear(SoundCategory soundCategory) {
+        this.world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, soundCategory, 1.0F, 1.0F);
+        this.setSheared(true);
+        int i = 1 + this.rand.nextInt(3);
+        for (int j = 0; j < i; ++j) {
+            ItemEntity itementity = this.entityDropItem(new ItemStack(Blocks.BROWN_WOOL), 1);
+            if (itementity != null) {
+                itementity.setMotion(itementity.getMotion().add((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F, this.rand.nextFloat() * 0.05F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F));
+            }
+        }
+    }
+
+    @Override
+    public boolean isShearable() {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
+    }
 }
