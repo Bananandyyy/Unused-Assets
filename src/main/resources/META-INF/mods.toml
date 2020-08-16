@@ -3,7 +3,9 @@ modLoader="javafml"
 
 loaderVersion="[33,)"
 
-issueTrackerURL="http://my.issue.tracker/"
+license="GNU General Public License v3.0"
+
+issueTrackerURL="https://github.com/GizmoTheMoonPig/Unused-Assets/issues"
 
 [[mods]]
 
@@ -12,8 +14,6 @@ modId="unusedassets"
 version="Pre-Build 2" 
 
 displayName="Unused Assets" 
-
-updateJSONURL="http://myurl.me/"
 
 displayURL="http://example.com/"
 
