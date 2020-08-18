@@ -2,10 +2,48 @@ package com.gizmo.unusedassets.init;
 
 import java.util.ArrayList;
 
-import com.gizmo.unusedassets.entity.*;
-import com.gizmo.unusedassets.entity.earth.*;
-import com.gizmo.unusedassets.entity.earth.base.*;
+import com.gizmo.unusedassets.entity.AgentEntity;
+import com.gizmo.unusedassets.entity.FishEntity;
+import com.gizmo.unusedassets.entity.HappyCreeperEntity;
+import com.gizmo.unusedassets.entity.HeartArrowEntity;
+import com.gizmo.unusedassets.entity.HoodVillagerEntity;
+import com.gizmo.unusedassets.entity.LoveGolemEntity;
+import com.gizmo.unusedassets.entity.PurpleArrowEntity;
+import com.gizmo.unusedassets.entity.SteveVillagerEntity;
+import com.gizmo.unusedassets.entity.dungeons.NamelessEntity;
+import com.gizmo.unusedassets.entity.earth.AlbinoCowEntity;
+import com.gizmo.unusedassets.entity.earth.AmberChickenEntity;
+import com.gizmo.unusedassets.entity.earth.AshenCowEntity;
+import com.gizmo.unusedassets.entity.earth.BoneSpiderEntity;
+import com.gizmo.unusedassets.entity.earth.CluckShroomEntity;
+import com.gizmo.unusedassets.entity.earth.FleckedSheepEntity;
+import com.gizmo.unusedassets.entity.earth.FurnaceGolemEntity;
+import com.gizmo.unusedassets.entity.earth.GlowSquidEntity;
+import com.gizmo.unusedassets.entity.earth.HarelequinRabbitEntity;
+import com.gizmo.unusedassets.entity.earth.HornedSheepEntity;
+import com.gizmo.unusedassets.entity.earth.InkySheepEntity;
+import com.gizmo.unusedassets.entity.earth.JollyLlamaEntity;
+import com.gizmo.unusedassets.entity.earth.JumboRabbitEntity;
+import com.gizmo.unusedassets.entity.earth.MelonGolemEntity;
+import com.gizmo.unusedassets.entity.earth.MidnightChickenEntity;
+import com.gizmo.unusedassets.entity.earth.MoobloomEntity;
+import com.gizmo.unusedassets.entity.earth.MuddyFootRabbitEntity;
+import com.gizmo.unusedassets.entity.earth.MuddyPigEntity;
+import com.gizmo.unusedassets.entity.earth.PalePigEntity;
+import com.gizmo.unusedassets.entity.earth.PiebaldPigEntity;
+import com.gizmo.unusedassets.entity.earth.PinkFootedPigEntity;
+import com.gizmo.unusedassets.entity.earth.RainbowSheepEntity;
+import com.gizmo.unusedassets.entity.earth.RockySheepEntity;
+import com.gizmo.unusedassets.entity.earth.SkeletonWolfEntity;
+import com.gizmo.unusedassets.entity.earth.SpottedPigEntity;
+import com.gizmo.unusedassets.entity.earth.StormyChickenEntity;
+import com.gizmo.unusedassets.entity.earth.SunsetCowEntity;
+import com.gizmo.unusedassets.entity.earth.TropicalSlimeEntity;
+import com.gizmo.unusedassets.entity.earth.VestedRabbitEntity;
+import com.gizmo.unusedassets.entity.earth.WoolyCowEntity;
+import com.gizmo.unusedassets.entity.earth.base.SheepBase;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -30,7 +68,7 @@ public class UnusedEntities {
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
 	
-//	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
+	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	
 	public static final EntityType<AlbinoCowEntity> ALBINO_COW = register(new ResourceLocation("unusedassets", "albino_cow"), EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE).size(EntityType.COW.getWidth(), EntityType.COW.getHeight()));
 	public static final EntityType<AmberChickenEntity> AMBER_CHICKEN = register(new ResourceLocation("unusedassets", "amber_chicken"), EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE).size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight()));
@@ -87,7 +125,7 @@ public class UnusedEntities {
 		GlobalEntityTypeAttributes.put(MOOBLOOM, MoobloomEntity.registerAttributes().create());
 		GlobalEntityTypeAttributes.put(MUDDY_FOOT_RABBIT, MuddyFootRabbitEntity.registerAttributes().create());
 		GlobalEntityTypeAttributes.put(MUDDY_PIG, MuddyPigEntity.registerAttributes().create());
-//		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().create());
+		GlobalEntityTypeAttributes.put(NAMELESS_ONE, NamelessEntity.attributes().create());
 		GlobalEntityTypeAttributes.put(PALE_PIG, PalePigEntity.attributes().create());
 		GlobalEntityTypeAttributes.put(PIEBALD_PIG, PiebaldPigEntity.attributes().create());
 		GlobalEntityTypeAttributes.put(PINK_PIG, PinkFootedPigEntity.registerAttributes().create());
@@ -103,7 +141,7 @@ public class UnusedEntities {
 		GlobalEntityTypeAttributes.put(STEVE_VILLAGER_HYBRID, SteveVillagerEntity.registerAttributes().create());
 	}
 	
-	private static <T extends net.minecraft.entity.Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
+	private static <T extends Entity> EntityType<T> register(ResourceLocation id, EntityType.Builder<T> builder) {
 		return (EntityType<T>) Registry.register(Registry.ENTITY_TYPE, id, builder.build(id.toString()));
 	}
 

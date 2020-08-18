@@ -10,9 +10,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class NamelessRenderer { //extends MobRenderer<NamelessEntity, NamelessModel> {
+public class NamelessRenderer extends MobRenderer<NamelessEntity, NamelessModel> {
 
-/*	public NamelessRenderer(EntityRendererManager renderManagerIn) {
+	public NamelessRenderer(EntityRendererManager renderManagerIn) {
 		super(renderManagerIn, new NamelessModel(), 0.5F);
 	}
 
@@ -21,5 +21,5 @@ public class NamelessRenderer { //extends MobRenderer<NamelessEntity, NamelessMo
 		return entity.getTexture();
 	}
 
-*/
+
 }
