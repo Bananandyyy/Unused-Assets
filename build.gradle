@@ -74,8 +74,8 @@ minecraft {
 
 repositories{
     maven { url = 'https://dist.creeper.host/Sponge/maven' }
-//    maven { url = 'https://maven.blamejared.com/' }
-//	maven { url = 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+    maven { url = 'https://maven.blamejared.com/' }
+	maven { url = 'https://repo.repsy.io/mvn/gandiber/geckolib' }
 	maven {url 'https://www.dogforce-games.com/maven/' }
     jcenter()
     mavenCentral()
@@ -84,9 +84,9 @@ repositories{
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.2-33.0.5'
     compile 'org.spongepowered:mixin:0.8'
- //   compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-39:api")
- //   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-39")
- //   implementation fg.deobf('software.bernie.geckolib:forge-1.16.1-geckolib:2.0.0')
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-40:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-40")
+    implementation fg.deobf('software.bernie.geckolib:forge-1.16.2-geckolib:2.1.0')
 }
 
 jar {
