@@ -14,7 +14,7 @@
 				}
 			},
 			"noise": {
-				"height": 128,
+				"height": 256,
 				"sampling": {
 					"xz_scale": 0.9999999814507745,
 					"y_scale": 0.9999999814507745,
@@ -44,8 +44,13 @@
 			"default_fluid": { "Name": "minecraft:water", "Properties": { "level": "0" }}
 		},
 		"biome_source": {
-			"type": "minecraft:vanilla_layered",
-			"seed": 792613152085131515141697
+			"type": "minecraft:checkerboard",
+			"scale": 2,
+			"biomes": [
+				"minecraft:plains",
+				"minecraft:desert"
+			]
+
 		}
 	}
 }

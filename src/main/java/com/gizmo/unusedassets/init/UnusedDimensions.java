@@ -11,8 +11,9 @@ import net.minecraft.world.World;
 //@EventBusSubscriber(modid = "unusedassets", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusedDimensions {
 
-	public static DimensionType dungeons_dimType;
-    public static final RegistryKey<DimensionType> dungeons = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
-    public static final RegistryKey<World> dungeons_w = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
+	public static final ResourceLocation DUNGEONS = new ResourceLocation("dungeons");
+	
+    public static final RegistryKey<DimensionType> DUNGONS = RegistryKey.func_240903_a_(Registry.DIMENSION_TYPE_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
+    public static final RegistryKey<World> DUNGEONS_W = RegistryKey.func_240903_a_(Registry.WORLD_KEY, new ResourceLocation(UnusedAssets.MOD_ID, "dungeons"));
 
 }
