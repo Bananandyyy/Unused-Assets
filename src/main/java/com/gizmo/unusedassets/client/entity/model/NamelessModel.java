@@ -107,6 +107,6 @@ public class NamelessModel extends AnimatedEntityModel<NamelessEntity> {
     @Override
     public ResourceLocation getAnimationFileLocation()
     {
-        return new ResourceLocation("unusedassets", "animations/NamelessOne.json");
+        return new ResourceLocation("unusedassets", "animations/namelessone.json");
     }
 }

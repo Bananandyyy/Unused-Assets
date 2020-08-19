@@ -11,6 +11,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.PistonTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -51,7 +52,10 @@ public class PistonTileEntityMixin {
         tag.putInt("y", pos.getY());
         tag.putInt("z", pos.getZ());
 
-        world.getTileEntity(pos).deserializeNBT(tag);
+        TileEntity tEntity = world.getTileEntity(pos);
+        if (tEntity == null)
+            return;
+        tEntity.handleUpdateTag(bs, tag);
         ((ServerWorld) world).getChunkProvider().markBlockChanged(pos);
     }
 }

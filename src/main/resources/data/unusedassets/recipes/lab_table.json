@@ -10,7 +10,7 @@
             "tag": "unusedassets:items/element"
         },
         "S": {
-            "item": "minecraft:spruce_planks"
+            "tag": "minecraft:planks"
         },
         "C": {
             "item": "minecraft:crafting_table"

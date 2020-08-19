@@ -19,6 +19,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.util.IItemProvider;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -99,7 +100,7 @@ public final class UnusedAssets {
 	public void clientSetup(FMLClientSetupEvent e) {
 		
 		UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
-//		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.dungeons, dimensionRenderInfo);
+		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
 //		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
 	}
 	
