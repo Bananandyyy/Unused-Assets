@@ -19,6 +19,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.util.IItemProvider;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -103,12 +104,12 @@ public final class UnusedAssets {
 //		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
 	}
 	
-	public static INamedTag<Block> PISTON_BEHAVIOR_NORMAL = BlockTags.makeWrapperTag("unusedassets:piston_behavior_normal");
-	public static INamedTag<Block> PISTON_BEHAVIOR_DESTROY = BlockTags.makeWrapperTag("unusedassets:piston_behavior_destroy");
-	public static INamedTag<Block> PISTON_BEHAVIOR_BLOCK = BlockTags.makeWrapperTag("unusedassets:piston_behavior_block");
-	public static INamedTag<Block> PISTON_BEHAVIOR_PUSH_ONLY = BlockTags.makeWrapperTag("unusedassets:piston_behavior_push_only");
-	public static INamedTag<Block> STICKY_BLOCKS = BlockTags.makeWrapperTag("unusedassets:sticky_blocks");
-	public static INamedTag<EntityType<?>> ENTITY_PISTON_BEHAVIOR_NORMAL = EntityTypeTags.func_232896_a_("unusedassets:piston_behavior_normal");
-	public static INamedTag<EntityType<?>> PISTON_BEHAVIOR_IGNORE = EntityTypeTags.func_232896_a_("unusedassets:piston_behavior_ignore");
+	public static INamedTag<Block> PISTON_BEHAVIOR_NORMAL = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_normal").toString());
+	public static INamedTag<Block> PISTON_BEHAVIOR_DESTROY = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_destroy").toString());
+	public static INamedTag<Block> PISTON_BEHAVIOR_BLOCK = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_block").toString());
+	public static INamedTag<Block> PISTON_BEHAVIOR_PUSH_ONLY = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_push_only").toString());
+	public static INamedTag<Block> STICKY_BLOCKS = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "sticky_blocks").toString());
+	public static INamedTag<EntityType<?>> ENTITY_PISTON_BEHAVIOR_NORMAL = EntityTypeTags.func_232896_a_(new ResourceLocation("unusedassets", "piston_behavior_normal").toString());
+	public static INamedTag<EntityType<?>> PISTON_BEHAVIOR_IGNORE = EntityTypeTags.func_232896_a_(new ResourceLocation("unusedassets", "piston_behavior_ignore").toString());
 	
 }
