@@ -1,4 +1,4 @@
-# Unused Assets PREBUILD-1
+# Unused Assets PREBUILDS
 
 *by Gizmo*
 
@@ -8,7 +8,6 @@ Welcome to *Unused Assets*! This is a mod idea by me to add things that were scr
 
 If you would like to help me out, I would be overjoyed. Whether it's something as simple as suggesting a feature to something as complex as writing code or optimizing my work, I would really appreciate any help I can get. Keep in mind though, **ALL SUGGESTIONS NEED TO STAY ON TOPIC.** If what you are suggesting was a considered feature in minecraft(any version of the game), then by all means, let me know. Otherwise, please don't ask me to add something that was never considered to be in the game. 
 
-I will be keeping a list of everything I want to add or is in the process of being added very soon. Here is a list of everything (I think): 
-https://gist.github.com/GizmoTheMoonPig/38ddaa15f6b4fc811125a95f77f5e123
+There is a TODO list that will constantly be updated on the main page here. Just go to the *projects* tab and the list is there! I have the ability to add issues or PR to the TODO list, so please let me know if things need to done!
 
 I appreciate you checking out my mod. It means the world to me if you consider giving it a shot. Love you all <3
