@@ -19,7 +19,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
 
-@Mixin(VillagerEntity.class)
+//@Mixin(VillagerEntity.class)
 public abstract class MixinVillagerEntity extends Entity {
 
 	private static final DataParameter<VillagerData> VILLAGER_DATA = EntityDataManager.createKey(VillagerEntity.class,
@@ -29,7 +29,7 @@ public abstract class MixinVillagerEntity extends Entity {
 		super(entityTypeIn, worldIn);
 	}
 
-	@Inject(method = "Lnet/minecraft/entity/merchant/villager/VillagerEntity;initBrain(Lnet/minecraft/entity/ai/brain/Brain;)", at = @At("HEAD"))
+	/*@Inject(method = "Lnet/minecraft/entity/merchant/villager/VillagerEntity;initBrain(Lnet/minecraft/entity/ai/brain/Brain;)", at = @At("HEAD"))
 	private void initBrain(Brain<VillagerEntity> villagerBrain, CallbackInfo ci) {
 		VillagerProfession villagerprofession = this.getVillagerData().getProfession();
 		villagerBrain.registerActivity(OtherActivity.STRANGE_PANIC, ExtraVillagerTasks.strangepanic(villagerprofession, 0.5F));
@@ -37,5 +37,5 @@ public abstract class MixinVillagerEntity extends Entity {
 	
 	public VillagerData getVillagerData() {
 	      return this.dataManager.get(VILLAGER_DATA);
-	   }
+	   }*/
 }

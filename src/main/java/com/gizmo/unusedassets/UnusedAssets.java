@@ -10,16 +10,10 @@ import com.gizmo.unusedassets.init.UnusedItems;
 import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.world.DimensionRenderInfo;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
