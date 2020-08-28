@@ -84,8 +84,8 @@ repositories{
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.2-33.0.5'
     compile 'org.spongepowered:mixin:0.8'
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-40:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-40")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-42:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16-42")
     implementation fg.deobf('software.bernie.geckolib:forge-1.16.2-geckolib:2.1.0')
 }
 

@@ -39,5 +39,19 @@ A work-in-progress mod that adds all blocks, items, entites, and such to the gam
     versionRange="[1.16.2]"
     ordering="NONE"
     side="BOTH"
+    
+[[dependencies.unusedassets]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[2.1.0]"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.unusedassets]]
+    modId="patchouli"
+    mandatory=true
+    versionRange="[1.16-4,]"
+    ordering="NONE"
+    side="BOTH"
 
 	
