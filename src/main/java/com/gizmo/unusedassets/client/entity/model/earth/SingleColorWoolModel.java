@@ -5,7 +5,7 @@ import com.gizmo.unusedassets.entity.earth.SingleColoredSheepEntity;
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
-public class SingleColorWoolModel <T extends SingleColoredSheepEntity> extends QuadrupedModel<T> {
+public class SingleColorWoolModel <T extends SingleColoredSheepEntity<?>> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public SingleColorWoolModel() {

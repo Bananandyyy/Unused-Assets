@@ -12,6 +12,6 @@ public abstract class AbstractModVillagerEntity extends AgeableEntity {
 	}
 	
 	 protected void registerGoals() {
-//		 this.goalSelector.addGoal(0, new AvoidEntityGoal<>(this, ZombieEntity.class, 6.0D, 1.0D, 1.2D));
+//		 this.goalSelector.addGoal(0, new AvoidEntityGoal(this, ZombieEntity.class, 6.0D, 1.0D, 1.2D));
 	 }
 }

@@ -144,6 +144,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
 		return this.rand.nextInt(20) + 10;
 	}
 
+	@SuppressWarnings("unchecked")
 	public EntityType<? extends TropicalSlimeEntity> getType() {
 		return (EntityType<? extends TropicalSlimeEntity>) super.getType();
 	}

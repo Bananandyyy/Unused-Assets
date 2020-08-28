@@ -1,6 +1,5 @@
 package com.gizmo.unusedassets.blocks;
 
-import net.minecraft.block.BarrierBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +14,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class LightBlock extends BarrierBlock {
+public class LightBlock extends Block {
 
 	public static final IntegerProperty LIGHT = IntegerProperty.create("light", 0, 15);
 
@@ -38,7 +37,8 @@ public class LightBlock extends BarrierBlock {
 	        return ActionResultType.SUCCESS;
 	    }
 		
-	    public int getLuminance(BlockState state) {
+
+	    public int getLightValue(BlockState state) {
 	        return state.get(LIGHT);
 	    }
 		

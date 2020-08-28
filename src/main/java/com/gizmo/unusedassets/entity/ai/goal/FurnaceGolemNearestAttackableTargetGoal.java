@@ -12,7 +12,8 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 public final class FurnaceGolemNearestAttackableTargetGoal extends NearestAttackableTargetGoal<LivingEntity> {
     FurnaceGolemEntity golem;
 
-    public FurnaceGolemNearestAttackableTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public FurnaceGolemNearestAttackableTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
         super(entity, targetClassIn, targetChanceIn, checkSight, nearbyOnlyIn, targetPredicate);
         this.golem = entity;
     }
