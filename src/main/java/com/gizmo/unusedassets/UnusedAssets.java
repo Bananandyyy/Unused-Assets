@@ -103,13 +103,4 @@ public final class UnusedAssets {
 		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
 //		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
 	}
-	
-	public static INamedTag<Block> PISTON_BEHAVIOR_NORMAL = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_normal").toString());
-	public static INamedTag<Block> PISTON_BEHAVIOR_DESTROY = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_destroy").toString());
-	public static INamedTag<Block> PISTON_BEHAVIOR_BLOCK = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_block").toString());
-	public static INamedTag<Block> PISTON_BEHAVIOR_PUSH_ONLY = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "piston_behavior_push_only").toString());
-	public static INamedTag<Block> STICKY_BLOCKS = BlockTags.makeWrapperTag(new ResourceLocation("unusedassets", "sticky_blocks").toString());
-	public static INamedTag<EntityType<?>> ENTITY_PISTON_BEHAVIOR_NORMAL = EntityTypeTags.func_232896_a_(new ResourceLocation("unusedassets", "piston_behavior_normal").toString());
-	public static INamedTag<EntityType<?>> PISTON_BEHAVIOR_IGNORE = EntityTypeTags.func_232896_a_(new ResourceLocation("unusedassets", "piston_behavior_ignore").toString());
-	
 }

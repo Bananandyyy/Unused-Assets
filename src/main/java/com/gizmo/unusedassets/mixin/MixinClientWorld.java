@@ -25,8 +25,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
-@Mixin(ClientWorld.class)
-public abstract class MixinClientWorld extends World {
+//@Mixin(ClientWorld.class)
+public class MixinClientWorld { /*extends World {
 
 	@Shadow
 	@Final
@@ -35,8 +35,7 @@ public abstract class MixinClientWorld extends World {
 	 public MixinClientWorld(ClientPlayNetHandler p_i242067_1_, ClientWorld.ClientWorldInfo p_i242067_2_, RegistryKey<World> p_i242067_3_, DimensionType p_i242067_4_, int p_i242067_5_, Supplier<IProfiler> p_i242067_6_, WorldRenderer p_i242067_7_, boolean p_i242067_8_, long p_i242067_9_) {
 	      super(p_i242067_2_, p_i242067_3_, p_i242067_4_, p_i242067_6_, true, p_i242067_8_, p_i242067_9_);
 	 }
-	
-	@SuppressWarnings("unlikely-arg-type")
+	 
 	@Inject(method = "animateTick(Ljava/util/random;Lnet/minecraft/util/math/BlockPos/Mutable)", at = @At("RETURN"))
     private void animateTick(int x, int y, int z, int offset, Random random, boolean spawnBarrierParticles, BlockPos.Mutable pos, CallbackInfo ci) {
         int i = x + this.rand.nextInt(offset) - this.rand.nextInt(offset);
@@ -46,7 +45,7 @@ public abstract class MixinClientWorld extends World {
         BlockState blockState = this.getBlockState(pos);
         assert this.mc.player != null;
         //TODO: what is this function?
-/*        this.mc.player.func_230297_ef_().forEach(itemStack -> {
+        this.mc.player.func_230297_ef_().forEach(itemStack -> {
             if (itemStack.equals(BedrockBlocks.LIGHT_0.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_1.asItem()) ||
                 itemStack.equals(BedrockBlocks.LIGHT_2.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_3.asItem()) ||
                 itemStack.equals(BedrockBlocks.LIGHT_4.asItem()) || itemStack.equals(BedrockBlocks.LIGHT_5.asItem()) ||
@@ -116,7 +115,8 @@ public abstract class MixinClientWorld extends World {
                 }
             }
         });*/
-    }
-	
+
 }
+
+
 
