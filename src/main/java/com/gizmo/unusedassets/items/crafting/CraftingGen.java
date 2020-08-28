@@ -3,6 +3,7 @@ package com.gizmo.unusedassets.items.crafting;
 import java.util.function.Consumer;
 
 import com.gizmo.unusedassets.init.UnusedItems;
+import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
@@ -70,6 +71,25 @@ public class CraftingGen extends RecipeProvider {
 		.addIngredient(Ingredient.fromItems(Items.GREEN_DYE))
 		.addIngredient(Ingredient.fromItems(Items.LIGHT_GRAY_DYE))
 		.addIngredient(Ingredient.fromItems(Items.WHITE_DYE))
+		.build(consumer);
+		
+		ShapelessRecipeBuilder.shapelessRecipe(UnusedItems.ROSE_DYE)
+		.addIngredient(Ingredient.fromItems(Items.RED_DYE))
+		.addIngredient(Ingredient.fromItems(Items.LIGHT_GRAY_DYE))
+		.build(consumer);
+		
+		ShapelessRecipeBuilder.shapelessRecipe(UnusedItems.ROSE_DYE)
+		.addIngredient(Ingredient.fromItems(UnusedBlocks.ROSE))
+		.build(consumer);
+		
+		ShapelessRecipeBuilder.shapelessRecipe(UnusedItems.SPRING_GREEN_DYE)
+		.addIngredient(Ingredient.fromItems(Items.GREEN_DYE))
+		.addIngredient(Ingredient.fromItems(Items.LIGHT_GRAY_DYE))
+		.build(consumer);
+		
+		ShapelessRecipeBuilder.shapelessRecipe(UnusedItems.ULTRAMARINE_DYE)
+		.addIngredient(Ingredient.fromItems(Items.CYAN_DYE))
+		.addIngredient(Ingredient.fromItems(Items.GRAY_DYE))
 		.build(consumer);
 	}
 
