@@ -24,7 +24,8 @@ public class ReducerRecipe implements IReducerRecipe {
 	private final ItemStack output8;
 	private final ItemStack output9;
 	
-	public ReducerRecipe(ResourceLocation id, Ingredient input, ItemStack output1, ItemStack output2, ItemStack output3, ItemStack output4, ItemStack output5, ItemStack output6, ItemStack output7, ItemStack output8, ItemStack output9) {
+	public ReducerRecipe(ResourceLocation id, Ingredient input, ItemStack output1, ItemStack output2, ItemStack output3, ItemStack output4, 
+			ItemStack output5, ItemStack output6, ItemStack output7, ItemStack output8, ItemStack output9) {
 		this.id = id;
 		this.input = input; 
 		this.output1 = output1; this.output2 = output2; this.output3 = output3; this.output4 = output4;
