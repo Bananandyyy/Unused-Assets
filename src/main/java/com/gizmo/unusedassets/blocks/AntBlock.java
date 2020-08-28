@@ -1,27 +1,18 @@
 package com.gizmo.unusedassets.blocks;
 
-import java.util.List;
 import java.util.Random;
-import javax.annotation.Nullable;
-
-import com.gizmo.unusedassets.util.MinecraftColor;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalBlock;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class AntBlock extends Block {
 
@@ -36,7 +27,7 @@ public class AntBlock extends Block {
 		CW, CCW;
 	}
 
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		BlockState blockState = worldIn.getBlockState(pos.down());
 		if (blockState.getBlock() == Blocks.WHITE_CONCRETE) {
 			move(state, worldIn, pos, Step.CW);
@@ -45,7 +36,7 @@ public class AntBlock extends Block {
 		}
 	}
 
-	private void move(BlockState state, World worldIn, BlockPos pos, Step step) {
+	private void move(BlockState state, ServerWorld worldIn, BlockPos pos, Step step) {
 		Direction direction1 = state.get(FACING);
 		Direction direction2 = (step == Step.CW) ? direction1.rotateY() : direction1.rotateYCCW();
 		BlockPos pos1 = pos.offset(direction2);
@@ -83,10 +74,4 @@ public class AntBlock extends Block {
 	public BlockState rotate(BlockState state, Rotation rot) {
 		return state.with(FACING, rot.rotate((Direction) state.get(FACING)));
 	}
-
-	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(new StringTextComponent(MinecraftColor.GREEN.getChatColor() + "Block from the April Fools Update 20w14∞"));
-	}
-
 }

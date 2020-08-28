@@ -9,8 +9,6 @@ import com.gizmo.unusedassets.items.ModDyeItem;
 import com.gizmo.unusedassets.items.PurpleArrowItem;
 import com.gizmo.unusedassets.items.RealityVisionItem;
 import com.gizmo.unusedassets.items.SmarterWatchItem;
-import com.gizmo.unusedassets.items.genericitems.AprilFools2019Item;
-import com.gizmo.unusedassets.items.genericitems.AprilFools2020Item;
 import com.gizmo.unusedassets.util.ModArmorMaterial;
 import com.gizmo.unusedassets.util.ModDyeColor;
 import java.util.ArrayList;
@@ -35,12 +33,12 @@ public class UnusedItems {
 	private static final ArrayList<Item> ITEMS = new ArrayList<>();
 
 	//April Fools!
-	public static final Item THREE_DIMENSIONAL = register("3d", new AprilFools2019Item((new Item.Properties()).group(UnusedAssets.java)));
-	public static final Item RED_KEY = register("red_key", new AprilFools2019Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
-	public static final Item YELLOW_KEY = register("yellow_key", new AprilFools2019Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
-	public static final Item BLUE_KEY = register("blue_key", new AprilFools2019Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
-	public static final Item FINE_ITEM = register("fine_item", new AprilFools2020Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
-	public static final Item FOOTPRINT = register("footprint", new AprilFools2020Item((new Item.Properties()).group(UnusedAssets.java)));
+	public static final Item THREE_DIMENSIONAL = register("3d", new Item((new Item.Properties()).group(UnusedAssets.java)));
+	public static final Item RED_KEY = register("red_key", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item YELLOW_KEY = register("yellow_key", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item BLUE_KEY = register("blue_key", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item FINE_ITEM = register("fine_item", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item FOOTPRINT = register("footprint", new Item((new Item.Properties()).group(UnusedAssets.java)));
 	public static final Item ANKLE_MONITOR = register("ankle_monitor", new AnkleMonitorItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item SMARTER_WATCH = register("smarter_watch", new SmarterWatchItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item REALITY_VISION = register("reality_vision", new RealityVisionItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));

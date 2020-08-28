@@ -1,6 +1,7 @@
 package com.gizmo.unusedassets.blocks;
 
 import java.util.Random;
+
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

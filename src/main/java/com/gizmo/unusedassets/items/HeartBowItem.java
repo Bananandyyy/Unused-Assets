@@ -130,5 +130,4 @@ public class HeartBowItem extends ShootableItem{
 	public int func_230305_d_() {
 		return 15;
 	}
-
 }

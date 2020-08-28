@@ -6,19 +6,21 @@ import javax.annotation.Nullable;
 
 import com.gizmo.unusedassets.entity.tileentity.GearTileEntity;
 import com.gizmo.unusedassets.state.properties.ModBlockStateProperties;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ContainerBlock;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IStringSerializable;
@@ -31,11 +33,11 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class GearWireBlock extends ContainerBlock {
+public class GearWireBlock extends ContainerBlock implements IWaterLoggable {
 	
 	public static final IntegerProperty GEARPOWER = ModBlockStateProperties.GEARPOWER;
 	  
-	//public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	  
 	public static enum GearStates implements IStringSerializable {
 		NONE, GEAR;
@@ -203,7 +205,7 @@ public class GearWireBlock extends ContainerBlock {
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		for (EnumFaces enumFace : EnumFaces.values())
 			builder.add(enumFace.face);
-		builder.add(GEARPOWER);
+		builder.add(GEARPOWER, WATERLOGGED);
 
 	}
 

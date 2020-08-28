@@ -13,15 +13,14 @@ public class HeartArrowItem extends Item {
 	public HeartArrowItem(Item.Properties properties) {
 		super(properties);
 	}
-	
-	public HeartArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
-	    HeartArrowEntity arrow = new HeartArrowEntity(worldIn, shooter);
-	    return arrow;
-	  }
-	
-	public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
-	      int enchant = net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bow);
-	      return enchant <= 0 ? false : this.getClass() == HeartArrowItem.class;
-	   }
 
+	public HeartArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
+		HeartArrowEntity arrow = new HeartArrowEntity(worldIn, shooter);
+		return arrow;
+	}
+
+	public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
+		int enchant = net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bow);
+		return enchant <= 0 ? false : this.getClass() == HeartArrowItem.class;
+	}
 }
