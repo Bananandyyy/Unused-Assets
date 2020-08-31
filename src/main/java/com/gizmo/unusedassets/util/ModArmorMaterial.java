@@ -1,20 +1,26 @@
 package com.gizmo.unusedassets.util;
 
 import java.util.function.Supplier;
+
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.util.LazyValue;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.util.SoundEvents;
+import net.minecraft.item.Items;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.IItemProvider;
 
 public enum ModArmorMaterial implements IArmorMaterial {
 	STUDDED("unusedassets:studded", 10, new int[] { 2, 5, 6, 2 }, 17, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F,
-			() -> Ingredient.fromItems(new IItemProvider[] { (IItemProvider) Items.IRON_INGOT }));
+			() -> Ingredient.fromItems(new IItemProvider[] { (IItemProvider) Items.IRON_INGOT })),
+	GOGGLES("unusedassets:goggles", 10, new int[] { 1, 0, 0, 0 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F,
+			() -> Ingredient.fromItems(new IItemProvider[] { (IItemProvider) Blocks.AIR })),
+	MONITOR("unusedassets:goggles", 10, new int[] { 0, 0, 0, 1 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F,
+			() -> Ingredient.fromItems(new IItemProvider[] { (IItemProvider) Blocks.AIR }));
 
 	private static final int[] MAX_DAMAGE_ARRAY;
 	private final String name;
@@ -73,4 +79,5 @@ public enum ModArmorMaterial implements IArmorMaterial {
 	public float getKnockbackResistance() {
 		return 0;
 	}
+
 }
