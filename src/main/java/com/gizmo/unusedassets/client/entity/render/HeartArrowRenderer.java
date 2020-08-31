@@ -1,6 +1,6 @@
 package com.gizmo.unusedassets.client.entity.render;
 
-import com.gizmo.unusedassets.entity.HeartArrowEntity;
+import com.gizmo.unusedassets.entity.projectile.HeartArrowEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 

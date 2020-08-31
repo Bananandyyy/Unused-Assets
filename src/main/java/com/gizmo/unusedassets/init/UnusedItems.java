@@ -105,7 +105,7 @@ public class UnusedItems {
 	public static final Item LIGHT_BLOCK_TWEAKER = register("light_block_tweaker", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
 	
 	//anddddd now education time!
-	public static final Item AGENT_EGG = register("agent_egg", new SpawnEggItem(UnusedEntities.AGENT, 0x00ffffff, 0x00ffffff, (new Item.Properties().group(UnusedAssets.education))));
+	public static final Item AGENT_EGG = register("agent_egg", new SpawnEggItem(UnusedEntities.AGENT, 8816262, 0x00ffffff, (new Item.Properties().group(UnusedAssets.education))));
 	public static final Item ANTIDOTE = register("antidote", new Item((new Item.Properties()).group(UnusedAssets.education)));
 	public static final Item BOARD = register("board", new Item((new Item.Properties()).maxStackSize(16).group(UnusedAssets.education)));
 	public static final Item BLEACH = register("bleach", new Item((new Item.Properties()).group(UnusedAssets.education)));

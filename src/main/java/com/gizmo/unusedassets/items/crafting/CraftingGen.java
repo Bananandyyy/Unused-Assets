@@ -20,6 +20,11 @@ public class CraftingGen extends RecipeProvider {
 		super(generatorIn);
 	}
 	
+	@Override
+	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+		javaRecipes(consumer);
+	}
+	
 	private void javaRecipes(Consumer<IFinishedRecipe> consumer) {
 		//new vanilla recipes
 		ShapedRecipeBuilder.shapedRecipe(Items.IRON_HORSE_ARMOR)
