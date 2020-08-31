@@ -3,11 +3,14 @@ package com.gizmo.unusedassets.entity.earth;
 import java.util.EnumSet;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.gizmo.unusedassets.entity.ai.controller.MelonGolemMovementController;
 import com.gizmo.unusedassets.entity.ai.goal.MelonGolemHopGoal;
 import com.gizmo.unusedassets.entity.ai.goal.MelonGolemRangedAttackGoal;
+import com.gizmo.unusedassets.entity.projectile.MelonSeedProjectileEntity;
+import com.gizmo.unusedassets.init.blocks.EarthBlocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -28,17 +31,24 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IForgeShearable;
 
 public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, IForgeShearable {
@@ -59,7 +69,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 	protected void registerGoals() {
 		this.goalSelector.addGoal(1, new MelonGolemRangedAttackGoal(this, 1.25D, 20, 10.0F));
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
-        this.goalSelector.addGoal(2, new MelonGolemEntity.FaceRandomGoal(this));
+		this.goalSelector.addGoal(2, new MelonGolemEntity.FaceRandomGoal(this));
 		this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
 		this.goalSelector.addGoal(5, new MelonGolemHopGoal(this));
@@ -80,15 +90,22 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 
 	public void writeAdditional(CompoundNBT compound) {
 		super.writeAdditional(compound);
-		compound.putBoolean("Pumpkin", this.isMelonEquipped());
+		compound.putBoolean("Melon", this.isMelonEquipped());
 	}
 
 	public void readAdditional(CompoundNBT compound) {
 		super.readAdditional(compound);
-		if (compound.contains("Pumpkin")) {
-			this.setMelonEquipped(compound.getBoolean("Pumpkin"));
+		if (compound.contains("Melon")) {
+			this.setMelonEquipped(compound.getBoolean("Melon"));
 		}
+	}
 
+	public int getJumpDelay() {
+		return this.rand.nextInt(20) + 10;
+	}
+
+	public boolean isWaterSensitive() {
+		return true;
 	}
 
 	public void livingTick() {
@@ -97,16 +114,16 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 			int i = MathHelper.floor(this.getPosX());
 			int j = MathHelper.floor(this.getPosY());
 			int k = MathHelper.floor(this.getPosZ());
-			if (this.isInWaterRainOrBubbleColumn()) {
-				this.attackEntityFrom(DamageSource.DROWN, 1.0F);
-			}
 			if (this.world.getBiome(new BlockPos(i, 0, k)).getTemperature(new BlockPos(i, j, k)) > 1.0F) {
 				this.attackEntityFrom(DamageSource.ON_FIRE, 1.0F);
 			}
+
 			if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this)) {
 				return;
 			}
+
 			BlockState blockstate = Blocks.SNOW.getDefaultState();
+
 			for (int l = 0; l < 4; ++l) {
 				i = MathHelper.floor(this.getPosX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
 				j = MathHelper.floor(this.getPosY());
@@ -147,19 +164,50 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 
 	public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
 		this.setShootingTicks();
-//		MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
+		MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
 		double d0 = target.getPosYEye() - (double) 1.1F;
 		double d1 = target.getPosX() - this.getPosX();
-//		double d2 = d0 - melonSeedEntity.getPosY();
+		double d2 = d0 - melonSeedEntity.getPosY();
 		double d3 = target.getPosZ() - this.getPosZ();
 		float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
-//		melonSeedEntity.shoot(d1, d2 + (double) f, d3, 1.6F, 12.0F);
-		this.playSound(SoundEvents.ENTITY_SNOW_GOLEM_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-//		this.world.addEntity(melonSeedEntity);
+		melonSeedEntity.shoot(d1, d2 + (double) f, d3, 1.6F, 12.0F);
+		this.playSound(SoundEvents.ENTITY_SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+		this.world.addEntity(melonSeedEntity);
 	}
 
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
 		return 1.7F;
+	}
+
+	@SuppressWarnings("unused")
+	protected ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
+		ItemStack itemstack = p_230254_1_.getHeldItem(p_230254_2_);
+		if (false && itemstack.getItem() == Items.SHEARS && this.isShearable()) {
+			this.shear(SoundCategory.PLAYERS);
+			if (!this.world.isRemote) {
+				itemstack.damageItem(1, p_230254_1_, (p_213622_1_) -> {
+					p_213622_1_.sendBreakAnimation(p_230254_2_);
+				});
+			}
+
+			return ActionResultType.func_233537_a_(this.world.isRemote);
+		} else {
+			return ActionResultType.PASS;
+		}
+	}
+
+	public void shear(SoundCategory category) {
+		this.world.playMovingSound((PlayerEntity) null, this, SoundEvents.ENTITY_SNOW_GOLEM_SHEAR, category, 1.0F,
+				1.0F);
+		if (!this.world.isRemote()) {
+			this.setMelonEquipped(false);
+			this.entityDropItem(new ItemStack(EarthBlocks.CARVED_MELON), 1.7F);
+		}
+
+	}
+
+	public boolean isShearable() {
+		return this.isAlive() && this.isMelonEquipped();
 	}
 
 	public boolean isMelonEquipped() {
@@ -173,6 +221,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 		} else {
 			this.dataManager.set(MELON_EQUIPPED, (byte) (b0 & -17));
 		}
+
 	}
 
 	@Nullable
@@ -190,18 +239,27 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 		return SoundEvents.ENTITY_SNOW_GOLEM_DEATH;
 	}
 
-	public int getJumpDelay() {
-		return this.rand.nextInt(20) + 10;
+	@OnlyIn(Dist.CLIENT)
+	public Vector3d func_241205_ce_() {
+		return new Vector3d(0.0D, (double) (0.75F * this.getEyeHeight()), (double) (this.getWidth() * 0.4F));
 	}
 
-	public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
-		return this.isMelonEquipped();
+	@Override
+	public boolean isShearable(@Nonnull ItemStack item, World world, BlockPos pos) {
+		return isShearable();
 	}
 
-	public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos,
-			int fortune) {
-		this.setMelonEquipped(false);
-		return new java.util.ArrayList<>();
+	@Nonnull
+	@Override
+	public java.util.List<ItemStack> onSheared(@Nullable PlayerEntity player, @Nonnull ItemStack item, World world,
+			BlockPos pos, int fortune) {
+		world.playMovingSound(null, this, SoundEvents.ENTITY_SNOW_GOLEM_SHEAR,
+				player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
+		if (!world.isRemote()) {
+			setMelonEquipped(false);
+			return java.util.Collections.singletonList(new ItemStack(EarthBlocks.CARVED_MELON));
+		}
+		return java.util.Collections.emptyList();
 	}
 
 	static class FaceRandomGoal extends Goal {
@@ -217,8 +275,8 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 		public boolean shouldExecute() {
 			return this.melonGolem.getAttackTarget() == null
 					&& (this.melonGolem.onGround || this.melonGolem.isInWater() || this.melonGolem.isInLava()
-							|| this.melonGolem.isPotionActive(Effects.LEVITATION));
-//					&& this.melonGolem.getMoveHelper() instanceof MelonGolemMovementController;
+							|| this.melonGolem.isPotionActive(Effects.LEVITATION))
+					&& this.melonGolem.getMoveHelper() instanceof MelonGolemMovementController;
 		}
 
 		public void tick() {
@@ -226,7 +284,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 				this.nextRandomizeTime = 40 + this.melonGolem.getRNG().nextInt(60);
 				this.chosenDegrees = (float) this.melonGolem.getRNG().nextInt(360);
 			}
-//			((MelonGolemMovementController) this.melonGolem.getMoveHelper()).setDirection(this.chosenDegrees, false);
+			((MelonGolemMovementController) this.melonGolem.getMoveHelper()).setDirection(this.chosenDegrees, false);
 		}
 	}
 }
