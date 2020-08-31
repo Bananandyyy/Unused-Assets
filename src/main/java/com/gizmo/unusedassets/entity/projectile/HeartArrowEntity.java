@@ -1,4 +1,4 @@
-package com.gizmo.unusedassets.entity;
+package com.gizmo.unusedassets.entity.projectile;
 
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedItems;

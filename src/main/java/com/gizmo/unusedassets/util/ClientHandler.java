@@ -12,9 +12,12 @@ import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
 import com.gizmo.unusedassets.init.blocks.EarthBlocks;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
 import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,7 +39,9 @@ public class ClientHandler {
 		ScreenManager.registerFactory(UnusedContainers.MATERIAL_REDUCER, ReducerScreen::new);
 		ScreenManager.registerFactory(UnusedContainers.LAB_TABLE, TableScreen::new);
 		
-		
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.MELON_SEED_PROJECTILE, renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.BONE_SHARD, renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FISH, FishRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.PURPLE_ARROW, PurpleArrowRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HEART_ARROW, HeartArrowRenderer::new);

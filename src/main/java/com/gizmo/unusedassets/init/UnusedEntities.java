@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import com.gizmo.unusedassets.entity.AgentEntity;
 import com.gizmo.unusedassets.entity.FishEntity;
 import com.gizmo.unusedassets.entity.HappyCreeperEntity;
-import com.gizmo.unusedassets.entity.HeartArrowEntity;
 import com.gizmo.unusedassets.entity.HoodVillagerEntity;
 import com.gizmo.unusedassets.entity.LoveGolemEntity;
-import com.gizmo.unusedassets.entity.PurpleArrowEntity;
 import com.gizmo.unusedassets.entity.SteveVillagerEntity;
 import com.gizmo.unusedassets.entity.dungeons.NamelessEntity;
 import com.gizmo.unusedassets.entity.earth.AlbinoCowEntity;
@@ -42,6 +40,10 @@ import com.gizmo.unusedassets.entity.earth.TropicalSlimeEntity;
 import com.gizmo.unusedassets.entity.earth.VestedRabbitEntity;
 import com.gizmo.unusedassets.entity.earth.WoolyCowEntity;
 import com.gizmo.unusedassets.entity.earth.base.SheepBase;
+import com.gizmo.unusedassets.entity.projectile.BoneShardProjectileEntity;
+import com.gizmo.unusedassets.entity.projectile.HeartArrowEntity;
+import com.gizmo.unusedassets.entity.projectile.MelonSeedProjectileEntity;
+import com.gizmo.unusedassets.entity.projectile.PurpleArrowEntity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -101,6 +103,10 @@ public class UnusedEntities {
 	public static final EntityType<VestedRabbitEntity> VESTED_RABBIT = register(new ResourceLocation("unusedassets", "vested_rabbit"), EntityType.Builder.create(VestedRabbitEntity::new, EntityClassification.CREATURE).size(EntityType.RABBIT.getWidth(), EntityType.PIG.getHeight()));
 	public static final EntityType<WoolyCowEntity> WOOLY_COW = register(new ResourceLocation("unusedassets", "wooly_cow"), EntityType.Builder.create(WoolyCowEntity::new, EntityClassification.CREATURE).size(EntityType.COW.getWidth(), EntityType.COW.getHeight()));
 			
+	public static final EntityType<BoneShardProjectileEntity> BONE_SHARD = register(new ResourceLocation("unusedassets", "bone_shard"), EntityType.Builder.<BoneShardProjectileEntity>create(BoneShardProjectileEntity::new, EntityClassification.MISC).size(0.25F, 0.25F));
+	public static final EntityType<MelonSeedProjectileEntity> MELON_SEED_PROJECTILE = register(new ResourceLocation("unusedassets", "melon_seed_projectile"), EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, EntityClassification.MISC).size(0.25F, 0.25F));
+
+	
 	public static void entityAttributes() {
 		GlobalEntityTypeAttributes.put(AGENT, AgentEntity.registerAttributes().create());
 		GlobalEntityTypeAttributes.put(ALBINO_COW, AlbinoCowEntity.registerAttributes().create());

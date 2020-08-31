@@ -1,6 +1,6 @@
 package com.gizmo.unusedassets.items;
 
-import com.gizmo.unusedassets.entity.PurpleArrowEntity;
+import com.gizmo.unusedassets.entity.projectile.PurpleArrowEntity;
 
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;

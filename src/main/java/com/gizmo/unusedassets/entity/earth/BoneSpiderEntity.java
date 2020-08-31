@@ -3,6 +3,7 @@ package com.gizmo.unusedassets.entity.earth;
 import java.util.EnumSet;
 
 import com.gizmo.unusedassets.entity.earth.base.SpiderBase;
+import com.gizmo.unusedassets.entity.projectile.BoneShardProjectileEntity;
 
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
@@ -56,15 +57,15 @@ public class BoneSpiderEntity extends SpiderBase<BoneSpiderEntity> implements IR
 
     @Override
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
-//        BoneShardEntity boneShard = new BoneShardEntity(this.world, this);
+        BoneShardProjectileEntity boneShard = new BoneShardProjectileEntity(this.world, this);
         double d0 = target.getPosYEye() - (double) 1.1F;
         double d1 = target.getPosX() - this.getPosX();
- //       double d2 = d0 - boneShard.getPosY();
+        double d2 = d0 - boneShard.getPosY();
         double d3 = target.getPosZ() - this.getPosZ();
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
-//        boneShard.shoot(d1, d2 + (double) f, d3, 1.6F, 8.0F);
+        boneShard.shoot(d1, d2 + (double) f, d3, 1.6F, 8.0F);
         this.playSound(SoundEvents.ITEM_CROSSBOW_SHOOT, 1.0F, 1.2F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-//        this.world.addEntity(boneShard);
+        this.world.addEntity(boneShard);
     }
 
     static class AttackGoal extends MeleeAttackGoal {

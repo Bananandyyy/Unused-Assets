@@ -1,14 +1,7 @@
 package com.gizmo.unusedassets.init;
 
 import com.gizmo.unusedassets.UnusedAssets;
-import com.gizmo.unusedassets.items.AnkleMonitorItem;
-import com.gizmo.unusedassets.items.DudPotionItem;
-import com.gizmo.unusedassets.items.HeartArrowItem;
-import com.gizmo.unusedassets.items.HeartBowItem;
-import com.gizmo.unusedassets.items.ModDyeItem;
-import com.gizmo.unusedassets.items.PurpleArrowItem;
-import com.gizmo.unusedassets.items.RealityVisionItem;
-import com.gizmo.unusedassets.items.SmarterWatchItem;
+import com.gizmo.unusedassets.items.*;
 import com.gizmo.unusedassets.util.ModArmorMaterial;
 import com.gizmo.unusedassets.util.ModDyeColor;
 import java.util.ArrayList;
@@ -39,9 +32,9 @@ public class UnusedItems {
 	public static final Item BLUE_KEY = register("blue_key", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item FINE_ITEM = register("fine_item", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item FOOTPRINT = register("footprint", new Item((new Item.Properties()).group(UnusedAssets.java)));
-	public static final Item ANKLE_MONITOR = register("ankle_monitor", new AnkleMonitorItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item ANKLE_MONITOR = register("ankle_monitor", new ArmorItem((IArmorMaterial) ModArmorMaterial.MONITOR, EquipmentSlotType.FEET, (new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item SMARTER_WATCH = register("smarter_watch", new SmarterWatchItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
-	public static final Item REALITY_VISION = register("reality_vision", new RealityVisionItem((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
+	public static final Item REALITY_VISION = register("reality_vision", new ArmorItem((IArmorMaterial) ModArmorMaterial.GOGGLES, EquipmentSlotType.HEAD,(new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item BUCKET_OF_CHEESE = register("bucket_of_cheese", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item HEART_BOW = register("heart_bow", new HeartBowItem((new Item.Properties()).maxDamage(0).maxStackSize(1).group(UnusedAssets.java)));
 	public static final Item HEART_ARROW = register("heart_arrow", new HeartArrowItem((new Item.Properties()).group(UnusedAssets.java)));
@@ -112,7 +105,7 @@ public class UnusedItems {
 	public static final Item LIGHT_BLOCK_TWEAKER = register("light_block_tweaker", new Item((new Item.Properties()).group(UnusedAssets.bedrock)));
 	
 	//anddddd now education time!
-	public static final Item AGENT_EGG = register("agent_egg", new SpawnEggItem(UnusedEntities.AGENT, 0000000, 0000000, (new Item.Properties().group(UnusedAssets.education))));
+	public static final Item AGENT_EGG = register("agent_egg", new SpawnEggItem(UnusedEntities.AGENT, 0x00ffffff, 0x00ffffff, (new Item.Properties().group(UnusedAssets.education))));
 	public static final Item ANTIDOTE = register("antidote", new Item((new Item.Properties()).group(UnusedAssets.education)));
 	public static final Item BOARD = register("board", new Item((new Item.Properties()).maxStackSize(16).group(UnusedAssets.education)));
 	public static final Item BLEACH = register("bleach", new Item((new Item.Properties()).group(UnusedAssets.education)));
@@ -210,7 +203,8 @@ public class UnusedItems {
 	public static final Item PURPLE_SPARKLER = register("purple_sparkler", new Item((new Item.Properties()).maxStackSize(1).group(UnusedAssets.education)));
 
 	//Minecraft Earth stuff
-	//public static final Item HORN = register("horn", new Item((new Item.Properties()).group(UnusedAssets.earth)));
+	public static final Item BONE_SHARD = register("bone_shard", new BoneShardItem((new Item.Properties()).group(UnusedAssets.earth)));
+	public static final Item HORN = register("horn", new Item((new Item.Properties()).group(UnusedAssets.earth)));
 	public static final Item MUD_BUCKET = register("mud_bucket", new BucketItem(UnusedFluids.MUD_FLUID_STILL, (new Item.Properties()).group(UnusedAssets.earth)));
 	
 	public static final Item ALBINO_COW_SPAWN_EGG = register("albino_cow_spawn_egg", new SpawnEggItem(UnusedEntities.ALBINO_COW, 0xdecac3, 0xf0a590, (new Item.Properties()).group(UnusedAssets.earth)));
