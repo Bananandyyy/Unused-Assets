@@ -5,12 +5,14 @@ import com.gizmo.unusedassets.blocks.AntBlock;
 import com.gizmo.unusedassets.blocks.GearWireBlock;
 import com.gizmo.unusedassets.blocks.LitFurnaceBlock;
 import com.gizmo.unusedassets.blocks.LockedChestBlock;
+import com.gizmo.unusedassets.blocks.ObeySignBlock;
 import com.google.common.base.Function;
 import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.WoodType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -31,6 +33,7 @@ public final class UnusedBlocks {
 	public static final Block CURSOR = register("cursor", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.8F)));
 	public static final Block LOCKED_CHEST = register("locked_chest", new LockedChestBlock(Block.Properties.from(Blocks.CHEST)));
 	public static final Block USB_CHARGER = register("usb_charger", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+	public static final Block OBEY = register("trendy_sign", new ObeySignBlock(Block.Properties.create(Material.WOOD).doesNotBlockMovement().hardnessAndResistance(1.0F).sound(SoundType.WOOD), WoodType.WARPED));
 
 	//Everything else
 	public static final Block GEAR = register("gear", (Block) new GearWireBlock(Block.Properties.from(Blocks.REDSTONE_WIRE).sound(SoundType.METAL).doesNotBlockMovement().hardnessAndResistance(0.0F)));
