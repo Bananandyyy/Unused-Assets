@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SteveVillagerRenderer extends MobRenderer<SteveVillagerEntity, SteveVillagerModel<SteveVillagerEntity>> {
   public SteveVillagerRenderer(EntityRendererManager renderManagerIn) {
-    super(renderManagerIn, new SteveVillagerModel<>(0.0F), 0.5F);
+    super(renderManagerIn, new SteveVillagerModel<SteveVillagerEntity>(), 0.5F);
     this.addLayer(new HeadLayer<>(this));
   }
   
