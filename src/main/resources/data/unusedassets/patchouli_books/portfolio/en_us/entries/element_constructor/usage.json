@@ -1,0 +1,20 @@
+{
+    "name": "Basics",
+    "icon": "unusedassets:element_constructor",
+    "category": "unusedassets:element_constructor",
+    "pages": [
+        {
+            "type": "spotlight",
+			"item": "unusedassets:element_constructor",
+			"title": "Element Constructor",
+            "text": "The Element Constructor is the first block that you will need to make in your Chemistry career. It allows you to create the base elements and as many as you want. This section will show you what each part of the GUI does and how it is used."
+        },
+		{
+			"type": "image",
+			"images": ["unusedassets:textures/gui/pages/element_constructor_gui.png"],
+			"title": "The Element Displayer",
+			"border": "true",
+			"text": "This part of the GUI shows what element is being made. In this example, Carbon is being made in the table."
+		}
+	]
+}

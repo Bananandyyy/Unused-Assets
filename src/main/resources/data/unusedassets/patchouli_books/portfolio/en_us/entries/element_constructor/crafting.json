@@ -1,0 +1,17 @@
+{
+    "name": "Crafting",
+    "icon": "unusedassets:element_constructor",
+    "category": "unusedassets:element_constructor",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The Element Constructor has a very simple recipe. All you need is a crafting table and a glass pane! $(br2)$(o)Note: the recipe can be placed in any slots in a crafting table, just as long as the glass pane is on top of the crafting table."
+        },
+        {
+			"type" : "crafting",
+			"title": "Element Constructor",
+			"recipe": "unusedassets:element_constructor",
+			"text": "Pretty simple huh? Well, things get a little more complicated from here on, so be careful!" 
+        }
+    ]
+}
