@@ -3,6 +3,7 @@ package com.gizmo.unusedassets.init;
 import java.util.ArrayList;
 
 import com.gizmo.unusedassets.entity.AgentEntity;
+import com.gizmo.unusedassets.entity.DispenserMinecartEntity;
 import com.gizmo.unusedassets.entity.FishEntity;
 import com.gizmo.unusedassets.entity.HappyCreeperEntity;
 import com.gizmo.unusedassets.entity.HoodVillagerEntity;
@@ -69,6 +70,7 @@ public class UnusedEntities {
 	public static final EntityType<AgentEntity> AGENT = register(new ResourceLocation("unusedassets", "agent"), EntityType.Builder.create(AgentEntity::new, EntityClassification.CREATURE).size(0.6F, 1.0F));
 	public static final EntityType<LoveGolemEntity> LOVE_GOLEM = register(new ResourceLocation("unusedassets", "love_golem"), EntityType.Builder.create(LoveGolemEntity::new, EntityClassification.CREATURE).size(1.4F, 2.7F));
 	public static final EntityType<HappyCreeperEntity> HAPPY_CREEPER = register(new ResourceLocation("unusedassets", "happy_creeper"), EntityType.Builder.create(HappyCreeperEntity::new, EntityClassification.CREATURE).size(0.6F, 1.7F));
+	public static final EntityType<DispenserMinecartEntity> DISPENSER_MINECART = register(new ResourceLocation("unusedassets", "dispenser_minecart"), EntityType.Builder.<DispenserMinecartEntity>create(DispenserMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).func_233606_a_(8));
 	
 	public static final EntityType<NamelessEntity> NAMELESS_ONE = register(new ResourceLocation("unusedassets", "nameless_one"), EntityType.Builder.create(NamelessEntity::new, EntityClassification.MONSTER).size(0.6F, 2.0F));
 	

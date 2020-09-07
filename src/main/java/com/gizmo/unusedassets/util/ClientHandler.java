@@ -50,6 +50,7 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.LOVE_GOLEM, LoveGolemRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HAPPY_CREEPER, HappyCreeperRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.NAMELESS_ONE, NamelessRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.DISPENSER_MINECART, ModcartRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ALBINO_COW, renderManagerIn -> new CowRenderBase(renderManagerIn, "albino_cow"));
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.AMBER_CHICKEN, renderManagerIn -> new ChickenRenderBase(renderManagerIn, "amber_chicken"));
