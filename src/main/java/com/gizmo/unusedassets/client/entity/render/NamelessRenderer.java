@@ -10,10 +10,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class NamelessRenderer extends MobRenderer<NamelessEntity, NamelessModel> {
+public class NamelessRenderer extends MobRenderer<NamelessEntity, NamelessModel<NamelessEntity>> {
 
 	public NamelessRenderer(EntityRendererManager renderManagerIn) {
-		super(renderManagerIn, new NamelessModel(), 0.5F);
+		super(renderManagerIn, new NamelessModel<>(), 0.5F);
 	}
 
 	@Override
