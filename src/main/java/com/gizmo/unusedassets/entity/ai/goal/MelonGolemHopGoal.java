@@ -20,6 +20,6 @@ public class MelonGolemHopGoal extends Goal {
     }
 
     public void tick() {
-        ((MelonGolemMovementController) this.melonGolem.getMoveHelper()).setSpeed(1.0D);
+       // ((MelonGolemMovementController) this.melonGolem.getMoveHelper()).setSpeed(1.0D);
     }
 }
