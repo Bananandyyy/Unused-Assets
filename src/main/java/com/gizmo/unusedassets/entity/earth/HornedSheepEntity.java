@@ -46,7 +46,7 @@ public class HornedSheepEntity extends SheepBase<HornedSheepEntity> implements I
 
     private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.BYTE);
     private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.VARINT);
-    private static final RangedInteger field_234180_bw_ = TickRangeConverter.convertRange(20, 39);
+    private static final RangedInteger ANGER_TICK = TickRangeConverter.convertRange(20, 39);
     private EatGrassGoal eatGrassGoal;
     private UUID lastHurtBy;
 
@@ -129,7 +129,7 @@ public class HornedSheepEntity extends SheepBase<HornedSheepEntity> implements I
 
     @Override
     public void func_230258_H__() {
-        this.setAngerTime(field_234180_bw_.func_233018_a_(this.rand));
+        this.setAngerTime(ANGER_TICK.getRandomWithinRange(this.rand));
     }
 
     public void setRevengeTarget(@Nullable LivingEntity livingBase) {

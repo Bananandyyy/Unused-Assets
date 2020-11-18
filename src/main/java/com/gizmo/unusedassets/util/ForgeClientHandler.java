@@ -19,7 +19,7 @@ public class ForgeClientHandler {
     public static void onFogColor(EntityViewRenderEvent.FogColors event) {
         ResourceLocation mudTag = new ResourceLocation("unusedassets", "mud");
         Fluid blockStateAtEyes = getMudFluid(event);
-        if (blockStateAtEyes.isIn(FluidTags.getCollection().func_241834_b(mudTag))) {
+        if (blockStateAtEyes.isIn(FluidTags.getCollection().getTagByID(mudTag))) {
             event.setRed(87.0F / 255.0F);
             event.setGreen(54.0F / 255.0F);
             event.setBlue(35.0F / 255.0F);
@@ -30,7 +30,7 @@ public class ForgeClientHandler {
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
         ResourceLocation mudTag = new ResourceLocation("unusedassets", "mud");
         Fluid blockStateAtEyes = getMudFluid(event);
-        if (blockStateAtEyes.isIn(FluidTags.getCollection().func_241834_b(mudTag))) {
+        if (blockStateAtEyes.isIn(FluidTags.getCollection().getTagByID(mudTag))) {
             event.setDensity(0.85F);
             event.setCanceled(true);
         }

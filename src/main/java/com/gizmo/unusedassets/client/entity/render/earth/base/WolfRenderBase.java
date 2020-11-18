@@ -24,7 +24,7 @@ public class WolfRenderBase extends WolfRenderer {
         String resourceTextureAngry = MessageFormat.format("unusedassets:textures/entity/earth/wolf/{0}/{0}_angry.png", this.registryName);
         ResourceLocation texture = new ResourceLocation(resourceTexture);
         ResourceLocation textureAngry = new ResourceLocation(resourceTextureAngry);
-        return entity.func_233684_eK_() ? textureAngry : texture;
+        return entity.func_233678_J__() ? textureAngry : texture;
     }
 
 }

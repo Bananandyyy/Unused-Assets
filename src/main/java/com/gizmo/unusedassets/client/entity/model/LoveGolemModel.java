@@ -44,7 +44,7 @@ public class LoveGolemModel<T extends LivingEntity> extends SegmentedModel<T> {
 	
 	@Override
 	public Iterable<ModelRenderer> getParts() {
-		return (Iterable<ModelRenderer>)ImmutableList.of(this.head, this.body, this.leftarm, this.rightarm, this.leftleg, this.rightleg); //this.arms, this.legs, this.nose);
+		return (Iterable<ModelRenderer>)ImmutableList.of(this.head, this.body, this.leftarm, this.rightarm, this.leftleg, this.rightleg);
 	}
 
 	@Override
