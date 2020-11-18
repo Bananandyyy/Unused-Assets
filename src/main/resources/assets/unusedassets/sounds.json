@@ -1,0 +1,4 @@
+{
+	"item.gulp": { "subtitle": "subtitles.unusedassets.item.gulp", "sounds": [ "unusedassets:gulp" ] },
+	"item.drip": { "subtitle": "subtitles.unusedassets.item.drip", "sounds": [ "unusedassets:drip" ] }
+}
