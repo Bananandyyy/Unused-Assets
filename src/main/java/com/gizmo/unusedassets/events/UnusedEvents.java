@@ -3,11 +3,9 @@ package com.gizmo.unusedassets.events;
 import java.util.Random;
 import java.util.function.Predicate;
 
-import com.gizmo.unusedassets.UnusedAssets;
 import com.gizmo.unusedassets.entity.AgentEntity;
 import com.gizmo.unusedassets.entity.earth.FurnaceGolemEntity;
 import com.gizmo.unusedassets.init.UnusedEntities;
-import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
 import com.gizmo.unusedassets.init.blocks.EarthBlocks;
 import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
 
@@ -36,7 +34,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
@@ -50,7 +47,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = "unusedassets", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class UnusedEvents {
 
-	@SubscribeEvent
+/*	@SubscribeEvent
 	public static void ReactorActivation(PlayerInteractEvent.RightClickBlock event) {
 
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() == BedrockBlocks.NETHER_CORE
@@ -60,7 +57,7 @@ public class UnusedEvents {
 			// TODO: check structure and spawn spire
 		}
 
-	}
+	}*/
 
 	public static void RandomPotionMixin(PotionBrewEvent.Post event) {
 

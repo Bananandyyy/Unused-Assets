@@ -19,7 +19,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class HeartBowItem extends ShootableItem{
+public class HeartBowItem extends ShootableItem {
 
 	public HeartBowItem(Item.Properties properties) {
 		super(properties);

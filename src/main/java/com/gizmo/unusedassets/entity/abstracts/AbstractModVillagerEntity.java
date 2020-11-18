@@ -2,8 +2,6 @@ package com.gizmo.unusedassets.entity.abstracts;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.world.World;
 
 public abstract class AbstractModVillagerEntity extends AgeableEntity {

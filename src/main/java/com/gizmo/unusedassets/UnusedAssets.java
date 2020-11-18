@@ -3,14 +3,10 @@ package com.gizmo.unusedassets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.gizmo.unusedassets.client.UnusedDimensionsRenderInfo;
-import com.gizmo.unusedassets.init.UnusedDimensions;
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedItems;
 import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
-
-import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
@@ -30,13 +26,13 @@ public final class UnusedAssets {
 	public static final ItemGroup bedrock = new BedrockItemGroup("bedrock");
 	public static final ItemGroup education = new EducationItemGroup("education");
 	public static final ItemGroup earth = new EarthItemGroup("earth");
-	public static final ItemGroup dungeons = new DungeonsItemGroup("dungeons");
+//	public static final ItemGroup dungeons = new DungeonsItemGroup("dungeons");
 
 	public UnusedAssets() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
 	}
-
+	
 	public static class UnusedItemGroup extends ItemGroup {
 		public UnusedItemGroup(String label) {
 			super(label);
@@ -53,7 +49,7 @@ public final class UnusedAssets {
 		}
 
 		public ItemStack createIcon() {
-			return new ItemStack((IItemProvider) BedrockBlocks.NETHER_CORE);
+			return new ItemStack((IItemProvider) BedrockBlocks.CYAN_FLOWER);
 		}
 	}
 
@@ -73,11 +69,11 @@ public final class UnusedAssets {
 		}
 
 		public ItemStack createIcon() {
-			return new ItemStack((IItemProvider) UnusedItems.GARBAGE);
+			return new ItemStack((IItemProvider) UnusedItems.HORN);
 		}
 	}
 
-	public static class DungeonsItemGroup extends ItemGroup {
+/*	public static class DungeonsItemGroup extends ItemGroup {
 		public DungeonsItemGroup(String label) {
 			super(label);
 		}
@@ -85,7 +81,7 @@ public final class UnusedAssets {
 		public ItemStack createIcon() {
 			return new ItemStack((IItemProvider) UnusedItems.GARBAGE);
 		}
-	}
+	}*/
 	
 	public void commonSetup(FMLCommonSetupEvent e) {
 		UnusedEntities.entityAttributes();
@@ -93,8 +89,8 @@ public final class UnusedAssets {
 
 	public void clientSetup(FMLClientSetupEvent e) {
 		
-		UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
-		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
-//		DimesionRenderInfo.hungy_kitty.3659_.put(bogchongul.69)42*10_pigchoongoo_HungyBoi
+		//UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
+		//DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
+
 	}
 }

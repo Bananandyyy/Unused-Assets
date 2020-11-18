@@ -49,7 +49,7 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.AGENT, AgentRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.LOVE_GOLEM, LoveGolemRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HAPPY_CREEPER, HappyCreeperRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.NAMELESS_ONE, NamelessRenderer::new);
+//		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.NAMELESS_ONE, NamelessRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.DISPENSER_MINECART, ModcartRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.ALBINO_COW, renderManagerIn -> new CowRenderBase(renderManagerIn, "albino_cow"));
@@ -59,7 +59,7 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.CLUCK_SHROOM, CluckShroomRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FLECKED_SHEEP, FleckedSheepRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.FURNACE_GOLEM, FurnaceGolemRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.GLOW_SQUID, GlowSquidRenderer::new);
+//		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.GLOW_SQUID, GlowSquidRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HARELEQUIN_RABBIT, renderManagerIn -> new RabbitRenderBase(renderManagerIn, "harelequin_rabbit"));
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.HORNED_SHEEP, HornedSheepRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.INKY_SHEEP, InkySheepRenderer::new);
@@ -79,7 +79,7 @@ public class ClientHandler {
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.SPOTTED_PIG, renderManagerIn -> new PigRenderBase(renderManagerIn, "spotted_pig"));
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.STORMY_CHICKEN, renderManagerIn -> new ChickenRenderBase(renderManagerIn, "stormy_chicken"));
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.SUNSET_COW, renderManagerIn -> new CowRenderBase(renderManagerIn, "sunset_cow"));
-		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.TROPICAL_SLIME, TropicalSlimeRenderer::new);
+//		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.TROPICAL_SLIME, TropicalSlimeRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.VESTED_RABBIT, renderManagerIn -> new RabbitRenderBase(renderManagerIn, "vested_rabbit"));
 		RenderingRegistry.registerEntityRenderingHandler(UnusedEntities.WOOLY_COW, WoolyCowRenderer::new);
 			
@@ -96,7 +96,7 @@ public class ClientHandler {
 		RenderTypeLookup.setRenderLayer(EducationBlocks.GREEN_TORCH, RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(EducationBlocks.BLUE_TORCH, RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(EducationBlocks.PURPLE_TORCH, RenderType.getCutout());
-		RenderTypeLookup.setRenderLayer(EducationBlocks.UNDERWATER_TORCH, RenderType.getCutout());
+//		RenderTypeLookup.setRenderLayer(EducationBlocks.UNDERWATER_TORCH, RenderType.getCutout());
 		
 	}
 	

@@ -8,14 +8,10 @@ import com.gizmo.unusedassets.blocks.education.CompoundBlock;
 import com.gizmo.unusedassets.blocks.education.ConstructorBlock;
 import com.gizmo.unusedassets.blocks.education.ReducerBlock;
 import com.gizmo.unusedassets.blocks.education.TableBlock;
-import com.gizmo.unusedassets.blocks.education.UnderwaterTNTBlock;
-import com.gizmo.unusedassets.blocks.education.UnderwaterTorchBlock;
 import com.google.common.base.Function;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -31,16 +27,16 @@ public class EducationBlocks {
 
 	private static final ArrayList<Item> ITEMS = new ArrayList<>();
 	
-	public static final Block ALLOW = register("allow", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
-	public static final Block BORDER = register("border", new WallBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
+//	public static final Block ALLOW = register("allow", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
+//	public static final Block BORDER = register("border", new WallBlock(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
 	public static final Block COMPOUND_CREATOR = register("compound_creator", new CompoundBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
-	public static final Block DENY = register("deny", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
+//	public static final Block DENY = register("deny", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
 	public static final Block ELEMENT_CONSTRUCTOR = register("element_constructor", new ConstructorBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
 	public static final Block HEAT_BLOCK = register("heat_block", new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
 	public static final Block LAB_TABLE = register("lab_table", new TableBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
 	public static final Block MATERIAL_REDUCER = register("material_reducer", new ReducerBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)));
-	public static final Block UNDERWATER_TNT = register("underwater_tnt", new UnderwaterTNTBlock(Block.Properties.from(Blocks.TNT)));
-	public static final Block UNDERWATER_TORCH = register("underwater_torch", new UnderwaterTorchBlock(Block.Properties.from(Blocks.TORCH)));
+//	public static final Block UNDERWATER_TNT = register("underwater_tnt", new UnderwaterTNTBlock(Block.Properties.from(Blocks.TNT)));
+//	public static final Block UNDERWATER_TORCH = register("underwater_torch", new UnderwaterTorchBlock(Block.Properties.from(Blocks.TORCH)));
 	public static final Block RED_TORCH = register("red_torch", new ColoredTorchBlock(Block.Properties.from(Blocks.TORCH)));
 	public static final Block GREEN_TORCH = register("green_torch", new ColoredTorchBlock(Block.Properties.from(Blocks.TORCH)));
 	public static final Block BLUE_TORCH = register("blue_torch", new ColoredTorchBlock(Block.Properties.from(Blocks.TORCH)));
