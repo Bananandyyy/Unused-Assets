@@ -3,7 +3,6 @@ package com.gizmo.unusedassets.entity.earth;
 import com.gizmo.unusedassets.entity.ai.goal.MoveToMudGoal;
 import com.gizmo.unusedassets.entity.earth.base.PigBase;
 import com.gizmo.unusedassets.init.blocks.EarthBlocks;
-
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.BreedGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
@@ -30,7 +29,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class MuddyPigEntity extends PigBase<MuddyPigEntity> {
-
 	private static final DataParameter<Boolean> MUDDY_STATE = EntityDataManager.createKey(MuddyPigEntity.class, DataSerializers.BOOLEAN);
     private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
     private int outOfMud = 0;
