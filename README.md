@@ -2,6 +2,8 @@
 
 *by Gizmo*
 
+Curseforge Page - https://www.curseforge.com/minecraft/mc-mods/unused-assets
+
 **DISCLAIMER:** This mod is **NOT DONE YET!** I will roll out more and more features for testing, but know that this isnt final. Once I begin releasing betas of the mod, that will mean I am getting close to a release. 
 
 Welcome to *Unused Assets*! This is a mod idea by me to add things that were scrapped, unused, or planned to minecraft. This mod also went further to add parity features from other versions of Minecraft. Currently, I have features from Bedrock Edition, Education Edition, and Minecraft Earth, but I will be adding stuff from Minecraft Dungeons too.
