@@ -4,8 +4,12 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 import com.gizmo.unusedassets.entity.AgentEntity;
+import com.gizmo.unusedassets.entity.ai.goal.MoveToMudGoal;
 import com.gizmo.unusedassets.entity.earth.FurnaceGolemEntity;
+import com.gizmo.unusedassets.entity.earth.MuddyPigEntity;
+import com.gizmo.unusedassets.entity.earth.RainbowSheepEntity;
 import com.gizmo.unusedassets.init.UnusedEntities;
+import com.gizmo.unusedassets.init.UnusedTags;
 import com.gizmo.unusedassets.init.blocks.EarthBlocks;
 import com.gizmo.unusedassets.init.blocks.UnusedBlocks;
 
@@ -20,8 +24,11 @@ import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.block.pattern.BlockPatternBuilder;
 import net.minecraft.block.pattern.BlockStateMatcher;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.EggEntity;
@@ -35,8 +42,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.brewing.PotionBrewEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -217,5 +228,86 @@ public class UnusedEvents {
 			}
 		}
 	}
+	
+	 @SubscribeEvent
+	    public void onEntityUpdate(LivingEvent.LivingUpdateEvent event) {
+	        World world = event.getEntityLiving().world;
 
+	        LivingEntity livingEntity = event.getEntityLiving();
+
+
+	        if (livingEntity.handleFluidAcceleration(UnusedTags.Fluids.MUD, 0.014D)) {
+	            if (livingEntity.getMotion().getY() < 0.0F) {
+	                livingEntity.setMotion(livingEntity.getMotion().mul(0.8F, 0.5F, 0.8F));
+	            } else {
+	                livingEntity.setMotion(livingEntity.getMotion().scale(0.9F));
+	            }
+
+	            if (livingEntity.isAirBorne) {
+	                livingEntity.setMotion(livingEntity.getMotion().add(0.0D, (double) 0.08F * livingEntity.getAttribute(ForgeMod.SWIM_SPEED.get()).getValue(), 0.0D));
+	            }
+
+	            livingEntity.fallDistance = 0;
+
+	        }
+
+	        if (event.getEntityLiving().getType() == EntityType.PIG && event.getEntityLiving().ticksExisted % 5 == 0 && livingEntity.handleFluidAcceleration(UnusedTags.Fluids.MUD, 0.014D)) {
+	            if (!world.isRemote()) {
+	                MuddyPigEntity pigEntity = UnusedEntities.MUDDY_PIG.create(world);
+	                pigEntity.copyDataFromOld(event.getEntityLiving());
+
+	                pigEntity.setNoAI(((PigEntity) livingEntity).isAIDisabled());
+	                if (livingEntity.hasCustomName()) {
+	                    pigEntity.setCustomName(livingEntity.getCustomName());
+	                    pigEntity.setCustomNameVisible(livingEntity.isCustomNameVisible());
+	                }
+
+	                if (((PigEntity) livingEntity).isHorseSaddled()) {
+	                    pigEntity.func_230264_L__();
+	                }
+
+	                if (livingEntity.isChild()) {
+	                    pigEntity.setGrowingAge(((PigEntity) livingEntity).getGrowingAge());
+	                }
+
+	                pigEntity.setMuddyState(false);
+
+	                livingEntity.world.getServer().getWorld(livingEntity.getEntityWorld().getDimensionKey()).removeEntityComplete(livingEntity, false);
+	                livingEntity.world.getServer().getWorld(livingEntity.getEntityWorld().getDimensionKey()).addEntity(pigEntity);
+
+	                event.setCanceled(true);
+	            }
+	        }
+	    }
+	 
+	  @SubscribeEvent
+	    public void onEntityJoin(EntityJoinWorldEvent event) {
+	        if (event.getEntity().getType() == EntityType.PIG) {
+	            PigEntity pig = (PigEntity) event.getEntity();
+	            pig.goalSelector.addGoal(0, new MoveToMudGoal(pig, 1.0D));
+	        }
+	    }
+
+	   @SubscribeEvent
+	    public void onEntityStruckByLightning(EntityStruckByLightningEvent event) {
+	        if (event.getEntity().getType() == EntityType.SHEEP) {
+	            SheepEntity oldEntity = (SheepEntity) event.getEntity();
+
+	            RainbowSheepEntity rainbowsheep = UnusedEntities.RAINBOW_SHEEP.create(oldEntity.world);
+	            rainbowsheep.setLocationAndAngles(oldEntity.getPosX(), oldEntity.getPosY(), oldEntity.getPosZ(), oldEntity.rotationYaw, oldEntity.rotationPitch);
+	            rainbowsheep.setNoAI(oldEntity.isAIDisabled());
+	            if (oldEntity.hasCustomName()) {
+	                rainbowsheep.setCustomName(oldEntity.getCustomName());
+	                rainbowsheep.setCustomNameVisible(oldEntity.isCustomNameVisible());
+	            }
+
+	            if (oldEntity.isChild()) {
+	                rainbowsheep.setGrowingAge(oldEntity.getGrowingAge());
+	            }
+
+	            oldEntity.world.addEntity(rainbowsheep);
+	            oldEntity.remove();
+	        }
+
+	    }
 }
