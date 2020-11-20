@@ -28,7 +28,8 @@ public class CowBase<T extends CowEntity> extends CowEntity {
 
 	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 10.0D)
-				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.2F);
+				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.2F)
+				.createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0D);
 	}
 
 	@Override

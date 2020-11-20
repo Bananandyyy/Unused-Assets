@@ -28,7 +28,7 @@ public class RabbitBase<T extends RabbitEntity> extends RabbitEntity {
 
 	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 3.0D)
-				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.3F);
+				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.3F).createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0D);
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import com.gizmo.unusedassets.entity.ai.goal.JollyLlamaEatFernGoal;
 import com.gizmo.unusedassets.entity.earth.base.LlamaBase;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.BreedGoal;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
 import net.minecraft.entity.ai.goal.LlamaFollowCaravanGoal;
@@ -42,18 +44,23 @@ public class JollyLlamaEntity extends LlamaBase<JollyLlamaEntity> {
 		return false;
 	}
 
+	@Override
 	protected void registerGoals() {
 		this.eatFernGoal = new JollyLlamaEatFernGoal(this);
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.2D));
 		this.goalSelector.addGoal(1, new RunAroundLikeCrazyGoal(this, 1.2D));
 		this.goalSelector.addGoal(2, new LlamaFollowCaravanGoal(this, (double) 2.1F));
-        this.goalSelector.addGoal(3, this.eatFernGoal);
+		this.goalSelector.addGoal(3, this.eatFernGoal);
 		this.goalSelector.addGoal(4, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 0.7D));
 		this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+	}
+
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
+		return func_234234_eJ_().createMutableAttribute(Attributes.FOLLOW_RANGE, 40.0D);
 	}
 
 	protected void updateAITasks() {

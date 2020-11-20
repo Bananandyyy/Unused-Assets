@@ -28,7 +28,7 @@ public class SheepBase<T extends SheepEntity> extends SheepEntity {
 
 	public static AttributeModifierMap.MutableAttribute registerAttributes() {
 		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 8.0D)
-				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.23F);
+				.createMutableAttribute(Attributes.MOVEMENT_SPEED, (double) 0.23F).createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0D);
 	}
 
 	@Override
