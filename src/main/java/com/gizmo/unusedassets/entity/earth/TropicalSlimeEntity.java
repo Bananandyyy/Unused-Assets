@@ -13,7 +13,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
@@ -50,7 +52,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
 		experienceValue = this.size;
 		setNoAI(false);
 		this.moveController = new TropicalSlimeMovementController(this);
-		this.setAttributes();
 	}
 
 	@Override
@@ -63,11 +64,9 @@ public class TropicalSlimeEntity extends CreatureEntity {
 		this.goalSelector.addGoal(5, new TropicalSlimeHopGoal(this));
 		this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)));
 	}
-
-	private void setAttributes() {
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16.0D);
-		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.6D);
-		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+	
+	public static AttributeModifierMap.MutableAttribute registerAttributes() {
+	      return MobEntity.func_233666_p_().createMutableAttribute(Attributes.FOLLOW_RANGE, 16.0D).createMutableAttribute(Attributes.MAX_HEALTH, 16.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.6D).createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D);
 	}
 
 	public ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
