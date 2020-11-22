@@ -36,6 +36,7 @@ public class EarthBlocks {
 	public static final Block MELON_GOLEM_HEAD_SHOOT = register("melon_head_shoot", new CarvedMelonBlock(Block.Properties.from(Blocks.MELON)));
 	public static final Block MELON_GOLEM_HEAD_BLINK = register("melon_head_blink", new CarvedMelonBlock(Block.Properties.from(Blocks.MELON)));
 	public static final Block MELON_LANTERN = register("melon_lantern", new CarvedMelonBlock(Block.Properties.from(Blocks.MELON)));
+	public static final Block PINK_DAISY = register("pink_daisy", new FlowerBlock(Effects.MINING_FATIGUE, 5, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)));
 
 	private static Block register(String name, Block block) {
 		return register(name, block, (new Item.Properties()).group(UnusedAssets.earth));

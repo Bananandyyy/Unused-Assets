@@ -237,6 +237,25 @@ public class UnusedItems {
     public static final Item VESTED_RABBIT_SPAWN_EGG = register("vested_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.VESTED_RABBIT, 0xdedede, 0x747474, (new Item.Properties()).group(UnusedAssets.earth)));
     public static final Item WOOLY_COW_SPAWN_EGG = register("wooly_cow_spawn_egg", new SpawnEggItem(UnusedEntities.WOOLY_COW, 0xcc3300, 0xff9933, (new Item.Properties()).group(UnusedAssets.earth)));
     
+    public static final Item BOLD_STRIPED_RABBIT_SPAWN_EGG = register("bold_striped_rabbit_spawn_egg", new SpawnEggItem(UnusedEntities.BOLD_STRIPED_RABBIT, 920331, 10969891, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item BOULDERING_ZOMBIE_SPAWN_EGG = register("bouldering_zombie_spawn_egg", new SpawnEggItem(UnusedEntities.BOULDERING_ZOMBIE, 5068634, 5909021, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item BRONZED_CHICKEN_SPAWN_EGG = register("bronzed_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.BRONZED_CHICKEN, 9715496, 1250616, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item BRULE_COW_SPAWN_EGG = register("brule_cow_spawn_egg", new SpawnEggItem(UnusedEntities.BRULE_COW, 16630896, 16773837, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item COOKIE_COW_SPAWN_EGG = register("cookie_cow_spawn_egg", new SpawnEggItem(UnusedEntities.COOKIE_COW, 4542040, 14734534, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item DAIRY_COW_SPAWN_EGG = register("dairy_cow_spawn_egg", new SpawnEggItem(UnusedEntities.DAIRY_COW, 16184569, 3026477, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item DYED_CAT_SPAWN_EGG = register("dyed_cat_spawn_egg", new SpawnEggItem(UnusedEntities.DYED_CAT, 9267367, 4539728, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item FANCY_CHICKEN_SPAWN_EGG = register("fancy_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.FANCY_CHICKEN, 3304012, 14362952, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item GOLD_CRESTED_CHICKEN_SPAWN_EGG = register("gold_crested_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.GOLD_CRESTED_CHICKEN, 14785596, 9208441, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item LOBBER_ZOMBIE_SPAWN_EGG = register("lobber_zombie_spawn_egg", new SpawnEggItem(UnusedEntities.LOBBER_ZOMBIE, 9346174, 3757899, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MOOLIP_SPAWN_EGG = register("moolip_spawn_egg", new SpawnEggItem(UnusedEntities.MOOLIP, 15767235, 16377835, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item MOTTLED_PIG_SPAWN_EGG = register("mottled_pig_spawn_egg", new SpawnEggItem(UnusedEntities.MOTTLED_PIG, 9598832, 4404786, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item PATCHED_SHEEP_SPAWN_EGG = register("patched_sheep_spawn_egg", new SpawnEggItem(UnusedEntities.PATCHED_SHEEP, 2830141, 15786717, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item PINTO_COW_SPAWN_EGG = register("pinto_cow_spawn_egg", new SpawnEggItem(UnusedEntities.PINTO_COW, 14666933, 13596983, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item SKEWBALD_CHICKEN_SPAWN_EGG = register("skewbald_chicken_spawn_egg", new SpawnEggItem(UnusedEntities.SKEWBALD_CHICKEN, 3945773, 16771279, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item SOOTY_PIG_SPAWN_EGG = register("sooty_pig_spawn_egg", new SpawnEggItem(UnusedEntities.SOOTY_PIG, 15715009, 2500144, (new Item.Properties()).group(UnusedAssets.earth)));
+    public static final Item VILER_WITCH_SPAWN_EGG = register("viler_witch_spawn_egg", new SpawnEggItem(UnusedEntities.VILER_WITCH, 855577, 3622477, (new Item.Properties()).group(UnusedAssets.earth)));
+
+    
     
     public enum CureItems {
     	ANTIDOTE,

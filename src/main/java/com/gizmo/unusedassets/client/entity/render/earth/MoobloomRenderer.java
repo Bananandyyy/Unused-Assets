@@ -20,7 +20,7 @@ public class MoobloomRenderer extends MobRenderer<MoobloomEntity, CowModel<Moobl
 
     public ResourceLocation getEntityTexture(MoobloomEntity entity) {
         ResourceLocation texture = new ResourceLocation("unusedassets:textures/entity/earth/cow/moobloom/moobloom.png");
-        ResourceLocation textureBlink = new ResourceLocation("unusedassets:textures/entity/earth/moobloom/moobloom_blink.png");
+        ResourceLocation textureBlink = new ResourceLocation("unusedassets:textures/entity/earth/cow/moobloom/moobloom_blink.png");
         return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

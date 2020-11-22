@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "unusedassets:block/pink_daisy",
+        "particle": "unusedassets:block/pink_daisy"
+    }
+}
