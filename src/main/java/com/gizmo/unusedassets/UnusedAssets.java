@@ -3,13 +3,20 @@ package com.gizmo.unusedassets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.gizmo.unusedassets.client.LightingClient;
+import com.gizmo.unusedassets.client.UnusedDimensionsRenderInfo;
+import com.gizmo.unusedassets.init.UnusedDimensions;
 import com.gizmo.unusedassets.init.UnusedEntities;
 import com.gizmo.unusedassets.init.UnusedItems;
 import com.gizmo.unusedassets.init.blocks.BedrockBlocks;
 import com.gizmo.unusedassets.init.blocks.EducationBlocks;
+
+import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -31,6 +38,7 @@ public final class UnusedAssets {
 	public UnusedAssets() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LightingClient.init());
 	}
 	
 	public static class UnusedItemGroup extends ItemGroup {
@@ -89,8 +97,8 @@ public final class UnusedAssets {
 
 	public void clientSetup(FMLClientSetupEvent e) {
 		
-		//UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
-		//DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
+		UnusedDimensionsRenderInfo dimensionRenderInfo = new UnusedDimensionsRenderInfo();
+		DimensionRenderInfo.field_239208_a_.put(UnusedDimensions.DUNGEONS, dimensionRenderInfo);
 
 	}
 }

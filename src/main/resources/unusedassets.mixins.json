@@ -5,6 +5,8 @@
   "mixins": [
   ],
   "client": [
+	"IBlockReaderMixin",
+	"MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1
